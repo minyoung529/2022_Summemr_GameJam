@@ -8,6 +8,10 @@ public class PaintIcon : ProgramIcon
     GameObject paint;
     protected override void ExecuteProgram()
     {
+<<<<<<< HEAD
         paint.SetActive(true);
+=======
+
+>>>>>>> vision
     }
 }
