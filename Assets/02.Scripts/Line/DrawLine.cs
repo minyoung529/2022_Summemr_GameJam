@@ -8,21 +8,25 @@ public class DrawLine : MonoBehaviour
     Transform attackPos;
     [SerializeField]
     GameObject[] bullet;
+    [SerializeField]
+    GameObject msPaint;
 
-    GameObject line;
+    GameObject madeLine;
     public Material defaultMaterial;
     private LineRenderer curLine; 
     private int positionCount = 2; 
     private Vector3 PrevPos = Vector3.zero;
 
     bool isDrawNow = false;
+    bool isCreate = false;
+    bool isPer = false;
 
     void Update()
     {
+        // 그림판 영역 제한
         // 한 획 제한
-        if (isDrawNow) return;
-
-        DrawMouse();
+        if(isPer && !isDrawNow)  DrawMouse();
+        Debug.Log(isPer);
     }
 
     // 마우스 드래그로 그리기
@@ -32,20 +36,33 @@ public class DrawLine : MonoBehaviour
 
         if (Input.GetMouseButtonUp(0))
         {
+            if (!isCreate || isDrawNow) return;
             isDrawNow = true;
+            isCreate = false;
             ActionReady();
         }
-        if (Input.GetMouseButtonDown(0)) createLine(mousePos);
-        else if (Input.GetMouseButton(0)) connectLine(mousePos);
+        else if (Input.GetMouseButtonDown(0))
+        {
+            isCreate = true;
+            createLine(mousePos);
+        }
+        else if (Input.GetMouseButton(0))
+        {
+            if (!isCreate) return;
+            connectLine(mousePos);
+        }
     }
 
     // 라인 만들기
     void createLine(Vector3 mousePos)
     {
+        Debug.Log("라인 그리기");
         positionCount = 2;
-        line = new GameObject("Line");
+        GameObject line = new GameObject("Line");
         LineRenderer lineRend = line.AddComponent<LineRenderer>();
         line.AddComponent<MeshCollider>();
+
+        madeLine = line;
 
         line.transform.parent = transform;
         line.transform.position = mousePos;
@@ -65,6 +82,7 @@ public class DrawLine : MonoBehaviour
     // 라인 연결
     void connectLine(Vector3 mousePos)
     {
+        Debug.Log("라인 연결");
         if (PrevPos != null && Mathf.Abs(Vector3.Distance(PrevPos, mousePos)) >= 0.001f)
         {
             PrevPos = mousePos;
@@ -78,12 +96,16 @@ public class DrawLine : MonoBehaviour
     // 공격 준비
     void ActionReady()
     {
+        Debug.Log("그리기 끝");
+        madeLine.transform.SetParent(null);
+        msPaint.SetActive(false);
+
         // 오브젝트 사이즈 줄어들고 왼쪽 아래로 이동
-        LineRenderer lr = line.GetComponent<LineRenderer>();
+        LineRenderer lr = madeLine.GetComponent<LineRenderer>();
         for (int i = 0; i < lr.positionCount; i++)
         {
             Vector3 v = lr.GetPosition(i);
-            v += new Vector3(-0.18f, 0, -0.1f);
+            v += new Vector3(-0.18f, 0, -0.08f);
             lr.SetPosition(i, v);
         }
 
@@ -96,5 +118,12 @@ public class DrawLine : MonoBehaviour
         bullet[2].SetActive(true);
     }
 
-
+    private void OnMouseExit()
+    {
+        isPer = false;
+    }
+    private void OnMouseEnter()
+    {
+        isPer = true;
+    }
 }
