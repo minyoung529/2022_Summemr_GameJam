@@ -19,7 +19,7 @@ public class DrawBullet : MonoBehaviour
     }
     private void Update()
     {
-        rb.AddForce(dir*Time.deltaTime*moveSpeed, ForceMode.Impulse);
+        rb.AddForce(dir * Time.deltaTime * moveSpeed, ForceMode.Impulse);
         if(transform.position.z > 6 || transform.position.x > 10)
         {
             gameObject.SetActive(false);
