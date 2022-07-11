@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,12 +6,16 @@ using UnityEngine;
 public class BasicAttack : MonoBehaviour
 {
     [SerializeField] private GameObject effectPrefab;
-    [SerializeField] private LayerMask layer;
+    [SerializeField] private float attackDistance = 0.7f;
+    [SerializeField] private float force = 0.7f;
     private Camera mainCam;
+    private List<Monster> monster;
+    private Vector3 attackPosition;
 
     void Start()
     {
         mainCam = Camera.main;
+        monster = new List<Monster>(FindObjectsOfType<Monster>());
     }
 
     void Update()
@@ -18,6 +23,18 @@ public class BasicAttack : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             GenerateEffect();
+            Attack();
+        }
+    }
+
+    private void Attack()
+    {
+        Predicate<Monster> match = (x) => Vector3.Distance(x.transform.position, attackPosition) < attackDistance;
+        List<Monster> targetMonster = monster.FindAll(match);
+
+        foreach(Monster monster in targetMonster)
+        {
+            monster.ExplosionDamage(attackPosition, force);
         }
     }
 
@@ -27,11 +44,12 @@ public class BasicAttack : MonoBehaviour
         RaycastHit hitInfo;
         GameObject effect = null;
 
-        Debug.DrawRay(ray.origin, ray.direction * 50f, Color.red, 1f);
+        Debug.DrawRay(ray.origin, ray.direction * 100f, Color.red, 1f);
 
         if (Physics.Raycast(ray, out hitInfo, 100f))
         {
-            effect = Instantiate(effectPrefab, hitInfo.point, Quaternion.Euler(Vector3.right * -90f), null);
+            attackPosition = hitInfo.point;
+            effect = Instantiate(effectPrefab, attackPosition, Quaternion.Euler(Vector3.right * -90f), null);
         }
 
         Destroy(effect, 2f);
