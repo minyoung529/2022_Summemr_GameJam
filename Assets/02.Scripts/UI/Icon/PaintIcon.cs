@@ -6,5 +6,6 @@ public class PaintIcon : ProgramIcon
 {
     protected override void ExecuteProgram()
     {
+
     }
 }
