@@ -1,21 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
-public class HeartAttack : MonoBehaviour
+public class HeartAttack : PoolableObject
 {
     private Rigidbody rigid;
-    private Vector3 box = new Vector3(1f, 0.01f, 1f);
-    private LayerMask bottomLayer;
+    private bool isExplosion = false;
 
     [SerializeField] private float gravity;
 
-    void Start()
-    {
-        rigid = GetComponent<Rigidbody>();
-        bottomLayer = LayerMask.GetMask("Platform");
+    private int count = 0;
 
+    void Awake()
+    {
+        rigid = GetComponentInChildren<Rigidbody>();
         AppearHeart();
+
+    }
+
+    private void Start()
+    {
+        GetComponentInChildren<EmojiCollider>().AddAction(Destroy);
     }
 
     void Update()
@@ -28,21 +34,33 @@ public class HeartAttack : MonoBehaviour
         Vector3 direction = Vector3.zero;
         direction.x = Random.Range(-1f, 1f);
         direction.z = Random.Range(0f, 1f);
-        rigid.AddForce(direction * 5000f);
+        rigid.AddForce(direction * 280f);
     }
 
     private void Gravity()
     {
-        Collider[] cols = Physics.OverlapBox(transform.position, box, transform.rotation, bottomLayer);
+        rigid.AddForce(Vector3.back * gravity);
+    }
 
-        if (cols.Length <= 1)
+    public void Explosion(Vector3 explosionPosition, float radius)
+    {
+        rigid.AddExplosionForce(1200f, explosionPosition, radius);
+        isExplosion = true;
+    }
+
+    private void Destroy()
+    {
+        if (isExplosion && ++count > 1)
         {
-            rigid.velocity =  Vector3.back * gravity;
+            PoolManager.Instance.Push(this);
         }
-        else
-        {
-            Debug.Log(cols[0].name);
-            rigid.velocity = Vector3.zero;
-        }
+    }
+
+    public override void Reset()
+    {
+        rigid.velocity = Vector3.zero;
+        isExplosion = false;
+        transform.localScale = Vector3.one;
+        count = 0;
     }
 }
