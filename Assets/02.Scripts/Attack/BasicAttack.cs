@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class BasicAttack : MonoBehaviour
 {
@@ -22,6 +23,7 @@ public class BasicAttack : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
+            if (EventSystem.current.IsPointerOverGameObject()) return;
             GenerateEffect();
             Attack();
         }
@@ -52,6 +54,6 @@ public class BasicAttack : MonoBehaviour
             effect = Instantiate(effectPrefab, attackPosition, Quaternion.Euler(Vector3.right * -90f), null);
         }
 
-        Destroy(effect, 2f);
+        Destroy(effect, 0.3f);
     }
 }
