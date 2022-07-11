@@ -4,38 +4,48 @@ using UnityEngine;
 
 public class DrawLine : MonoBehaviour
 {
-    public Material defaultMaterial;
+    [SerializeField]
+    Transform attackPos;
+    [SerializeField]
+    GameObject[] bullet;
 
+    GameObject line;
+    public Material defaultMaterial;
     private LineRenderer curLine; 
     private int positionCount = 2; 
     private Vector3 PrevPos = Vector3.zero;
 
+    bool isDrawNow = false;
+
     void Update()
     {
+        // 한 획 제한
+        if (isDrawNow) return;
+
         DrawMouse();
     }
 
+    // 마우스 드래그로 그리기
     void DrawMouse()
     {
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0.3f));
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonUp(0))
         {
-            createLine(mousePos);
+            isDrawNow = true;
+            ActionReady();
         }
-        else if (Input.GetMouseButton(0))
-        {
-            connectLine(mousePos);
-        }
-
+        if (Input.GetMouseButtonDown(0)) createLine(mousePos);
+        else if (Input.GetMouseButton(0)) connectLine(mousePos);
     }
 
+    // 라인 만들기
     void createLine(Vector3 mousePos)
     {
         positionCount = 2;
-        GameObject line = new GameObject("Line");
+        line = new GameObject("Line");
         LineRenderer lineRend = line.AddComponent<LineRenderer>();
-       line.AddComponent<MeshCollider>();
+        line.AddComponent<MeshCollider>();
 
         line.transform.parent = transform;
         line.transform.position = mousePos;
@@ -52,6 +62,7 @@ public class DrawLine : MonoBehaviour
         curLine = lineRend; 
     }
 
+    // 라인 연결
     void connectLine(Vector3 mousePos)
     {
         if (PrevPos != null && Mathf.Abs(Vector3.Distance(PrevPos, mousePos)) >= 0.001f)
@@ -63,4 +74,27 @@ public class DrawLine : MonoBehaviour
         }
 
     }
+
+    // 공격 준비
+    void ActionReady()
+    {
+        // 오브젝트 사이즈 줄어들고 왼쪽 아래로 이동
+        LineRenderer lr = line.GetComponent<LineRenderer>();
+        for (int i = 0; i < lr.positionCount; i++)
+        {
+            Vector3 v = lr.GetPosition(i);
+            v += new Vector3(-0.18f, 0, -0.1f);
+            lr.SetPosition(i, v);
+        }
+
+        // 3개의 총알을 키기
+        bullet[0].transform.position = attackPos.position;
+        bullet[1].transform.position = attackPos.position;
+        bullet[2].transform.position = attackPos.position;
+        bullet[0].SetActive(true);
+        bullet[1].SetActive(true);
+        bullet[2].SetActive(true);
+    }
+
+
 }
