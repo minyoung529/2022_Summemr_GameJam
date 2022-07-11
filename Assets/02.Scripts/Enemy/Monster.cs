@@ -15,7 +15,7 @@ public class Monster : PoolableObject
 
     private void Update()
     {
-        MoveToTarget();
+        //MoveToTarget();
         if (transform.position.y < -20f)
         {
             Die();
@@ -25,7 +25,7 @@ public class Monster : PoolableObject
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.transform.CompareTag("Tower"))
+        if (other.transform.CompareTag("Tower"))
         {
             Die();
         }
@@ -48,6 +48,11 @@ public class Monster : PoolableObject
     {
         this.target = target;
         MoveToTarget();
+    }
+
+    public void ExplosionDamage(Vector3 explosionPos, float force = 1f)
+    {
+        rigid.AddExplosionForce(force, explosionPos, force);
     }
 
     public override void Reset()

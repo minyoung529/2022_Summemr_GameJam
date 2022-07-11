@@ -9,7 +9,6 @@ public class MonsterSpawner : MonoBehaviour
     [SerializeField] private Transform wallPaper;
     [SerializeField] private float spawnRange = 15f;
     [SerializeField] private float spawnDelay = 1f;
-    // Start is called before the first frame update
     void Start()
     {
         PoolManager.Instance.CreatePool(monsterPrefab, 50);

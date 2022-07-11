@@ -6,19 +6,29 @@ using DG.Tweening;
 public class EmojiCollider : MonoBehaviour
 {
     private Action onEnterPlatform;
+    private Action<Collision> onEnterMonster;
     public LayerMask layerMask;
 
-    public void AddAction(Action action)
+    public void AddPlatformAction(Action action)
     {
         onEnterPlatform += action;
     }
 
+    public void AddMonsterAction(Action<Collision> action)
+    {
+        onEnterMonster += action;
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.transform.name.Contains("Plane"))
+        if (collision.transform.CompareTag("Platform"))
         {
-            Debug.Log("Invoke");
             onEnterPlatform.Invoke();
+        }
+
+        if (collision.transform.CompareTag("Monster"))
+        {
+            onEnterMonster.Invoke(collision);
         }
     }
 }

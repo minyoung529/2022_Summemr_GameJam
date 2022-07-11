@@ -6,6 +6,8 @@ TagManager:
   tags:
   - DRAWBULLET
   - MSPAINT
+  - Platform
+  - Monster
   layers:
   - Default
   - TransparentFX

@@ -21,7 +21,9 @@ public class HeartAttack : PoolableObject
 
     private void Start()
     {
-        GetComponentInChildren<EmojiCollider>().AddAction(Destroy);
+        EmojiCollider obj = GetComponentInChildren<EmojiCollider>();
+        obj.AddPlatformAction(Destroy);
+        obj.AddMonsterAction(Attack);
     }
 
     void Update()
@@ -54,6 +56,12 @@ public class HeartAttack : PoolableObject
         {
             PoolManager.Instance.Push(this);
         }
+    }
+
+    private void Attack(Collision collision)
+    {
+        collision.transform.GetComponent<Monster>().Die();
+        Destroy();
     }
 
     public override void Reset()
