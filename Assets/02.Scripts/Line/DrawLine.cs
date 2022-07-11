@@ -26,7 +26,6 @@ public class DrawLine : MonoBehaviour
         // 그림판 영역 제한
         // 한 획 제한
         if(isPer && !isDrawNow)  DrawMouse();
-        Debug.Log(isPer);
     }
 
     // 마우스 드래그로 그리기
@@ -56,7 +55,6 @@ public class DrawLine : MonoBehaviour
     // 라인 만들기
     void createLine(Vector3 mousePos)
     {
-        Debug.Log("라인 그리기");
         positionCount = 2;
         GameObject line = new GameObject("Line");
         LineRenderer lineRend = line.AddComponent<LineRenderer>();
@@ -82,7 +80,6 @@ public class DrawLine : MonoBehaviour
     // 라인 연결
     void connectLine(Vector3 mousePos)
     {
-        Debug.Log("라인 연결");
         if (PrevPos != null && Mathf.Abs(Vector3.Distance(PrevPos, mousePos)) >= 0.001f)
         {
             PrevPos = mousePos;
@@ -96,7 +93,6 @@ public class DrawLine : MonoBehaviour
     // 공격 준비
     void ActionReady()
     {
-        Debug.Log("그리기 끝");
         madeLine.transform.SetParent(null);
         msPaint.SetActive(false);
 
