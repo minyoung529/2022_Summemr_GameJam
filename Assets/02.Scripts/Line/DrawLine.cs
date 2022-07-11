@@ -25,7 +25,8 @@ public class DrawLine : MonoBehaviour
     {
         // 그림판 영역 제한
         // 한 획 제한
-        if(isPer && !isDrawNow)  DrawMouse();
+       // if(isPer && !isDrawNow)
+       DrawMouse();
     }
 
     // 마우스 드래그로 그리기
