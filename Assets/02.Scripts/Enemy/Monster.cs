@@ -22,7 +22,6 @@ public class Monster : PoolableObject
         }
     }
 
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.transform.CompareTag("Tower"))

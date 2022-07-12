@@ -64,7 +64,7 @@ public class HeartButton : MonoBehaviour, IPointerClickHandler
     private IEnumerator ExplosionHearts()
     {
         heartCount = 0;
-        instagramWindow.DOScale(0f, 0.3f);
+        instagramWindow.DOScale(0f, 0.3f).OnComplete(() => gameObject.SetActive(false));
         image.sprite = buttonSprites[0];
 
         Vector3 initPos = new Vector3(-7f, 0f, -5f);
@@ -79,6 +79,5 @@ public class HeartButton : MonoBehaviour, IPointerClickHandler
             initPos.x += 7f;
             yield return new WaitForSeconds(0.4f);
         }
-
     }
 }
