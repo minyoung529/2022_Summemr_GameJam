@@ -23,34 +23,42 @@ public class Tower : MonoBehaviour
     float dadTowerGage;
     float brotherTowerGage;
 
+    private void Awake()
+    {
+        ResetGame();
+    }
+    private void Update()
+    {
+        // 게임 오버 조건
+        dadTowerGage = GameManager.Instance.dadTowerGage;
+        brotherTowerGage = GameManager.Instance.brotherTowerGage;
+        if (dadTowerGage == maxTowerGage || brotherTowerGage == maxTowerGage)
+        {
+            // 게임 오버
+            Debug.Log("Over");
+        }
+    }
 
     private void ResetGame()
     {
         // 타워 리셋
         dadTowerGage = curTowerGage;
         brotherTowerGage = curTowerGage;
+        brotherGageImage.fillAmount = brotherTowerGage / curTowerGage;
+        dadGageImage.fillAmount = dadTowerGage / curTowerGage;
     }
-
-    private void Update()
-    {
-        // 게임 오버 조건
-        if(dadTowerGage == maxTowerGage || brotherTowerGage == maxTowerGage)
-        {
-            // 게임 오버
-            Debug.Log("Over");
-        }
-        CheckGage();
-    }
-
     void CheckGage()
     {
         brotherGageImage.fillAmount = Mathf.Lerp(brotherGageImage.fillAmount, brotherTowerGage / maxTowerGage, Time.deltaTime * fullSpeed);
         dadGageImage.fillAmount = Mathf.Lerp(dadGageImage.fillAmount, dadTowerGage / maxTowerGage, Time.deltaTime * fullSpeed);
     }
 
-    public void TestGage()
+    private void OnEnable()
     {
-        dadTowerGage += 10;
-        brotherTowerGage += 10;
+        InvokeRepeating("CheckGage", 0f, 1f);
+    }
+    private void OnDisable()
+    {
+        CancelInvoke("CheckGage");
     }
 }
