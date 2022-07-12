@@ -6,8 +6,11 @@ public class DrawLine : MonoBehaviour
 {
     [SerializeField]
     Transform attackPos;
-    [SerializeField]
-    GameObject[] bullet;
+    //[SerializeField]
+    //GameObject[] bullet;
+
+    public PoolableObject bullet;
+
     [SerializeField]
     GameObject[] msPaint;
 
@@ -132,16 +135,24 @@ public class DrawLine : MonoBehaviour
             lr.SetPosition(i, v);
         }
 
-        // 3개의 총알을 키기
-        bullet[0].transform.position = attackPos.position;
-        bullet[1].transform.position = attackPos.position;
-        bullet[2].transform.position = attackPos.position;
-        bullet[0].SetActive(true);
-        bullet[1].SetActive(true);
-        bullet[2].SetActive(true);
+        int bulletCount = 30;
+        for (int i = 0; i < bulletCount; i++)
+        {
+            PaintingBullet obj = PoolManager.Instance.Pop(bullet) as PaintingBullet;
+            obj.transform.position = attackPos.position;
+
+            Vector3 euler = obj.transform.eulerAngles;
+            euler.y = Random.Range(0, 360f);
+            obj.transform.eulerAngles = euler;
+
+            float x = Random.Range(0f, 1f);
+            float z = Random.Range(0f, 1f);
+            obj.SetDirection(new Vector3(x, 0, z));
+
+            obj.transform.localScale = Vector3.one * Random.Range(transform.localScale.x - 0.1f, transform.localScale.x + 0.1f);
+        }
 
         Destroy(madeLine, 2f);
         isCreate = false;
     }
-
 }
