@@ -27,7 +27,6 @@ public class EmojiCollider : MonoBehaviour
 
         if (collision.transform.CompareTag("Monster"))
         {
-            Debug.Log("jhjh");
             onEnterMonster.Invoke(collision);
         }
     }

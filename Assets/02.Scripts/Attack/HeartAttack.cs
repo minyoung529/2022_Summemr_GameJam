@@ -12,9 +12,14 @@ public class HeartAttack : PoolableObject
 
     private int count = 0;
 
+    Camera mainCam;
+    Vector3 cameraPos;
+
     void Awake()
     {
         rigid = GetComponentInChildren<Rigidbody>();
+        mainCam = Camera.main;
+        cameraPos = mainCam.transform.position;
         AppearHeart();
     }
 
@@ -50,6 +55,7 @@ public class HeartAttack : PoolableObject
     {
         rigid.AddExplosionForce(1800f, explosionPosition, radius);
         isExplosion = true;
+
         if (gameObject.activeSelf)
             StartCoroutine(DestroyCoroutine());
     }
@@ -72,7 +78,6 @@ public class HeartAttack : PoolableObject
 
     private void Attack(Collision collision)
     {
-        Debug.Log("SDf");
         collision.transform.GetComponent<Monster>().Die();
         Destroy();
     }

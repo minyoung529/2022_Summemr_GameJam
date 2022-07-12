@@ -6,8 +6,6 @@ using DG.Tweening;
 
 public class Mail : MonoBehaviour
 {
-    [SerializeField] private InputField addressField;
-    [SerializeField] private Text addressPlaceHolder;
     [SerializeField] private Button sendButton;
     private string address;
     private const int MAX_ADDRESS_COUNT = 5;
@@ -21,16 +19,25 @@ public class Mail : MonoBehaviour
     public float delaySecond = 3f;
 
     public Transform targetPicker;
-
     private bool isCorrect = false;
-
     public float distance = 5f;
 
     public ParticleSystem particle;
+    private List<int> inputs = new List<int>();
+
+    public Image[] inputImages;
+    private Text[] text = new Text[MAX_ADDRESS_COUNT];
+    public Color[] color;
 
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
+
+        for (int i = 0; i < MAX_ADDRESS_COUNT; ++i)
+        {
+            text[i] = inputImages[i].GetComponentInChildren<Text>();
+        }
+
         sendButton.onClick.AddListener(Send);
     }
 
@@ -54,18 +61,36 @@ public class Mail : MonoBehaviour
             }
         }
 
-        if(Input.GetKeyDown(KeyCode.Return))
+        if (Input.GetKeyDown(KeyCode.UpArrow))
         {
+            inputs.Add(0);
+            Send();
+        }
+        else if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            inputs.Add(1);
+            Send();
+        }
+        else if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            inputs.Add(2);
+            Send();
+        }
+        else if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            inputs.Add(3);
             Send();
         }
     }
 
     private void OnEnable()
     {
-        SetAdress();
+        inputs.Clear();
 
-        addressField.text = "";
-        addressField.ActivateInputField();
+        foreach (Image image in inputImages)
+            image.color = new Color32(212, 212, 212, 255);
+
+        SetAdress();
     }
 
     private void SetAdress()
@@ -74,27 +99,48 @@ public class Mail : MonoBehaviour
 
         for (int i = 0; i < MAX_ADDRESS_COUNT; ++i)
         {
-            //if (i % 2 == 0)
-            //    address += (char)Random.Range((int)'A', (int)'Z');
+            int rand = Random.Range(0, 4);
+            address += rand.ToString();
 
-            //else
-            address += (Random.Range(0, 10)).ToString();
+            switch (rand)
+            {
+                case 0:
+                    text[i].text = "ก่";
+                    break;
+
+                case 1:
+                    text[i].text = "ก็";
+                    break;
+
+                case 2:
+                    text[i].text = "ก้";
+                    break;
+
+                case 3:
+                    text[i].text = "กๆ";
+                    break;
+            }
         }
-
-        addressPlaceHolder.text = address;
     }
 
     private void Send()
     {
-        if (addressField.text.Trim() == address)
+        if (inputs[inputs.Count - 1] == address[inputs.Count - 1] - '0')
         {
-            isCorrect = true;
-            transform.DOScale(0f, 0.3f);
-            targetPicker.gameObject.SetActive(true);
+            inputImages[inputs.Count - 1].DOColor(color[inputs.Count - 1], 0.5f);
+
+            if (inputs.Count == MAX_ADDRESS_COUNT)
+            {
+                isCorrect = true;
+                transform.DOScale(0f, 0.3f);
+                targetPicker.gameObject.SetActive(true);
+            }
         }
         else
         {
-            rectTransform.DOShakeAnchorPos(1f, 10);
+            rectTransform.DOShakeAnchorPos(1f, 10)
+                .OnComplete(() => transform.DOScale(0f, 0.3f)
+                .OnComplete(() => gameObject.SetActive(false)));
         }
     }
 
@@ -106,9 +152,9 @@ public class Mail : MonoBehaviour
         List<Monster> monsters = new List<Monster>(FindObjectsOfType<Monster>());
         monsters = monsters.FindAll(x => Vector3.Distance(x.transform.position, targetPicker.position) <= distance);
 
-        foreach(Monster m in monsters)
+        foreach (Monster m in monsters)
         {
-           VirusObject obj = PoolManager.Instance.Pop(virusPrefab) as VirusObject;
+            VirusObject obj = PoolManager.Instance.Pop(virusPrefab) as VirusObject;
             obj.SetTarget(m);
         }
 

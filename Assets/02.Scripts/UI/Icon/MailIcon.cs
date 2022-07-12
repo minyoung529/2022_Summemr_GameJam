@@ -13,7 +13,7 @@ public class MailIcon : ProgramIcon
 
         windowImage.gameObject.SetActive(true);
         windowImage.transform.localScale = Vector3.zero;
-        windowImage.transform.DOScale(1f, 0.3f);
+        windowImage.transform.DOScale(1.2f, 0.3f);
         OnCoolTime();
     }
 }
