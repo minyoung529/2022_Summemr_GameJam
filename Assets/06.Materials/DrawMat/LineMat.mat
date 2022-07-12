@@ -8,14 +8,13 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: LineMat
-  m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: c0ade686bf9c11241a92b93bb5bf09ce, type: 3}
   m_ShaderKeywords: _EMISSION
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 2000
-  stringTagMap:
-    RenderType: Opaque
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
@@ -91,6 +90,7 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
+    - _Inten: 1
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005
@@ -104,8 +104,8 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 31530.203, g: 31530.203, b: 1.6000316e+9, a: 1.6000316e+9}
-    - _Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+    - _BaseColor: {r: 2.8377183e+9, g: 2.8377183e+9, b: 1.4400284e+14, a: 1.4400284e+14}
+    - _Color: {r: 300.00394, g: 276.47452, b: 4.709804, a: 300.00394}
     - _EmissionColor: {r: 3.1713738, g: 6.80119, b: 12.268822, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
   m_BuildTextureStacks: []
