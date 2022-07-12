@@ -17,6 +17,9 @@ public class FileTower : MonoBehaviour
     Image fileImage;
 
     Camera _cam;
+
+    Vector3 offset;
+
     void Awake()
     {
         _cam = Camera.main;
@@ -49,4 +52,43 @@ public class FileTower : MonoBehaviour
         }
     }
 
+    private void OnMouseDrag()
+    {
+        Debug.Log("gdgf");
+
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hitInfo;
+
+        if (Physics.Raycast(ray, out hitInfo))
+        {
+            Vector3 pos = hitInfo.point;
+            pos.y = 0f;
+
+            pos.x -= offset.x;
+            pos.z -= offset.z;
+
+            if (Mathf.Abs(pos.x) > 5.5f)
+            {
+                pos.x = transform.position.x ;
+            }
+            if (Mathf.Abs(pos.z) > 3)
+            {
+                pos.z = transform.position.z;
+            }
+
+            transform.position = pos;
+        }
+    }
+
+    private void OnMouseDown()
+    {
+        Debug.Log("DOWN");
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hitInfo;
+
+        if (Physics.Raycast(ray, out hitInfo))
+        {
+            offset = hitInfo.point - transform.position;
+        }
+    }
 }
