@@ -14,7 +14,7 @@ public class CarryWindow : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        offset = Input.mousePosition;
+        offset = Input.mousePosition - carriedObject.position;
     }
 
     public void OnDrag(PointerEventData eventData)
