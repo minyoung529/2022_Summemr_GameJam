@@ -8,6 +8,8 @@ TagManager:
   - MSPAINT
   - Platform
   - Monster
+  - DADFILE
+  - BROTHERFILE
   layers:
   - Default
   - TransparentFX
@@ -18,7 +20,7 @@ TagManager:
   - Screen
   - Platform
   - Heart
-  - 
+  - WhiteBoard
   - 
   - 
   - 
