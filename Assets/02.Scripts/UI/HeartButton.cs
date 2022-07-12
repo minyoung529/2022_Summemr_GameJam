@@ -62,7 +62,7 @@ public class HeartButton : MonoBehaviour, IPointerClickHandler
                 pos.x += Random.Range(-1f, 1f);
                 pos.z += Random.Range(-1f, 1f);
 
-                heart.transform.position = pos;
+                heart.transform.position = pos  ;
 
                 heart.AppearHeart();
                 heartAttacks.Add(heart);
@@ -78,7 +78,7 @@ public class HeartButton : MonoBehaviour, IPointerClickHandler
         instagramWindow.DOScale(0f, 0.3f).OnComplete(() => instagramWindow.gameObject.SetActive(false));
         image.sprite = buttonSprites[0];
 
-        Vector3 initPos = new Vector3(-7f, 0f, -5f);
+        Vector3 initPos = new Vector3(-8.8f, 0f, -5f);
 
         for (int i = 0; i < 3; i++)
         {
@@ -87,8 +87,8 @@ public class HeartButton : MonoBehaviour, IPointerClickHandler
                 heart.Explosion(initPos, 7f);
             }
 
-            initPos.x += 7f;
-            yield return new WaitForSeconds(0.25f);
+            initPos.x += 8.8f;
+            yield return  null;
         }
     }
 }

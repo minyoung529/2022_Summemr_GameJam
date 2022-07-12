@@ -26,6 +26,8 @@ public class Mail : MonoBehaviour
 
     public float distance = 5f;
 
+    public ParticleSystem particle;
+
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
@@ -51,11 +53,19 @@ public class Mail : MonoBehaviour
                 ActVirus();
             }
         }
+
+        if(Input.GetKeyDown(KeyCode.Return))
+        {
+            Send();
+        }
     }
 
     private void OnEnable()
     {
         SetAdress();
+
+        addressField.text = "";
+        addressField.ActivateInputField();
     }
 
     private void SetAdress()
@@ -101,6 +111,11 @@ public class Mail : MonoBehaviour
            VirusObject obj = PoolManager.Instance.Pop(virusPrefab) as VirusObject;
             obj.SetTarget(m);
         }
+
+
+        particle.transform.position = targetPicker.position;
+        particle.gameObject.SetActive(true);
+        particle.Play();
 
         virusPrefab.gameObject.SetActive(true);
         StartCoroutine(ExplosionDelay());

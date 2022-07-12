@@ -54,8 +54,6 @@ public class FileTower : MonoBehaviour
 
     private void OnMouseDrag()
     {
-        Debug.Log("gdgf");
-
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hitInfo;
 

@@ -48,7 +48,7 @@ public class HeartAttack : PoolableObject
 
     public void Explosion(Vector3 explosionPosition, float radius)
     {
-        rigid.AddExplosionForce(1200f, explosionPosition, radius);
+        rigid.AddExplosionForce(1800f, explosionPosition, radius);
         isExplosion = true;
         
         if (gameObject.activeSelf)
