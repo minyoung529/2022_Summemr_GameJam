@@ -8,6 +8,7 @@ public class MyComputerIcon : ProgramIcon
     GameObject myComputer;
     [SerializeField]
     GameObject gageObj;
+
     protected override void ExecuteProgram()
     {
         myComputer.SetActive(true);

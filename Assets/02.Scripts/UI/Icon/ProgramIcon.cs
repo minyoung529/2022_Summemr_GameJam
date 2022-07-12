@@ -7,12 +7,9 @@ using UnityEngine.EventSystems;
 public abstract class ProgramIcon : MonoBehaviour, IPointerClickHandler
 {
     [SerializeField]
-    Image coolImage;
-    
-    [SerializeField]
-    float coolTime;
-
+    float curCoolTime;
     private bool canExecute;
+    float coolTime;
 
     public void OnPointerClick(PointerEventData eventData)
     {
@@ -34,10 +31,20 @@ public abstract class ProgramIcon : MonoBehaviour, IPointerClickHandler
         yield return new WaitForSeconds(0.5f);
         canExecute = false;
     }
-    
-    public void OnCoolTime()
+    public void OnCoolTime(GameObject im)
     {
-        coolImage.fillAmount = Mathf.Lerp(0, 1, coolTime);
+        StartCoroutine(OnCool(im.GetComponent<Image>()));
+    }
+    IEnumerator OnCool(Image im)
+    {
+        coolTime = curCoolTime;
+        while (coolTime > 0.0f)
+        {
+            coolTime -= Time.deltaTime;
+            im.fillAmount = 1 - (1.0f / coolTime);
+            yield return new WaitForFixedUpdate();
+        }
+        im.gameObject.SetActive(false);
     }
 
     protected abstract void ExecuteProgram();
