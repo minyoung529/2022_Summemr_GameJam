@@ -6,6 +6,7 @@ public class ChromeIcon : ProgramIcon
 {
     protected override void ExecuteProgram()
     {
+        SoundManager.Instance.TabOpen();
         OnCoolTime();
     }
 }

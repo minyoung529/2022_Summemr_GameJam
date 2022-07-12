@@ -6,13 +6,15 @@ public class DrawLine : MonoBehaviour
 {
     [SerializeField]
     Transform attackPos;
-    //[SerializeField]
-    //GameObject[] bullet;
 
     public PoolableObject bullet;
 
     [SerializeField]
     GameObject[] msPaint;
+
+    [SerializeField]
+    GameObject gageCanvas;
+
 
     GameObject madeLine;
     public Material defaultMaterial;
@@ -36,7 +38,6 @@ public class DrawLine : MonoBehaviour
     {
         DrawMouse();
     }
-
 
     // 마우스 드래그로 그리기
     void DrawMouse()
@@ -126,6 +127,8 @@ public class DrawLine : MonoBehaviour
         msPaint[0].SetActive(false);
         msPaint[1].SetActive(false);
 
+        SoundManager.Instance.SfxSoundOn(0);
+
         // 오브젝트 사이즈 줄어들고 왼쪽 아래로 이동
         LineRenderer lr = madeLine.GetComponent<LineRenderer>();
         for (int i = 0; i < lr.positionCount; i++)
@@ -154,5 +157,15 @@ public class DrawLine : MonoBehaviour
 
         Destroy(madeLine, 2f);
         isCreate = false;
+    }
+
+    private void OnEnable()
+    {
+        gageCanvas.SetActive(false);
+    }
+
+    private void OnDisable()
+    {
+        gageCanvas.SetActive(true);
     }
 }

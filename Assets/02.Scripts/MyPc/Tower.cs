@@ -30,12 +30,13 @@ public class Tower : MonoBehaviour
     private void Update()
     {
         // 게임 오버 조건
-        CheckGage();
-        if (GameManager.Instance.dadTowerGage == maxTowerGage || GameManager.Instance.brotherTowerGage == maxTowerGage)
+        if (GameManager.Instance.dadTowerGage >= maxTowerGage && GameManager.Instance.brotherTowerGage >= maxTowerGage)
         {
             // 게임 오버
+            PlayerPrefs.SetInt("SCORE", GameManager.Instance.score);
             UIManager.Instance.SceneChange("Over");
         }
+        CheckGage();
     }
 
     private void ResetGame()

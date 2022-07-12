@@ -11,6 +11,7 @@ public class InstagramIcon : ProgramIcon
     protected override void ExecuteProgram()
     {
         if (windowImage.gameObject.activeSelf) return;
+        SoundManager.Instance.TabOpen();
         OnCoolTime();
         windowImage.gameObject.SetActive(true);
         windowImage.transform.localScale = Vector3.zero;

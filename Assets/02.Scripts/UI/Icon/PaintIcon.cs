@@ -9,9 +9,11 @@ public class PaintIcon : ProgramIcon
     GameObject paintUI;
     [SerializeField]
     GameObject paint;
+    
 
     protected override void ExecuteProgram()
     {
+        SoundManager.Instance.TabOpen();
         OnCoolTime();
         paintUI.SetActive(true);
         paint.SetActive(true);
