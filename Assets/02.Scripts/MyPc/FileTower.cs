@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class FileTower : MonoBehaviour
 {
-    // TYPE 1 == ¾Æºü
-    // TYPE 2 == ¿Àºü
+    // TYPE 1 == ï¿½Æºï¿½
+    // TYPE 2 == ï¿½ï¿½ï¿½ï¿½
     [SerializeField]
     int fileType;
     [SerializeField]
@@ -17,6 +17,9 @@ public class FileTower : MonoBehaviour
     Image fileImage;
 
     Camera _cam;
+
+    Vector3 offset;
+
     void Awake()
     {
         _cam = Camera.main;
@@ -36,7 +39,7 @@ public class FileTower : MonoBehaviour
     {
         if (collision.collider.CompareTag("Monster"))
         {
-            //°ø°Ý ¹ÞÀ½ type¿¡ µû¶ó °ø°Ý¹ÞÀº °ÅÁ¡ ¿ë·® Áõ°¡
+            //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ typeï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ý¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ë·® ï¿½ï¿½ï¿½ï¿½
             if (fileType == 1)
             {
                 GameManager.Instance.dadTowerGage += 10;
@@ -50,5 +53,41 @@ public class FileTower : MonoBehaviour
         }
     }
 
+    private void OnMouseDrag()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hitInfo;
 
+        if (Physics.Raycast(ray, out hitInfo))
+        {
+            Vector3 pos = hitInfo.point;
+            pos.y = 0f;
+
+            pos.x -= offset.x;
+            pos.z -= offset.z;
+
+            if (Mathf.Abs(pos.x) > 5.5f)
+            {
+                pos.x = transform.position.x ;
+            }
+            if (Mathf.Abs(pos.z) > 3)
+            {
+                pos.z = transform.position.z;
+            }
+
+            transform.position = pos;
+        }
+    }
+
+    private void OnMouseDown()
+    {
+        Debug.Log("DOWN");
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hitInfo;
+
+        if (Physics.Raycast(ray, out hitInfo))
+        {
+            offset = hitInfo.point - transform.position;
+        }
+    }
 }

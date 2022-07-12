@@ -7,7 +7,6 @@ public class EmojiCollider : MonoBehaviour
 {
     private Action onEnterPlatform;
     private Action<Collision> onEnterMonster;
-    public LayerMask layerMask;
 
     public void AddPlatformAction(Action action)
     {
@@ -28,6 +27,7 @@ public class EmojiCollider : MonoBehaviour
 
         if (collision.transform.CompareTag("Monster"))
         {
+            Debug.Log("jhjh");
             onEnterMonster.Invoke(collision);
         }
     }

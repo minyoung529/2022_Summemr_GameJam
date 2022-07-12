@@ -3,24 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class VirusObject : MonoBehaviour
+public class VirusObject : PoolableObject
 {
-    private List<Monster> monsters;
     private Monster targetMonster;
 
     public float speed = 6f;
 
     private void OnEnable()
     {
-        monsters = new List<Monster>(FindObjectsOfType<Monster>());
-        Monster monster = monsters.OrderBy(x => Vector3.Distance(Vector3.zero, x.transform.position)).ToArray()[0];
-        targetMonster = monster;
         transform.position = Camera.main.transform.position;
+    }
+
+    public void SetTarget(Monster monster)
+    {
+        targetMonster = monster;
     }
 
     private void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, targetMonster.transform.position, Time.deltaTime * speed);
+        if (targetMonster)
+            transform.position = Vector3.MoveTowards(transform.position, targetMonster.transform.position, Time.deltaTime * speed);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -29,6 +31,12 @@ public class VirusObject : MonoBehaviour
         {
             gameObject.SetActive(false);
             targetMonster.IsVaccine = true;
+            PoolManager.Instance.Pop(this);
         }
+    }
+
+    public override void Reset()
+    {
+
     }
 }

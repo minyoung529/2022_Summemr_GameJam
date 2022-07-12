@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 9084501602502119591}
   - component: {fileID: 9084501602502119593}
   - component: {fileID: -6080270980472771724}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Melong
   m_TagString: Untagged
   m_Icon: {fileID: 0}

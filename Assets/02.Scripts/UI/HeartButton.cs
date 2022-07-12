@@ -14,7 +14,7 @@ public class HeartButton : MonoBehaviour, IPointerClickHandler
     private Camera mainCam;
 
     private int heartCount = 0;
-    private const int MAX_HEART_COUNT = 15;
+    private const int MAX_HEART_COUNT = 5;
 
     private Image image;
     [SerializeField] private Sprite[] buttonSprites;
@@ -56,9 +56,16 @@ public class HeartButton : MonoBehaviour, IPointerClickHandler
 
         if (Physics.Raycast(ray, 100f))
         {
-            for (int i = 0; i < 2; ++i)
+            for (int i = 0; i < 6; ++i)
             {
                 HeartAttack heart = PoolManager.Instance.Pop(heartAttack) as HeartAttack;
+
+                Vector3 pos = transform.position;
+                pos.x += Random.Range(-1f, 1f);
+                pos.z += Random.Range(-1f, 1f);
+
+                heart.transform.position = pos  ;
+
                 heart.AppearHeart();
                 heartAttacks.Add(heart);
             }
@@ -72,10 +79,10 @@ public class HeartButton : MonoBehaviour, IPointerClickHandler
         heartParticle.gameObject.SetActive(false);
 
         heartCount = 0;
-        instagramWindow.DOScale(0f, 0.3f).OnComplete(() => gameObject.SetActive(false));
+        instagramWindow.DOScale(0f, 0.3f).OnComplete(() => instagramWindow.gameObject.SetActive(false));
         image.sprite = buttonSprites[0];
 
-        Vector3 initPos = new Vector3(-7f, 0f, -5f);
+        Vector3 initPos = new Vector3(-8.8f, 0f, -5f);
 
         for (int i = 0; i < 3; i++)
         {
@@ -84,8 +91,8 @@ public class HeartButton : MonoBehaviour, IPointerClickHandler
                 heart.Explosion(initPos, 7f);
             }
 
-            initPos.x += 7f;
-            yield return new WaitForSeconds(0.25f);
+            initPos.x += 8.8f;
+            yield return  null;
         }
 
         

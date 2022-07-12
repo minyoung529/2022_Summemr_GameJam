@@ -95,10 +95,10 @@ public class DrawLine : MonoBehaviour
         lineRend.numCapVertices = 5;
 
         int randColorI = Random.Range(0, 100);
-        if (randColorI < 20) defaultMaterial.color = Color.red;
-        else if (randColorI < 50) defaultMaterial.color = Color.blue;
-        else if (randColorI < 80) defaultMaterial.color = Color.yellow;
-        else defaultMaterial.color = Color.cyan;
+        if (randColorI < 20) defaultMaterial.SetColor("_Color", Color.red);
+        else if (randColorI < 50) defaultMaterial.SetColor("_Color", Color.blue);
+        else if (randColorI < 80) defaultMaterial.SetColor("_Color", Color.yellow);
+        else defaultMaterial.SetColor("_Color", Color.cyan);
         lineRend.material = defaultMaterial;
 
         lineRend.SetPosition(0, mousePos);
@@ -155,6 +155,8 @@ public class DrawLine : MonoBehaviour
             obj.transform.localScale = Vector3.one * Random.Range(transform.localScale.x - 0.1f, transform.localScale.x + 0.1f);
         }
 
+        defaultMaterial.color *= 300f;
+        defaultMaterial.color += Color.white / 255f;
         Destroy(madeLine, 2f);
         isCreate = false;
     }
