@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class Monster : PoolableObject
 {
@@ -8,8 +9,27 @@ public class Monster : PoolableObject
     private Rigidbody rigid;
     private Transform target;
 
+    private bool isVaccine = false;
+    public bool IsVaccine
+    {
+        get => isVaccine;
+        set
+        {
+            if (value)
+            {
+                ChangeToVaccine();
+            }
+
+            isVaccine = value;
+        }
+    }
+
+    private MeshRenderer meshRenderer;
+    public Material[] materials;
+
     private void Awake()
     {
+        meshRenderer = GetComponent<MeshRenderer>();
         rigid = GetComponent<Rigidbody>();
     }
 
@@ -53,11 +73,28 @@ public class Monster : PoolableObject
         rigid.AddExplosionForce(force, explosionPos, force);
     }
 
+    public void ChangeToVaccine()
+    {
+        meshRenderer.material = materials[1];
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.transform.CompareTag("Monster"))
+        {
+            Debug.Log("sdf");
+            collision.transform.GetComponent<Monster>().ChangeToVaccine();
+        }
+    }
+
     public override void Reset()
     {
         StopAllCoroutines();
+        meshRenderer.material = materials[0];
+
         rigid.velocity = Vector3.zero;
         transform.position = Vector3.zero;
         transform.rotation = Quaternion.Euler(Vector3.zero);
+        //isVaccine = false;
     }
 }

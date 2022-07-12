@@ -13,6 +13,6 @@ public class ZoomEffect : MonoBehaviour
         seq.Append(transform.DOScale(endValue, 0.7f));
         seq.Append(transform.DOScale(1f, 0.4f));
 
-        seq.SetLoops(-1,LoopType.Restart);
+        seq.SetLoops(-1, LoopType.Restart);
     }
 }

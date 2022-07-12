@@ -14,6 +14,12 @@ public class Mail : MonoBehaviour
 
     private RectTransform rectTransform;
 
+    [Header("Virus")]
+    [SerializeField]
+    VirusObject virusPrefab;
+
+    public float delaySecond = 3f;
+
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
@@ -45,12 +51,29 @@ public class Mail : MonoBehaviour
     {
         if (addressField.text.Trim() == address)
         {
-            // 백신 보급
-            transform.DOScale(0f, 0.3f).OnComplete(() => gameObject.SetActive(false));
+            virusPrefab.gameObject.SetActive(true);
+            transform.DOScale(0f, 0.3f);
+
+            StartCoroutine(ExplosionDelay());
         }
         else
         {
             rectTransform.DOShakeAnchorPos(1f, 10);
         }
+    }
+
+    private IEnumerator ExplosionDelay()
+    {
+        yield return new WaitForSeconds(delaySecond * 2f);
+
+        List<Monster> monsters = new List<Monster>(FindObjectsOfType<Monster>());
+        monsters = monsters.FindAll(x => x.IsVaccine);
+
+        foreach(Monster monster in monsters)
+        {
+            monster.Die();
+        }
+
+        gameObject.SetActive(false);
     }
 }
