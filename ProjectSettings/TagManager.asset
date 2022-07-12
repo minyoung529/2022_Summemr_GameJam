@@ -9,6 +9,7 @@ TagManager:
   - Platform
   - Monster
   - Tower
+  - Hole
   layers:
   - Default
   - TransparentFX
@@ -20,10 +21,10 @@ TagManager:
   - Platform
   - Heart
   - Monster
-  - 
-  - 
-  - 
-  - 
+  - ShaderHoleMask
+  - ShaderHole
+  - Ground
+  - MoveCollider
   - 
   - 
   - 
