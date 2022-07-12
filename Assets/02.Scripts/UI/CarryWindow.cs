@@ -14,13 +14,13 @@ public class CarryWindow : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        offset = Input.mousePosition - carriedObject.position;
+        offset = Input.mousePosition - carriedObject.localPosition;
     }
 
     public void OnDrag(PointerEventData eventData)
     {
         Vector3 mouse = Input.mousePosition - offset;
-        rectTransform.anchoredPosition = mouse;
+        rectTransform.localPosition = new Vector3(mouse.x, mouse.y);
     }
 
     public void OnEndDrag(PointerEventData eventData)

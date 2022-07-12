@@ -31,12 +31,15 @@ public class BasicAttack : MonoBehaviour
 
     private void Attack()
     {
+        monster = new List<Monster>(FindObjectsOfType<Monster>());
+
         Predicate<Monster> match = (x) => Vector3.Distance(x.transform.position, attackPosition) < attackDistance;
         List<Monster> targetMonster = monster.FindAll(match);
 
         foreach(Monster monster in targetMonster)
         {
-            monster.ExplosionDamage(attackPosition, force);
+            monster.Die();
+            //monster.ExplosionDamage(attackPosition, force);
         }
     }
 

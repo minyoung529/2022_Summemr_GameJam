@@ -25,11 +25,15 @@ public class HeartButton : MonoBehaviour, IPointerClickHandler
         image = GetComponent<Image>();
     }
 
+    private void OnEnable()
+    {
+        heartCount = 0;
+    }
+
     public void OnPointerClick(PointerEventData eventData)
     {
         if (heartCount == MAX_HEART_COUNT)
         {
-            // 하드코딩 미안해 얘들아
             image.sprite = buttonSprites[1];
         }
 
@@ -77,7 +81,7 @@ public class HeartButton : MonoBehaviour, IPointerClickHandler
             }
 
             initPos.x += 7f;
-            yield return new WaitForSeconds(0.4f);
+            yield return new WaitForSeconds(0.25f);
         }
     }
 }

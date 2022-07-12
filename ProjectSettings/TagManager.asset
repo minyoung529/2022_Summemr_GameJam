@@ -11,6 +11,7 @@ TagManager:
   - DADFILE
   - BROTHERFILE
   - Tower
+  - Hole
   layers:
   - Default
   - TransparentFX
