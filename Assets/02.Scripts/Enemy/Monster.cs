@@ -39,12 +39,20 @@ public class Monster : PoolableObject
     /// </summary>
     public void VaccineCollisionEnter()
     {
-        Debug.Log("¹é½Å");
+        ChangeToVaccine();
     }
 
     private void Update()
     {
-        MoveToTarget();
+        if (isVaccine)
+        {
+            VaccineMove();
+        }
+        else
+        {
+            MoveToTarget();
+        }
+
         if (transform.position.y < -20f)
         {
             Die();
@@ -65,7 +73,7 @@ public class Monster : PoolableObject
 
     private void OnTriggerExit(Collider other)
     {
-        if(other.transform.CompareTag("Hole"))
+        if (other.transform.CompareTag("Hole"))
         {
             SetTarget(spawner.Tower);
         }
@@ -84,6 +92,13 @@ public class Monster : PoolableObject
         rigid.velocity = dir;
     }
 
+    private void VaccineMove()
+    {
+        Vector3 dir = -(target.position - transform.position).normalized * speed;
+        dir.y = rigid.velocity.y;
+        rigid.velocity = dir;
+    }
+
     public void SetTarget(Transform target)
     {
         this.target = target;
@@ -96,12 +111,13 @@ public class Monster : PoolableObject
 
     public void ChangeToVaccine()
     {
+        isVaccine = true;
         meshRenderer.material = materials[1];
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.transform.CompareTag("Monster"))
+        if (collision.transform.CompareTag("Monster"))
         {
             Debug.Log("sdf");
             collision.transform.GetComponent<Monster>().ChangeToVaccine();

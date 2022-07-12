@@ -24,7 +24,7 @@ public class HoleMove : MonoBehaviour
         }
         else
         {
-            Debug.Log("충돌 안함");
+            //Debug.Log("충돌 안함");
         }
     }
 }

@@ -37,10 +37,10 @@ public class Mail : MonoBehaviour
 
         for (int i = 0; i < MAX_ADDRESS_COUNT; ++i)
         {
-            if (i % 2 == 0)
-                address += (char)Random.Range(65, 91);
+            //if (i % 2 == 0)
+            //    address += (char)Random.Range((int)'A', (int)'Z');
 
-            else
+            //else
                 address += (Random.Range(0, 10)).ToString();
         }
 

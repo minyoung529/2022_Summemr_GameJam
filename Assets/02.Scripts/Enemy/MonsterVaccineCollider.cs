@@ -4,11 +4,18 @@ using UnityEngine;
 
 public class MonsterVaccineCollider : MonoBehaviour
 {
-    private void OnCollisionEnter(Collision collision)
+    Monster monster;
+
+    private void Start()
     {
-        if(collision.transform.CompareTag("Monster"))
+        monster = GetComponentInParent<Monster>();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    { 
+        if(other.CompareTag("Monster") && monster.IsVaccine)
         {
-            Monster monster = collision.gameObject.GetComponent<Monster>();
+            Monster monster = other.GetComponent<Monster>();
             monster?.VaccineCollisionEnter();
         }
     }
