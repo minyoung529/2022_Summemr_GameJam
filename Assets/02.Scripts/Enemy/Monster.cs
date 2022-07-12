@@ -95,7 +95,7 @@ public class Monster : PoolableObject
     {
         if (other.transform.CompareTag("Hole"))
         {
-            SetTarget(spawner.Tower);
+            //SetTarget(spawner.Tower);
         }
     }
     private void DieSprite()

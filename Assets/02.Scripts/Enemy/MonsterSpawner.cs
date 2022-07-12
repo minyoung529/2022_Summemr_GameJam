@@ -5,13 +5,13 @@ using UnityEngine;
 public class MonsterSpawner : MonoBehaviour
 {
     [SerializeField] private Monster monsterPrefab;
-    [SerializeField] private Transform tower;
-    public Transform Tower => tower;
+    [SerializeField] private Transform[] tower;
+    public Transform[] Tower => tower;
     [SerializeField] private Transform wallPaper;
     [SerializeField] private float spawnRange = 15f;
     [SerializeField] private float spawnDelay = 1f;
     [SerializeField] private int poolingMonsterCount = 100;
-    
+
     void Start()
     {
         PoolManager.Instance.CreatePool(monsterPrefab, poolingMonsterCount);
@@ -25,7 +25,7 @@ public class MonsterSpawner : MonoBehaviour
             Monster obj = PoolManager.Instance.Pop(monsterPrefab) as Monster;
             obj.transform.position = GetRandomCirclePoint();
             obj.spawner = this;
-            obj.SetTarget(tower);
+            obj.SetTarget(tower[Random.Range(0, tower.Length)]);
             yield return new WaitForSeconds(spawnDelay);
         }
     }
