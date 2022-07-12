@@ -16,7 +16,6 @@ public class HeartAttack : PoolableObject
     {
         rigid = GetComponentInChildren<Rigidbody>();
         AppearHeart();
-
     }
 
     private void Start()
@@ -33,10 +32,13 @@ public class HeartAttack : PoolableObject
 
     public void AppearHeart()
     {
+        rigid.velocity = Vector3.zero;
+
         Vector3 direction = Vector3.zero;
         direction.x = Random.Range(-1f, 1f);
         direction.z = Random.Range(0f, 1f);
-        rigid.AddForce(direction * 280f);
+
+        rigid.AddForce(direction * 700);
     }
 
     private void Gravity()
@@ -48,6 +50,7 @@ public class HeartAttack : PoolableObject
     {
         rigid.AddExplosionForce(1200f, explosionPosition, radius);
         isExplosion = true;
+        
         if (gameObject.activeSelf)
             StartCoroutine(DestroyCoroutine());
     }
@@ -68,9 +71,9 @@ public class HeartAttack : PoolableObject
             PoolManager.Instance.Push(this);
     }
 
-
     private void Attack(Collision collision)
     {
+        Debug.Log("SDf");
         collision.transform.GetComponent<Monster>().Die();
         Destroy();
     }

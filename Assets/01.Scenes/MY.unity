@@ -5694,6 +5694,7 @@ GameObject:
   - component: {fileID: 1915803344}
   - component: {fileID: 1915803343}
   - component: {fileID: 1915803342}
+  - component: {fileID: 1915803346}
   m_Layer: 5
   m_Name: Heart Button
   m_TagString: Untagged
@@ -5819,6 +5820,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1915803340}
   m_CullTransparentMesh: 1
+--- !u!114 &1915803346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1915803340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e577480544715a47ab81486422ea70f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  endValue: 1.1
 --- !u!1 &1927438236
 GameObject:
   m_ObjectHideFlags: 0
@@ -6895,7 +6909,7 @@ GameObject:
   - component: {fileID: 4131712329925667806}
   - component: {fileID: 4131712329925667807}
   - component: {fileID: 4131712329925667795}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: BrotherFile
   m_TagString: BROTHERFILE
   m_Icon: {fileID: 0}
@@ -8111,7 +8125,7 @@ GameObject:
   - component: {fileID: 8885342125998059101}
   - component: {fileID: 8885342125998059100}
   - component: {fileID: 8885342125998059096}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: DadFile
   m_TagString: DADFILE
   m_Icon: {fileID: 0}

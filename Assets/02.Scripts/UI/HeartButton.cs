@@ -57,6 +57,13 @@ public class HeartButton : MonoBehaviour, IPointerClickHandler
             for (int i = 0; i < 6; ++i)
             {
                 HeartAttack heart = PoolManager.Instance.Pop(heartAttack) as HeartAttack;
+
+                Vector3 pos = transform.position;
+                pos.x += Random.Range(-1f, 1f);
+                pos.z += Random.Range(-1f, 1f);
+
+                heart.transform.position = pos;
+
                 heart.AppearHeart();
                 heartAttacks.Add(heart);
             }
