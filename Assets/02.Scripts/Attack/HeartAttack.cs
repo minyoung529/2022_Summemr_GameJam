@@ -48,7 +48,8 @@ public class HeartAttack : PoolableObject
     {
         rigid.AddExplosionForce(1200f, explosionPosition, radius);
         isExplosion = true;
-        StartCoroutine(DestroyCoroutine());
+        if (gameObject.activeSelf)
+            StartCoroutine(DestroyCoroutine());
     }
 
     private void Destroy()
@@ -63,7 +64,7 @@ public class HeartAttack : PoolableObject
     {
         yield return new WaitForSeconds(3f);
 
-        if(gameObject.activeSelf && isExplosion)
+        if (gameObject.activeSelf && isExplosion)
             PoolManager.Instance.Push(this);
     }
 

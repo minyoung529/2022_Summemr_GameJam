@@ -24,13 +24,14 @@ public class FileTower : MonoBehaviour
 
     void Update()
     {
-        file.transform.position = _cam.WorldToScreenPoint(transform.position + new Vector3(0, -0.8f, 0));
+        file.transform.position = _cam.WorldToScreenPoint(transform.position + new Vector3(0, 0, -1f));
 
         if (fileType == 1)
             fileImage.fillAmount = Mathf.Lerp(fileImage.fillAmount, GameManager.Instance.dadTowerGage / 100, Time.deltaTime * fullSpeed);
         if (fileType == 2)
             fileImage.fillAmount = Mathf.Lerp(fileImage.fillAmount, GameManager.Instance.brotherTowerGage / 100, Time.deltaTime * fullSpeed);
     }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.CompareTag("Monster"))
@@ -48,5 +49,6 @@ public class FileTower : MonoBehaviour
             collision.transform.GetComponent<Monster>().Die();
         }
     }
+
 
 }

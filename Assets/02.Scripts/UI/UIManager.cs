@@ -22,4 +22,5 @@ public class UIManager : Singleton<UIManager>
     {
         SceneManager.LoadScene(str);
     }
+
 }
