@@ -81,6 +81,10 @@ public class Monster : PoolableObject
         {
             DieMonster();
         }
+        if (other.transform.CompareTag("Chrome"))
+        {
+            Die();
+        }
         //if(other.transform.CompareTag("Hole"))
         //{
         //    SetTarget(other.transform);
