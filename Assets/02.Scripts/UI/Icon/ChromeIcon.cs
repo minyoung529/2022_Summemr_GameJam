@@ -4,11 +4,8 @@ using UnityEngine;
 
 public class ChromeIcon : ProgramIcon
 {
-    [SerializeField]
-    GameObject coolImage;
     protected override void ExecuteProgram()
     {
-        coolImage.SetActive(true);
-        OnCoolTime(coolImage);
+        OnCoolTime();
     }
 }

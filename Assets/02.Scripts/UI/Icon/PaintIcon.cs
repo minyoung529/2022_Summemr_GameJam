@@ -9,13 +9,10 @@ public class PaintIcon : ProgramIcon
     GameObject paintUI;
     [SerializeField]
     GameObject paint;
-    [SerializeField]
-    GameObject coolImage;
 
     protected override void ExecuteProgram()
     {
-        coolImage.SetActive(true);
-        OnCoolTime(coolImage);
+        OnCoolTime();
         paintUI.SetActive(true);
         paint.SetActive(true);
     }

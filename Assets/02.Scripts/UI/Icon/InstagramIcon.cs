@@ -7,13 +7,11 @@ using DG.Tweening;
 public class InstagramIcon : ProgramIcon
 {
     [SerializeField] private Transform windowImage;
-    [SerializeField] private GameObject coolImage;
 
     protected override void ExecuteProgram()
     {
         if (windowImage.gameObject.activeSelf) return;
-        coolImage.SetActive(true);
-        OnCoolTime(coolImage);
+        OnCoolTime();
         windowImage.gameObject.SetActive(true);
         windowImage.transform.localScale = Vector3.zero;
         windowImage.transform.DOScale(1f, 0.3f);

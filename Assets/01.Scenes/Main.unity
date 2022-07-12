@@ -256,6 +256,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edaf9ccaefdfd3147a0fc343a4648f21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  coolImage: {fileID: 1719820449}
   curCoolTime: 0
   myComputer: {fileID: 8884055536929990742}
   gageObj: {fileID: 191862650262942240}
@@ -392,10 +393,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39d9f6b5078e47f49a65c9c9623b238e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  coolImage: {fileID: 955206788}
   curCoolTime: 5
   paintUI: {fileID: 2124242801}
   paint: {fileID: 1734114445}
-  coolImage: {fileID: 955206786}
 --- !u!1 &89940395
 GameObject:
   m_ObjectHideFlags: 0
@@ -604,8 +605,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63fc0f2ffbbbad54ba93ae679c455624, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  coolImage: {fileID: 2075611454}
   curCoolTime: 5
-  coolImage: {fileID: 2075611452}
 --- !u!1 &139358982
 GameObject:
   m_ObjectHideFlags: 0
@@ -665,7 +666,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: dc94bf94e6a6ca5459ca7eee260b44b2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1d9ba4d2f1a971e45886af6ed0685617, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -955,9 +956,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcc10e5c689fb744c83265efe55a5067, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  coolImage: {fileID: 2121144119}
   curCoolTime: 5
   windowImage: {fileID: 1461598120}
-  coolImage: {fileID: 2121144117}
 --- !u!1 &430538741
 GameObject:
   m_ObjectHideFlags: 0
@@ -1459,8 +1460,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bdaefde6b1626545b3e19303b18aa3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  coolImage: {fileID: 1531280829}
   curCoolTime: 5
-  coolImage: {fileID: 1531280827}
+  holeScript: {fileID: 0}
+  duration: 0
+  cooldown: 0
 --- !u!1 &625335324
 GameObject:
   m_ObjectHideFlags: 0
@@ -2969,8 +2973,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1129398408b90934f98bb7b7061740ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  coolImage: {fileID: 1464105539}
   curCoolTime: 5
-  coolImage: {fileID: 1464105537}
+  windowImage: {fileID: 0}
 --- !u!1 &1580933679
 GameObject:
   m_ObjectHideFlags: 0
@@ -3056,6 +3061,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edaf9ccaefdfd3147a0fc343a4648f21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  coolImage: {fileID: 0}
   curCoolTime: 0
   myComputer: {fileID: 8884055536929990742}
   gageObj: {fileID: 191862650262942240}
@@ -3424,8 +3430,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   heartAttack: {fileID: 6304450198860219350, guid: f50377823d834924894f2c4fe3bcbada, type: 3}
   buttonSprites:
-  - {fileID: 21300000, guid: e5ea21da246997443b7c041d8aa2af96, type: 3}
-  - {fileID: 21300000, guid: f8e9dcdab2778ce49bda7ab5eb5513b8, type: 3}
+  - {fileID: 21300000, guid: 4edc5a2d818a4dc4096bf955a823e4e9, type: 3}
+  - {fileID: 21300000, guid: 4d05fff43f29c4448af09cb974755edd, type: 3}
   instagramWindow: {fileID: 1461598120}
 --- !u!114 &1915803343
 MonoBehaviour:
@@ -3491,7 +3497,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e5ea21da246997443b7c041d8aa2af96, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4edc5a2d818a4dc4096bf955a823e4e9, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
