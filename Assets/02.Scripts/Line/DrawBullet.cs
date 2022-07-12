@@ -20,7 +20,7 @@ public class DrawBullet : MonoBehaviour
     private void Update()
     {
         rb.AddForce(dir * Time.deltaTime * moveSpeed, ForceMode.Impulse);
-        if(transform.position.z > 6 || transform.position.x > 10)
+        if (transform.position.z > 6 || transform.position.x > 10)
         {
             gameObject.SetActive(false);
         }
@@ -43,7 +43,9 @@ public class DrawBullet : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.collider.tag != "DRAWBULLET")
-        gameObject.SetActive(false);
+        if (collision.collider.tag == "Monster")
+        {
+            gameObject.SetActive(false);
+        }
     }
 }

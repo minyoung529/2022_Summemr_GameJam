@@ -10,6 +10,7 @@ TagManager:
   - Monster
   - DADFILE
   - BROTHERFILE
+  - Tower
   layers:
   - Default
   - TransparentFX

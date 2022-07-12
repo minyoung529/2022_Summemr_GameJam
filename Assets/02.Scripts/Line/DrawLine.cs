@@ -9,7 +9,7 @@ public class DrawLine : MonoBehaviour
     [SerializeField]
     GameObject[] bullet;
     [SerializeField]
-    GameObject msPaint;
+    GameObject[] msPaint;
 
     GameObject madeLine;
     public Material defaultMaterial;
@@ -31,9 +31,6 @@ public class DrawLine : MonoBehaviour
 
     void Update()
     {
-        // 그림판 영역 제한
-        // 한 획 제한
-        Debug.Log("업데이트");
         DrawMouse();
     }
 
@@ -54,7 +51,6 @@ public class DrawLine : MonoBehaviour
         {
             if (Input.GetMouseButtonUp(0))
             {
-                isCreate = false;
                 isCreateNow = false;
                 ActionReady();
             }
@@ -124,7 +120,8 @@ public class DrawLine : MonoBehaviour
     void ActionReady()
     {
         madeLine.transform.SetParent(null);
-        msPaint.SetActive(false);
+        msPaint[0].SetActive(false);
+        msPaint[1].SetActive(false);
 
         // 오브젝트 사이즈 줄어들고 왼쪽 아래로 이동
         LineRenderer lr = madeLine.GetComponent<LineRenderer>();
@@ -142,6 +139,9 @@ public class DrawLine : MonoBehaviour
         bullet[0].SetActive(true);
         bullet[1].SetActive(true);
         bullet[2].SetActive(true);
+
+        Destroy(madeLine, 2f);
+        isCreate = false;
     }
 
 }
