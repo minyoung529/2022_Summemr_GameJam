@@ -20,7 +20,6 @@ public class HoleMove : MonoBehaviour
             Vector3 dir = hit.point;
             dir.y = transform.position.y;
             transform.position = Vector3.Lerp(transform.position, dir, Time.deltaTime * 10f);
-             
         }
         else
         {

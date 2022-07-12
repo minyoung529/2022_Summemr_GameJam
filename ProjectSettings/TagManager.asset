@@ -12,6 +12,7 @@ TagManager:
   - BROTHERFILE
   - Tower
   - Hole
+  - Chrome
   layers:
   - Default
   - TransparentFX
@@ -27,7 +28,7 @@ TagManager:
   - ShaderHoleMask
   - RaycastCollider
   - Monster
-  - 
+  - Chrome
   - 
   - 
   - 

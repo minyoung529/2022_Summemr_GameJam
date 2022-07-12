@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 425705939994768066}
   - component: {fileID: 425705939994768071}
   - component: {fileID: 8889729080597573386}
-  m_Layer: 9
+  m_Layer: 13
   m_Name: MinMonster
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
+  spawner: {fileID: 0}
   materials:
   - {fileID: 2100000, guid: 0a6d1d7d4805ccb498b710435eb16942, type: 2}
   - {fileID: 2100000, guid: 8cbdd880f84c9a34c9b304aa853c6d6c, type: 2}
