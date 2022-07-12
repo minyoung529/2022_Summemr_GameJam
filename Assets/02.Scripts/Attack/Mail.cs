@@ -51,8 +51,9 @@ public class Mail : MonoBehaviour
             if (Physics.Raycast(ray, out hitInfo))
             {
                 Vector3 pos = hitInfo.point;
+
                 pos.y = 0.2f;
-                targetPicker.transform.position = pos;
+                targetPicker.position = Vector3.MoveTowards(targetPicker.transform.position, pos, Time.deltaTime * 20f);
             }
 
             if (Input.GetMouseButtonDown(0))

@@ -31,6 +31,8 @@ public class Monster : PoolableObject
     private MeshRenderer meshRenderer;
     public Material[] materials;
 
+    Sequence seq;
+
     private void Awake()
     {
         meshRenderer = GetComponent<MeshRenderer>();
@@ -48,6 +50,12 @@ public class Monster : PoolableObject
     private void OnEnable()
     {
         ResetSprite();
+
+        seq = DOTween.Sequence();
+
+        seq.Append(transform.DOScaleZ(0.04f, Random.Range(0.4f, 0.7f)));
+        seq.Append(transform.DOScaleZ(0.05f, Random.Range(0.4f, 0.7f)));
+        seq.SetLoops(-1, LoopType.Restart);
     }
     private void Update()
     {
@@ -90,7 +98,7 @@ public class Monster : PoolableObject
     {
         meshRenderer.material = materials[2];
     }
-    
+
     private void ResetSprite()
     {
         isDie = false;
@@ -101,7 +109,8 @@ public class Monster : PoolableObject
     public void Die()
     {
         //Á×´Â ¿¬Ãâ
-        isDie=true;
+        seq.Kill();
+        isDie = true;
         DieSprite();
         dieEffect.Play();
         SoundManager.Instance.SfxSoundOn(1);
