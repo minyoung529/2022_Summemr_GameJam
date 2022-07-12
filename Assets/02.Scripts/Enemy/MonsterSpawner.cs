@@ -6,9 +6,11 @@ public class MonsterSpawner : MonoBehaviour
 {
     [SerializeField] private Monster monsterPrefab;
     [SerializeField] private Transform tower;
+    public Transform Tower => tower;
     [SerializeField] private Transform wallPaper;
     [SerializeField] private float spawnRange = 15f;
     [SerializeField] private float spawnDelay = 1f;
+    
     void Start()
     {
         PoolManager.Instance.CreatePool(monsterPrefab, 50);
@@ -21,6 +23,7 @@ public class MonsterSpawner : MonoBehaviour
         {
             Monster obj = PoolManager.Instance.Pop(monsterPrefab) as Monster;
             obj.transform.position = GetRandomCirclePoint();
+            obj.spawner = this;
             obj.SetTarget(tower);
             yield return new WaitForSeconds(spawnDelay);
         }

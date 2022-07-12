@@ -8,7 +8,47 @@ public class OnChangePosition : MonoBehaviour
     public PolygonCollider2D ground2DCollider;
     public MeshCollider GeneratedMeshCollider;
     public float initialScale;
+    private BoxCollider range;
     Mesh GeneratedMesh;
+
+    public void Awake()
+    {
+        range = GetComponent<BoxCollider>();
+    }
+
+    public void EnableHole()
+    {
+        StartCoroutine(ExtendHole());
+    }
+
+    IEnumerator ExtendHole()
+    {
+        range.enabled = true;
+        float time = 0;
+        while(time <= 1f)
+        {
+            transform.localScale = Vector3.Lerp(Vector3.zero, Vector3.one * initialScale, time);
+            time += Time.deltaTime;
+            yield return null;
+        }
+    }
+
+    public void DisableHole()
+    {
+        StartCoroutine(ContractHole());
+    }
+
+    IEnumerator ContractHole()
+    {
+        float time = 0;
+        while (time <= 1f)
+        {
+            transform.localScale = Vector3.Lerp(Vector3.one * initialScale, Vector3.zero, time);
+            time += Time.deltaTime;
+            yield return null;
+        }
+        range.enabled = false;
+    }
 
     private void FixedUpdate()
     {

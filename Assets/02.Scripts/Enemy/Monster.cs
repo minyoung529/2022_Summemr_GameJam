@@ -5,6 +5,7 @@ using UnityEngine;
 public class Monster : PoolableObject
 {
     [SerializeField] private float speed = 10f;
+    public MonsterSpawner spawner;
     private Rigidbody rigid;
     private Transform target;
 
@@ -28,6 +29,18 @@ public class Monster : PoolableObject
         if (other.transform.CompareTag("Tower"))
         {
             Die();
+        }
+        if(other.transform.CompareTag("Hole"))
+        {
+            SetTarget(other.transform);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if(other.transform.CompareTag("Hole"))
+        {
+            SetTarget(spawner.Tower);
         }
     }
 
