@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OnChangePosition : MonoBehaviour
+public class HoleScript : MonoBehaviour
 {
     public PolygonCollider2D hole2DCollider;
     public PolygonCollider2D ground2DCollider;

@@ -10,10 +10,11 @@ public class MonsterSpawner : MonoBehaviour
     [SerializeField] private Transform wallPaper;
     [SerializeField] private float spawnRange = 15f;
     [SerializeField] private float spawnDelay = 1f;
+    [SerializeField] private int poolingMonsterCount = 100;
     
     void Start()
     {
-        PoolManager.Instance.CreatePool(monsterPrefab, 50);
+        PoolManager.Instance.CreatePool(monsterPrefab, poolingMonsterCount);
         StartCoroutine(SpawnMonster());
     }
 
