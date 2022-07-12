@@ -13,41 +13,65 @@ public class DrawLine : MonoBehaviour
 
     GameObject madeLine;
     public Material defaultMaterial;
-    private LineRenderer curLine; 
-    private int positionCount = 2; 
+    private LineRenderer curLine;
+    private int positionCount = 2;
     private Vector3 PrevPos = Vector3.zero;
 
-    bool isDrawNow = false;
+    private Camera _mainCam;
+
+    public LayerMask _whatIsBoard;
+
     bool isCreate = false;
-    bool isPer = false;
+    bool isCreateNow = false;
+
+    private void Awake()
+    {
+        _mainCam = Camera.main;
+    }
 
     void Update()
     {
         // 그림판 영역 제한
         // 한 획 제한
-        if(isPer && !isDrawNow)  DrawMouse();
+        Debug.Log("업데이트");
+        DrawMouse();
     }
+
 
     // 마우스 드래그로 그리기
     void DrawMouse()
     {
-        Vector3 mousePos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0.3f));
+        Vector3 mousePos = _mainCam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0.3f));
+        Ray ray = _mainCam.ScreenPointToRay(Input.mousePosition);
 
-        if (Input.GetMouseButtonUp(0))
+        RaycastHit hit;
+
+        bool isIn = false;
+        Physics.Raycast(ray, out hit, 100f, _whatIsBoard);
+
+        isIn = hit.collider != null && hit.collider.CompareTag("MSPAINT");
+        if (isCreateNow)
         {
-            if (!isCreate || isDrawNow) return;
-            isDrawNow = true;
-            isCreate = false;
-            ActionReady();
+            if (Input.GetMouseButtonUp(0))
+            {
+                isCreate = false;
+                isCreateNow = false;
+                ActionReady();
+            }
         }
-        else if (Input.GetMouseButtonDown(0))
+
+        if (!isIn) return;
+
+        if (Input.GetMouseButtonDown(0))
         {
             isCreate = true;
+            isCreateNow = true;
             createLine(mousePos);
         }
         else if (Input.GetMouseButton(0))
         {
             if (!isCreate) return;
+            isCreateNow = true;
             connectLine(mousePos);
         }
     }
@@ -65,16 +89,23 @@ public class DrawLine : MonoBehaviour
         line.transform.parent = transform;
         line.transform.position = mousePos;
 
-        lineRend.startWidth = 0.01f;
-        lineRend.endWidth = 0.01f;
+        lineRend.startWidth = 0.003f;
+        lineRend.endWidth = 0.003f;
         lineRend.numCornerVertices = 5;
         lineRend.numCapVertices = 5;
+
+        int randColorI = Random.Range(0, 100);
+        if (randColorI < 20) defaultMaterial.color = Color.red;
+        else if (randColorI < 50) defaultMaterial.color = Color.blue;
+        else if (randColorI < 80) defaultMaterial.color = Color.yellow;
+        else defaultMaterial.color = Color.cyan;
         lineRend.material = defaultMaterial;
+
         lineRend.SetPosition(0, mousePos);
         lineRend.SetPosition(1, mousePos);
         mousePos.y = 0;
 
-        curLine = lineRend; 
+        curLine = lineRend;
     }
 
     // 라인 연결
@@ -87,7 +118,6 @@ public class DrawLine : MonoBehaviour
             curLine.positionCount = positionCount;
             curLine.SetPosition(positionCount - 1, mousePos);
         }
-
     }
 
     // 공격 준비
@@ -114,12 +144,4 @@ public class DrawLine : MonoBehaviour
         bullet[2].SetActive(true);
     }
 
-    private void OnMouseExit()
-    {
-        isPer = false;
-    }
-    private void OnMouseEnter()
-    {
-        isPer = true;
-    }
 }
