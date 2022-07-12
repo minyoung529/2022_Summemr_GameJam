@@ -8,6 +8,7 @@ using DG.Tweening;
 public class HeartButton : MonoBehaviour, IPointerClickHandler
 {
     [SerializeField] private HeartAttack heartAttack;
+    [SerializeField] private ParticleSystem heartParticle;
     private List<HeartAttack> heartAttacks = new List<HeartAttack>();
 
     private Camera mainCam;
@@ -32,6 +33,7 @@ public class HeartButton : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        heartParticle.gameObject.SetActive(true);
         if (heartCount == MAX_HEART_COUNT)
         {
             image.sprite = buttonSprites[1];
@@ -67,6 +69,8 @@ public class HeartButton : MonoBehaviour, IPointerClickHandler
 
     private IEnumerator ExplosionHearts()
     {
+        heartParticle.gameObject.SetActive(false);
+
         heartCount = 0;
         instagramWindow.DOScale(0f, 0.3f).OnComplete(() => gameObject.SetActive(false));
         image.sprite = buttonSprites[0];
@@ -83,5 +87,7 @@ public class HeartButton : MonoBehaviour, IPointerClickHandler
             initPos.x += 7f;
             yield return new WaitForSeconds(0.25f);
         }
+
+        
     }
 }

@@ -6,6 +6,7 @@ using DG.Tweening;
 public class Monster : PoolableObject
 {
     [SerializeField] private float speed = 10f;
+    [SerializeField] private ParticleSystem dieEffect;
     public MonsterSpawner spawner;
     private Rigidbody rigid;
     private Transform target;
@@ -55,7 +56,7 @@ public class Monster : PoolableObject
 
         if (transform.position.y < -20f)
         {
-            Die();
+            DieMonster();
         }
     }
 
@@ -63,7 +64,7 @@ public class Monster : PoolableObject
     {
         if (other.transform.CompareTag("Tower"))
         {
-            Die();
+            DieMonster();
         }
         //if(other.transform.CompareTag("Hole"))
         //{
@@ -82,6 +83,13 @@ public class Monster : PoolableObject
     public void Die()
     {
         //Á×´Â ¿¬Ãâ
+        dieEffect.Play();
+        SoundManager.Instance.SfxSoundOn(1);
+        Invoke("DieMonster", 0.05f);
+    }
+
+    public void DieMonster()
+    {
         PoolManager.Instance.Push(this);
     }
 

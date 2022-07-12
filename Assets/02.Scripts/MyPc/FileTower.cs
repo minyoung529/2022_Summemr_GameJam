@@ -46,7 +46,7 @@ public class FileTower : MonoBehaviour
                 GameManager.Instance.brotherTowerGage += 10;
             }
 
-            collision.transform.GetComponent<Monster>().Die();
+            collision.transform.GetComponent<Monster>().DieMonster();
         }
     }
 

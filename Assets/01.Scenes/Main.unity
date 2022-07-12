@@ -650,7 +650,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 5a9fe12af97f2ea4eb1645ff5353e8ad, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.1
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1263,7 +1263,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1908,6 +1908,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 346240396}
   m_CullTransparentMesh: 1
+--- !u!198 &363629128 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 198000011871393354, guid: e52cb234d3b33aa418999460dbf19113, type: 3}
+  m_PrefabInstance: {fileID: 1448891702}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &430538741
 GameObject:
   m_ObjectHideFlags: 0
@@ -3839,6 +3844,7 @@ MonoBehaviour:
   sfxSource: {fileID: 219689782}
   sfxClip:
   - {fileID: 8300000, guid: 36582881111fdbd4280c3627a7c04719, type: 3}
+  - {fileID: 8300000, guid: 2d1b7d162d6b85541a5324db9fcc973e, type: 3}
 --- !u!1 &1206972540
 GameObject:
   m_ObjectHideFlags: 0
@@ -4581,6 +4587,103 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1433641230}
   m_CullTransparentMesh: 1
+--- !u!1001 &1448891702
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1000014067870652, guid: e52cb234d3b33aa418999460dbf19113, type: 3}
+      propertyPath: m_Name
+      value: 04
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000014067870652, guid: e52cb234d3b33aa418999460dbf19113, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013972457700, guid: e52cb234d3b33aa418999460dbf19113, type: 3}
+      propertyPath: m_RootOrder
+      value: 23
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013972457700, guid: e52cb234d3b33aa418999460dbf19113, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013972457700, guid: e52cb234d3b33aa418999460dbf19113, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013972457700, guid: e52cb234d3b33aa418999460dbf19113, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013972457700, guid: e52cb234d3b33aa418999460dbf19113, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.39
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013972457700, guid: e52cb234d3b33aa418999460dbf19113, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013972457700, guid: e52cb234d3b33aa418999460dbf19113, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013972457700, guid: e52cb234d3b33aa418999460dbf19113, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013972457700, guid: e52cb234d3b33aa418999460dbf19113, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013972457700, guid: e52cb234d3b33aa418999460dbf19113, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013972457700, guid: e52cb234d3b33aa418999460dbf19113, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013972457700, guid: e52cb234d3b33aa418999460dbf19113, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013972457700, guid: e52cb234d3b33aa418999460dbf19113, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013972457700, guid: e52cb234d3b33aa418999460dbf19113, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198000010294036080, guid: e52cb234d3b33aa418999460dbf19113, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198000011871393354, guid: e52cb234d3b33aa418999460dbf19113, type: 3}
+      propertyPath: looping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198000011871393354, guid: e52cb234d3b33aa418999460dbf19113, type: 3}
+      propertyPath: playOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198000012046932074, guid: e52cb234d3b33aa418999460dbf19113, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198000012529513984, guid: e52cb234d3b33aa418999460dbf19113, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198000013763865828, guid: e52cb234d3b33aa418999460dbf19113, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e52cb234d3b33aa418999460dbf19113, type: 3}
 --- !u!1 &1461598119
 GameObject:
   m_ObjectHideFlags: 0
@@ -5915,7 +6018,7 @@ Canvas:
   m_GameObject: {fileID: 1755337232}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 519420031}
   m_PlaneDistance: 10
   m_PixelPerfect: 0
@@ -6223,6 +6326,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   heartAttack: {fileID: 6304450198860219350, guid: f50377823d834924894f2c4fe3bcbada, type: 3}
+  heartParticle: {fileID: 363629128}
   buttonSprites:
   - {fileID: 21300000, guid: 4edc5a2d818a4dc4096bf955a823e4e9, type: 3}
   - {fileID: 21300000, guid: 4d05fff43f29c4448af09cb974755edd, type: 3}
@@ -7891,7 +7995,7 @@ Canvas:
   m_GameObject: {fileID: 7005687698127706319}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 519420031}
   m_PlaneDistance: 10
   m_PixelPerfect: 0
