@@ -26,6 +26,8 @@ public class Monster : PoolableObject
         }
     }
 
+    bool isDie = false;
+
     private MeshRenderer meshRenderer;
     public Material[] materials;
 
@@ -43,6 +45,10 @@ public class Monster : PoolableObject
         ChangeToVaccine();
     }
 
+    private void OnEnable()
+    {
+        ResetSprite();
+    }
     private void Update()
     {
         if (isVaccine)
@@ -51,6 +57,7 @@ public class Monster : PoolableObject
         }
         else
         {
+            if (isDie) return;
             MoveToTarget();
         }
 
@@ -79,13 +86,26 @@ public class Monster : PoolableObject
             SetTarget(spawner.Tower);
         }
     }
+    private void DieSprite()
+    {
+        meshRenderer.material = materials[2];
+    }
+    
+    private void ResetSprite()
+    {
+        isDie = false;
+        meshRenderer.material = materials[0];
+    }
+
 
     public void Die()
     {
         //Á×´Â ¿¬Ãâ
+        isDie=true;
+        DieSprite();
         dieEffect.Play();
         SoundManager.Instance.SfxSoundOn(1);
-        Invoke("DieMonster", 0.05f);
+        Invoke("DieMonster", 1f);
     }
 
     public void DieMonster()
