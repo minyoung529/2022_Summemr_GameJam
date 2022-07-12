@@ -11,6 +11,7 @@ TagManager:
   - DADFILE
   - BROTHERFILE
   - Tower
+  - Hole
   layers:
   - Default
   - TransparentFX
@@ -22,9 +23,9 @@ TagManager:
   - Platform
   - Heart
   - WhiteBoard
-  - 
-  - 
-  - 
+  - ShaderHole
+  - ShaderHoleMask
+  - RaycastCollider
   - 
   - 
   - 

@@ -8,7 +8,7 @@ public abstract class ProgramIcon : MonoBehaviour, IPointerClickHandler
 {
     [SerializeField]
     Image coolImage;
-    
+
     [SerializeField]
     float coolTime;
 

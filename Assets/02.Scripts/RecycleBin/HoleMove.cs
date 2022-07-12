@@ -9,7 +9,7 @@ public class HoleMove : MonoBehaviour
     private void Awake()
     {
         mainCam = Camera.main;
-        groundLayer = LayerMask.NameToLayer("MoveCollider");
+        groundLayer = LayerMask.NameToLayer("RaycastCollider");
     }
     private void FixedUpdate()
     {
