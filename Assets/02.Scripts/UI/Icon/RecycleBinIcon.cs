@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RecycleBinIcon : ProgramIcon
 {
-    public HoleScript holeScript;
+    public OnChangePosition holeScript;
     [SerializeField] private float duration;
     [SerializeField] private float cooldown;
     private bool isCooldown;
@@ -13,6 +13,7 @@ public class RecycleBinIcon : ProgramIcon
     {
         if(!isCooldown)
         {
+            OnCoolTime();
             StartCoroutine(CooldownCoroutine());
             holeScript.EnableHole();
             StartCoroutine(DurationCoroutine());
