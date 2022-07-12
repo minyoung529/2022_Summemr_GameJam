@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class tset : MonoBehaviour
 {
-    public OnChangePosition hole;
+    public HoleScript hole;
 
     [ContextMenu("enable")]
     public void EnableHole()

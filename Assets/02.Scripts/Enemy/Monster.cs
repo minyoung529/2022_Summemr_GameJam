@@ -34,6 +34,14 @@ public class Monster : PoolableObject
         rigid = GetComponent<Rigidbody>();
     }
 
+    /// <summary>
+    /// 백신 상태인 다른 바이러스와 충돌했을때
+    /// </summary>
+    public void VaccineCollisionEnter()
+    {
+        Debug.Log("백신");
+    }
+
     private void Update()
     {
         MoveToTarget();

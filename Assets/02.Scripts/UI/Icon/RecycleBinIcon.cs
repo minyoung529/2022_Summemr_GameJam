@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RecycleBinIcon : ProgramIcon
 {
-    public OnChangePosition holeScript;
+    public HoleScript holeScript;
     [SerializeField] private float duration;
     [SerializeField] private float cooldown;
     private bool isCooldown;
