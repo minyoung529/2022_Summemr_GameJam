@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class UIManager : MonoBehaviour
+public class UIManager : Singleton<UIManager>
 {
     public void OpenUI(GameObject ui)
     {
@@ -12,5 +13,13 @@ public class UIManager : MonoBehaviour
     {
         ui.SetActive(false);
     }
+    public void Quit()
+    {
+        Application.Quit();
+    }
 
+    public void SceneChange(string str)
+    {
+        SceneManager.LoadScene(str);
+    }
 }

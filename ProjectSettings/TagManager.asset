@@ -8,8 +8,9 @@ TagManager:
   - MSPAINT
   - Platform
   - Monster
+  - DADFILE
+  - BROTHERFILE
   - Tower
-  - Hole
   layers:
   - Default
   - TransparentFX
@@ -20,11 +21,11 @@ TagManager:
   - Screen
   - Platform
   - Heart
-  - Monster
-  - ShaderHoleMask
-  - ShaderHole
-  - Ground
-  - MoveCollider
+  - WhiteBoard
+  - 
+  - 
+  - 
+  - 
   - 
   - 
   - 
