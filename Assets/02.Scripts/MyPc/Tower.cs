@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class Tower : MonoBehaviour
 {
@@ -10,33 +11,45 @@ public class Tower : MonoBehaviour
     [SerializeField, Header("용량 차는 속도")]
     float fullSpeed;
 
+    [SerializeField]
+    GameObject brokenImage;
+
     // 게이지바
     [SerializeField, Header("아빠 타워 용량 게이지바")]
     Image dadGageImage;
     [SerializeField, Header("오빠 타워 용량 게이지바")]
     Image brotherGageImage;
     
-    
     [SerializeField]
     Text broPerText;
     [SerializeField]
     Text dadPerText;
 
+    bool isBroken = false;
 
     private void Awake()
     {
         ResetGame();
     }
+
     private void Update()
     {
-        // 게임 오버 조건
-        if (GameManager.Instance.dadTowerGage >= maxTowerGage && GameManager.Instance.brotherTowerGage >= maxTowerGage)
+        if(GameManager.Instance.dadTowerGage >= maxTowerGage/2 && GameManager.Instance.brotherTowerGage >= maxTowerGage/2)
+        {
+            // 경고
+            if (isBroken) return;
+            isBroken = true;
+            brokenImage.SetActive(true);
+            CameraShake.Instance.Shake();
+        }
+        else if (GameManager.Instance.dadTowerGage >= maxTowerGage && GameManager.Instance.brotherTowerGage >= maxTowerGage)
         {
             // 게임 오버
             PlayerPrefs.SetInt("SCORE", GameManager.Instance.score);
             UIManager.Instance.SceneChange("Over");
         }
         CheckGage();
+
     }
 
     private void ResetGame()
