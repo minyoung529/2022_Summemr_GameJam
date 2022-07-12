@@ -48,4 +48,5 @@ public class FileTower : MonoBehaviour
             collision.transform.GetComponent<Monster>().Die();
         }
     }
+
 }

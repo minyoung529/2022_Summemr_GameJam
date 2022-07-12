@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class RecycleBinIcon : ProgramIcon
 {
+<<<<<<< HEAD
     public OnChangePosition holeScript;
     [SerializeField] private float duration;
     [SerializeField] private float cooldown;
@@ -30,5 +31,13 @@ public class RecycleBinIcon : ProgramIcon
         isCooldown = true;
         yield return new WaitForSeconds(duration);
         isCooldown = false;
+=======
+    [SerializeField]
+    GameObject coolImage;
+    protected override void ExecuteProgram()
+    {
+        coolImage.SetActive(true);
+        OnCoolTime(coolImage);
+>>>>>>> september
     }
 }

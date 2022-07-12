@@ -49,10 +49,10 @@ public class Monster : PoolableObject
         {
             Die();
         }
-        if(other.transform.CompareTag("Hole"))
-        {
-            SetTarget(other.transform);
-        }
+        //if(other.transform.CompareTag("Hole"))
+        //{
+        //    SetTarget(other.transform);
+        //}
     }
 
     private void OnTriggerExit(Collider other)
