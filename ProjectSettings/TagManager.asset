@@ -8,6 +8,7 @@ TagManager:
   - MSPAINT
   - Platform
   - Monster
+  - Tower
   layers:
   - Default
   - TransparentFX
@@ -18,7 +19,7 @@ TagManager:
   - Screen
   - Platform
   - Heart
-  - 
+  - Monster
   - 
   - 
   - 

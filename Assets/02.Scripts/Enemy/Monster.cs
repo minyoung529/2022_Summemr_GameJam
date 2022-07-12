@@ -15,7 +15,7 @@ public class Monster : PoolableObject
 
     private void Update()
     {
-        //MoveToTarget();
+        MoveToTarget();
         if (transform.position.y < -20f)
         {
             Die();
@@ -46,7 +46,6 @@ public class Monster : PoolableObject
     public void SetTarget(Transform target)
     {
         this.target = target;
-        MoveToTarget();
     }
 
     public void ExplosionDamage(Vector3 explosionPos, float force = 1f)
