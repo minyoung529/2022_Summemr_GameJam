@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 2
-  speed: 0.5
+  speed: 0.3
   dieEffect: {fileID: 1171594879540519124}
   damageEffect: {fileID: 4401619421952456395}
   spawner: {fileID: 0}

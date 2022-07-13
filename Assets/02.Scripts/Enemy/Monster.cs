@@ -50,7 +50,7 @@ public class Monster : PoolableObject
         if (type == MonsterType.SLOW)
         {
             attackPower = 20;
-            heart = 2;
+            heart = 4;
             //minSize = 0.09f;
             //maxSize = 0.1f;
         }
@@ -62,7 +62,7 @@ public class Monster : PoolableObject
     }
 
     /// <summary>
-    /// ��� ������ �ٸ� ���̷����� �浹������
+    /// ���?������ �ٸ� ���̷����� �浹������
     /// </summary>
     public void VaccineCollisionEnter()
     {
