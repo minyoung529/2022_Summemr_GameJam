@@ -8,19 +8,7 @@ public class PaintingBullet : PoolableObject
     private MeshRenderer meshRenderer;
     private float scale;
 
-    private void OnEnable()
-    {
-        meshRenderer ??= GetComponent<MeshRenderer>();
-
-        float offset = 0.35f;
-        int gridCount = 3;
-        float x = Random.Range(0, gridCount) * offset;
-        float y = Random.Range(0, gridCount) * offset;
-
-        meshRenderer.material.mainTextureOffset = new Vector2(x, y);
-
-        transform.localScale = Vector3.one * scale;
-    }
+    public Material[] colors;
 
     private void Awake()
     {
@@ -37,6 +25,31 @@ public class PaintingBullet : PoolableObject
             if (gameObject.activeSelf)
                 PoolManager.Instance.Push(this);
         }
+    }
+
+    public void ChangeColor(int grade)
+    {
+        switch (grade)
+        {
+            case 1:
+                meshRenderer.material = colors[0];
+                break;
+
+            case 2:
+                meshRenderer.material = colors[1];
+                break;
+
+            case 3:
+                meshRenderer.material = colors[Random.Range(1, colors.Length)];
+                break;
+        }
+
+        float offset = 0.35f;
+        float x = Random.Range(0, 3) * offset;
+        float y = Random.Range(0, 3) * offset;
+
+        meshRenderer.material.mainTextureOffset = new Vector2(x, y);
+        transform.localScale = Vector3.one * scale;
     }
 
     public void SetDirection(Vector3 velocity)

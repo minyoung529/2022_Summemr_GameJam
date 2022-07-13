@@ -31,5 +31,7 @@ public class PaintIcon : ProgramIcon
         {
             drawLine.bulletCount = 30;
         }
+
+        drawLine.level = level;
     }
 }

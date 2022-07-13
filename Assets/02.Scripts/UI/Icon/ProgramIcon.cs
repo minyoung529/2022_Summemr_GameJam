@@ -78,7 +78,7 @@ public abstract class ProgramIcon : MonoBehaviour, IPointerClickHandler
             level++;
             ++GameManager.Instance.levelArray[transform.GetSiblingIndex()];
             GameManager.Instance.AddLevelCount();
-            
+
             upgradeEffect.Play();
             SoundManager.Instance.SfxSoundOn(14);
         }
@@ -87,9 +87,10 @@ public abstract class ProgramIcon : MonoBehaviour, IPointerClickHandler
             return;
         }
 
-
-        image.sprite = sprites[level - 1];
-        cooltimeImage.sprite = sprites[level - 1];
+        if (image)
+            image.sprite = sprites[level - 1];
+        if (cooltimeImage)
+            cooltimeImage.sprite = sprites[level - 1];
 
         if (level == MAX_LEVEL)
         {

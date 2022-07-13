@@ -22,7 +22,13 @@ public class VirusObject : PoolableObject
     private void Update()
     {
         if (targetMonster)
+        {
             transform.position = Vector3.MoveTowards(transform.position, targetMonster.transform.position, Time.deltaTime * speed);
+        }
+        else if(gameObject.activeSelf)
+        {
+            PoolManager.Instance.Push(this);
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -31,7 +37,7 @@ public class VirusObject : PoolableObject
         {
             gameObject.SetActive(false);
             targetMonster.IsVaccine = true;
-            PoolManager.Instance.Pop(this);
+            PoolManager.Instance.Push(this);
         }
     }
 
