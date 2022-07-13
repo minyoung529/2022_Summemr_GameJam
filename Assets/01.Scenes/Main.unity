@@ -15800,6 +15800,7 @@ GameObject:
   - component: {fileID: 4131712329925667807}
   - component: {fileID: 4131712329925667795}
   - component: {fileID: 4131712329925667801}
+  - component: {fileID: 4131712329925667802}
   m_Layer: 0
   m_Name: BrotherFile
   m_TagString: BROTHERFILE
@@ -15820,6 +15821,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 6.94, y: 4.5, z: 8.29}
   m_Center: {x: 0, y: 1.44, z: 0}
+--- !u!114 &4131712329925667802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4131712329925667800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d9f1315a46233b4c9261dfa50b6e25d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectColor: {r: 0.4188679, g: 0.98273605, b: 1, a: 0.56078434}
 --- !u!4 &4131712329925667804
 Transform:
   m_ObjectHideFlags: 0
@@ -16569,6 +16583,7 @@ GameObject:
   - component: {fileID: 8885342125998059100}
   - component: {fileID: 8885342125998059096}
   - component: {fileID: 8885342125998059104}
+  - component: {fileID: 8885342125998059105}
   m_Layer: 0
   m_Name: DadFile
   m_TagString: DADFILE
@@ -16589,3 +16604,16 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 6.94, y: 4.5, z: 8.29}
   m_Center: {x: 0, y: 1.44, z: 0}
+--- !u!114 &8885342125998059105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8885342125998059103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d9f1315a46233b4c9261dfa50b6e25d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectColor: {r: 0.4188679, g: 0.98273605, b: 1, a: 0.56078434}
