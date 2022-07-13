@@ -52,7 +52,7 @@ public class Mail : MonoBehaviour
                 Vector3 pos = hitInfo.point;
 
                 pos.y = 0f;
-                targetPicker.position = Vector3.MoveTowards(targetPicker.transform.position, pos, Time.deltaTime * 20f);
+                targetPicker.position = Vector3.MoveTowards(targetPicker.transform.position, pos, Time.deltaTime * 40f);
             }
 
             if (Input.GetMouseButtonDown(0))
@@ -185,9 +185,7 @@ public class Mail : MonoBehaviour
 
         foreach (Monster monster in monsters)
         {
-            monster.Damaged();
+            monster.Die();
         }
-
-        gameObject.SetActive(false);
     }
 }

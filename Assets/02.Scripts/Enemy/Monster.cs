@@ -89,6 +89,7 @@ public class Monster : PoolableObject
 
         if (transform.position.y < -20f)
         {
+            GameManager.Instance.gold += 100;
             DieMonster();
         }
     }
@@ -181,24 +182,10 @@ public class Monster : PoolableObject
         this.target = target;
     }
 
-    public void ExplosionDamage(Vector3 explosionPos, float force = 1f)
-    {
-        rigid.AddExplosionForce(force, explosionPos, force);
-    }
-
     public void ChangeToVaccine()
     {
         isVaccine = true;
         meshRenderer.material = materials[1];
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.transform.CompareTag("Monster"))
-        {
-            Debug.Log("sdf");
-            collision.transform.GetComponent<Monster>().ChangeToVaccine();
-        }
     }
 
     public override void Reset()
@@ -211,6 +198,6 @@ public class Monster : PoolableObject
         transform.rotation = Quaternion.Euler(Vector3.zero);
 
         GameManager.Instance.monsters.Remove(this);
-        //isVaccine = false;
+        isVaccine = false;
     }
 }
