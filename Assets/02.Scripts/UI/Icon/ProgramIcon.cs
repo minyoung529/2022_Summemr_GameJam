@@ -21,14 +21,14 @@ public abstract class ProgramIcon : MonoBehaviour, IPointerClickHandler
 
     public Image image;
     public Button upgradeButton;
-    private int[] cost = { 1000, 10000 };
+    private int[] cost = { 10000, 100000 };
     public Sprite[] sprites;
 
     public Image cooltimeImage;
 
     private void Start()
     {
-        image = GetComponent<Image>();
+        //image = GetComponent<Image>();
         upgradeButton.onClick.AddListener(LevelUp);
     }
 
