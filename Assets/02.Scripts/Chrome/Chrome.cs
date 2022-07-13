@@ -16,6 +16,7 @@ public class Chrome : MonoBehaviour
     private bool isMoving = false;
     private Animator animator;
     private LayerMask platformMask;
+    private Sequence seq;
 
     #region 애니메이션 캐싱
     readonly int changeTrigger = Animator.StringToHash("ChangeTrigger");
@@ -71,7 +72,7 @@ public class Chrome : MonoBehaviour
 
     public void DisableChrome()
     {
-        Sequence seq = DOTween.Sequence();
+        seq = DOTween.Sequence();
         seq.Append(_rect.DOAnchorPos(startPos, 1f));
         seq.Join(transform.DORotate(transform.rotation.eulerAngles + new Vector3(0, 360f, 0), 1f, RotateMode.FastBeyond360));
         seq.Append(transform.DORotate(new Vector3(90f, 0, 0), 0.1f));
@@ -110,5 +111,10 @@ public class Chrome : MonoBehaviour
                 moveDir = dir;
             }
         }
+    }
+
+    private void OnDisable()
+    {
+        seq.Kill();
     }
 }

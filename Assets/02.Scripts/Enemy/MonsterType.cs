@@ -6,5 +6,6 @@ public enum MonsterType
 {
    BASIC,
    FAST,
-   SLOW
+   SLOW,
+   COUNT
 }

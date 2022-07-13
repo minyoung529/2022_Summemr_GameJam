@@ -50,7 +50,7 @@ public class Monster : PoolableObject
         if (type == MonsterType.SLOW)
         {
             attackPower = 20;
-            heart = 2;
+            heart = 4;
             //minSize = 0.09f;
             //maxSize = 0.1f;
         }
@@ -62,7 +62,7 @@ public class Monster : PoolableObject
     }
 
     /// <summary>
-    /// ¹é½Å »óÅÂÀÎ ´Ù¸¥ ¹ÙÀÌ·¯½º¿Í Ãæµ¹ÇßÀ»¶§
+    /// ï¿½ï¿½ï¿?ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù¸ï¿½ ï¿½ï¿½ï¿½Ì·ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½æµ¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     /// </summary>
     public void VaccineCollisionEnter()
     {
@@ -73,13 +73,7 @@ public class Monster : PoolableObject
     {
         ResetSprite();
         collider.enabled = true;
-        /*
-        seq = DOTween.Sequence();
-
-        seq.Append(transform.DOScaleZ(minSize, Random.Range(0.4f, 0.7f)));
-        seq.Append(transform.DOScaleZ(maxSize, Random.Range(0.4f, 0.7f)));
-        seq.SetLoops(-1, LoopType.Restart);
-    */
+        rigid.useGravity = true;
     }
     private void Update()
     {
@@ -149,8 +143,13 @@ public class Monster : PoolableObject
 
     public void Die()
     {
-        //Á×´Â ¿¬Ãâ
+        //ï¿½×´ï¿½ ï¿½ï¿½ï¿½ï¿½
+
+        GameManager.Instance.gold += 100;
+
         collider.enabled = false;
+        rigid.useGravity = false;
+        rigid.velocity = Vector3.zero;
         isDie = true;
         DieSprite();
         dieEffect.Play();
