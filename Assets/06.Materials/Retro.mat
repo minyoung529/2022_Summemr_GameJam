@@ -41,7 +41,7 @@ Material:
     - RGB_STRIPES: 0
     - SCROLL_STATIC: 1
     - STATIC: 1
-    - Vector1_1BFF6B46: 0
+    - Vector1_1BFF6B46: 10
     - Vector1_5660967D: 0.58
     - Vector1_63AA1B2A: 0.2
     - Vector1_96113905: 100
@@ -52,5 +52,5 @@ Material:
     - _ScanlineStrength: 0.35
     - _StaticStrength: 0.87
     m_Colors:
-    - _CRTWarpStrength: {r: 0, g: -0.28, b: 0, a: 0}
+    - _CRTWarpStrength: {r: 0.03, g: -0.28, b: 0, a: 0}
   m_BuildTextureStacks: []

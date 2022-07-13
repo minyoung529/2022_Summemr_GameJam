@@ -5,11 +5,18 @@ using DG.Tweening;
 
 public class Monster : PoolableObject
 {
+    [SerializeField] private MonsterType type;
     [SerializeField] private float speed = 10f;
     [SerializeField] private ParticleSystem dieEffect;
+    [SerializeField] private ParticleSystem damageEffect;
     public MonsterSpawner spawner;
     private Rigidbody rigid;
     private Transform target;
+    private int heart = 1;
+    public int attackPower = 10;
+
+    //float minSize = 0.04f;
+    //float maxSize = 0.05f;
 
     private bool isVaccine = false;
     public bool IsVaccine
@@ -31,12 +38,27 @@ public class Monster : PoolableObject
     private MeshRenderer meshRenderer;
     public Material[] materials;
 
-    Sequence seq;
+   // Sequence seq;
+
+    new private Collider collider;
 
     private void Awake()
     {
         meshRenderer = GetComponent<MeshRenderer>();
         rigid = GetComponent<Rigidbody>();
+        collider = GetComponent<Collider>();
+        if (type == MonsterType.SLOW)
+        {
+            attackPower = 20;
+            heart = 2;
+            //minSize = 0.09f;
+            //maxSize = 0.1f;
+        }
+        //else if (type == MonsterType.FAST)
+        //{
+        //    minSize = 0.03f;
+        //    maxSize = 0.04f;
+        //}
     }
 
     /// <summary>
@@ -50,12 +72,14 @@ public class Monster : PoolableObject
     private void OnEnable()
     {
         ResetSprite();
-
+        collider.enabled = true;
+        /*
         seq = DOTween.Sequence();
 
-        seq.Append(transform.DOScaleZ(0.04f, Random.Range(0.4f, 0.7f)));
-        seq.Append(transform.DOScaleZ(0.05f, Random.Range(0.4f, 0.7f)));
+        seq.Append(transform.DOScaleZ(minSize, Random.Range(0.4f, 0.7f)));
+        seq.Append(transform.DOScaleZ(maxSize, Random.Range(0.4f, 0.7f)));
         seq.SetLoops(-1, LoopType.Restart);
+    */
     }
     private void Update()
     {
@@ -83,7 +107,7 @@ public class Monster : PoolableObject
         }
         if (other.transform.CompareTag("Chrome"))
         {
-            Die();
+            Damaged();
         }
         if (other.transform.CompareTag("Hole"))
         {
@@ -109,15 +133,28 @@ public class Monster : PoolableObject
         meshRenderer.material = materials[0];
     }
 
+    public void Damaged()
+    {
+        heart--;
+        if (heart <= 0)
+        {
+            Die();
+        }
+        else
+        {
+            SoundManager.Instance.MonsterDamageSound();
+            damageEffect.Play();
+        }
+    }
 
     public void Die()
     {
         //Á×´Â ¿¬Ãâ
-        seq.Kill();
+        collider.enabled = false;
         isDie = true;
         DieSprite();
         dieEffect.Play();
-        SoundManager.Instance.SfxSoundOn(1);
+        SoundManager.Instance.MonsterDieSound();
         Invoke("DieMonster", 1f);
     }
 
@@ -173,6 +210,8 @@ public class Monster : PoolableObject
         rigid.velocity = Vector3.zero;
         transform.position = Vector3.zero;
         transform.rotation = Quaternion.Euler(Vector3.zero);
+
+        GameManager.Instance.monsters.Remove(this);
         //isVaccine = false;
     }
 

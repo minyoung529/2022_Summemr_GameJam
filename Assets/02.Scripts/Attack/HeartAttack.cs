@@ -30,6 +30,12 @@ public class HeartAttack : PoolableObject
         obj.AddMonsterAction(Attack);
     }
 
+    private void OnEnable()
+    {
+        rigid.transform.localPosition = Vector3.zero;
+        rigid.WakeUp();
+    }
+
     void Update()
     {
         Gravity();
@@ -70,23 +76,28 @@ public class HeartAttack : PoolableObject
 
     private IEnumerator DestroyCoroutine()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(5f);
 
         if (gameObject.activeSelf && isExplosion)
+        {
+            transform.position = Vector3.zero;
             PoolManager.Instance.Push(this);
+        }
     }
 
     private void Attack(Collision collision)
     {
-        collision.transform.GetComponent<Monster>().Die();
+        collision.transform.GetComponent<Monster>().Damaged();
         Destroy();
     }
 
     public override void Reset()
     {
         rigid.velocity = Vector3.zero;
+        rigid.angularVelocity = Vector3.zero;
+        rigid.Sleep();
+
         isExplosion = false;
-        transform.localScale = Vector3.one;
         count = 0;
     }
 }

@@ -29,9 +29,13 @@ public class DrawLine : MonoBehaviour
     bool isCreate = false;
     bool isCreateNow = false;
 
+    [HideInInspector]
+    public int bulletCount = 10;
+
     private void Awake()
     {
         _mainCam = Camera.main;
+        bulletCount = 10;
     }
 
     void Update()
@@ -138,7 +142,6 @@ public class DrawLine : MonoBehaviour
             lr.SetPosition(i, v);
         }
 
-        int bulletCount = 30;
         for (int i = 0; i < bulletCount; i++)
         {
             PaintingBullet obj = PoolManager.Instance.Pop(bullet) as PaintingBullet;

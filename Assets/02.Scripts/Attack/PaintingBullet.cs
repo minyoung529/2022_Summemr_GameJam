@@ -48,7 +48,7 @@ public class PaintingBullet : PoolableObject
     {
         if (other.transform.CompareTag("Monster"))
         {
-            other.transform.GetComponent<Monster>().Die();
+            other.transform.GetComponent<Monster>().Damaged();
             //PoolManager.Instance.Push(this);
         }
     }

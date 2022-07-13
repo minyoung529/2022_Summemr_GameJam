@@ -5863,7 +5863,7 @@
     },
     "m_SurfaceType": 1,
     "m_AlphaMode": 0,
-    "m_TwoSided": false,
+    "m_TwoSided": true,
     "m_AlphaClip": true,
     "m_CustomEditorGUI": ""
 }
@@ -8535,7 +8535,7 @@
     "m_Group": {
         "m_Id": "735506a617194e688e4f1a53131cf34f"
     },
-    "m_Name": "RGB Stripes",
+    "m_Name": "RGB_STRIPES_ON",
     "m_DrawState": {
         "m_Expanded": true,
         "m_Position": {
@@ -11228,7 +11228,7 @@
     "m_Guid": {
         "m_GuidSerialized": "d53812e1-2514-4618-b713-85f702f61f14"
     },
-    "m_Name": "RGB Stripes",
+    "m_Name": "RGB_STRIPES_ON",
     "m_DefaultReferenceName": "BOOLEAN_246E9A00_ON",
     "m_OverrideReferenceName": "RGB_STRIPES_ON",
     "m_GeneratePropertyBlock": true,
@@ -12389,7 +12389,7 @@
     "m_ShaderOutputName": "Edge",
     "m_StageCapability": 3,
     "m_Value": {
-        "x": 1.0,
+        "x": 2.390000104904175,
         "y": 1.0,
         "z": 1.0,
         "w": 1.0

@@ -14,7 +14,8 @@ public class HeartButton : MonoBehaviour, IPointerClickHandler
     private Camera mainCam;
 
     private int heartCount = 0;
-    private const int MAX_HEART_COUNT = 5;
+    public int emojiCount = 5;
+    private const int MAX_HEART_COUNT = 3;
 
     private Image image;
     [SerializeField] private Sprite[] buttonSprites;
@@ -24,6 +25,7 @@ public class HeartButton : MonoBehaviour, IPointerClickHandler
     {
         mainCam = Camera.main;
         image = GetComponent<Image>();
+        emojiCount = 3;
     }
 
     private void OnEnable()
@@ -41,10 +43,12 @@ public class HeartButton : MonoBehaviour, IPointerClickHandler
 
         if (heartCount > MAX_HEART_COUNT)
         {
+        SoundManager.Instance.SfxSoundOn(7);
             StartCoroutine(ExplosionHearts());
         }
         else
         {
+        SoundManager.Instance.SfxSoundOn(6);
             GenerateHeart();
         }
     }
@@ -56,7 +60,7 @@ public class HeartButton : MonoBehaviour, IPointerClickHandler
 
         if (Physics.Raycast(ray, 100f))
         {
-            for (int i = 0; i < 6; ++i)
+            for (int i = 0; i < emojiCount; ++i)
             {
                 HeartAttack heart = PoolManager.Instance.Pop(heartAttack) as HeartAttack;
 
@@ -64,7 +68,7 @@ public class HeartButton : MonoBehaviour, IPointerClickHandler
                 pos.x += Random.Range(-1f, 1f);
                 pos.z += Random.Range(-1f, 1f);
 
-                heart.transform.position = pos  ;
+                heart.transform.position = pos;
 
                 heart.AppearHeart();
                 heartAttacks.Add(heart);
@@ -92,9 +96,9 @@ public class HeartButton : MonoBehaviour, IPointerClickHandler
             }
 
             initPos.x += 8.8f;
-            yield return  null;
+            yield return null;
         }
 
-        
+
     }
 }

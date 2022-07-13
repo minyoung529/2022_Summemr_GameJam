@@ -16,7 +16,6 @@ public class BasicAttack : MonoBehaviour
     void Start()
     {
         mainCam = Camera.main;
-        monster = new List<Monster>(FindObjectsOfType<Monster>());
     }
 
     void Update()
@@ -31,14 +30,14 @@ public class BasicAttack : MonoBehaviour
 
     private void Attack()
     {
-        monster = new List<Monster>(FindObjectsOfType<Monster>());
+        monster = GameManager.Instance.monsters;
 
         Predicate<Monster> match = (x) => Vector3.Distance(x.transform.position, attackPosition) < attackDistance;
         List<Monster> targetMonster = monster.FindAll(match);
 
         foreach(Monster monster in targetMonster)
         {
-            monster.Die();
+            monster.Damaged();
             //monster.ExplosionDamage(attackPosition, force);
         }
     }
@@ -57,6 +56,6 @@ public class BasicAttack : MonoBehaviour
             effect = Instantiate(effectPrefab, attackPosition, Quaternion.Euler(Vector3.right * -90f), null);
         }
 
-        Destroy(effect, 0.3f);
+        Destroy(effect, 0.8f);
     }
 }

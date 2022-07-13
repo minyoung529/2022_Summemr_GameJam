@@ -423,3 +423,7 @@ MonoBehaviour:
   prefab: {fileID: 1196750702617407679, guid: bc44430bb0fcfc94c892f958df266d81, type: 3}
   startAlpha: 1
   delay: 0.0001
+  center: {fileID: 4814020957670120063}
+  g: {fileID: 4814020958514690683}
+  r: {fileID: 4814020958200061472}
+  y: {fileID: 4814020957897554265}

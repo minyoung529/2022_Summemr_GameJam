@@ -43,6 +43,14 @@ public class TrailScript : PoolableObject
         PoolManager.Instance.Push(this);
     }
 
+    public void SetSprite(Sprite center, Sprite g, Sprite r, Sprite y)
+    {
+        images[0].sprite = center;
+        images[1].sprite = g;
+        images[2].sprite = r;
+        images[3].sprite = y;
+    }
+
     public override void Reset()
     {
     }

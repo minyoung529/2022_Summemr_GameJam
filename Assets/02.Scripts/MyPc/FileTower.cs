@@ -40,13 +40,14 @@ public class FileTower : MonoBehaviour
         if (collision.collider.CompareTag("Monster"))
         {
             //���� ���� type�� ���� ���ݹ��� ���� �뷮 ����
+                int attack = collision.collider.GetComponent<Monster>().attackPower;
             if (fileType == 1)
             {
-                GameManager.Instance.dadTowerGage += 10;
+                GameManager.Instance.dadTowerGage += attack;
             }
             if (fileType == 2)
             {
-                GameManager.Instance.brotherTowerGage += 10;
+                GameManager.Instance.brotherTowerGage += attack;
             }
 
             collision.transform.GetComponent<Monster>().DieMonster();
