@@ -141,7 +141,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &37291558
 RectTransform:
   m_ObjectHideFlags: 0
@@ -158,10 +158,10 @@ RectTransform:
   m_Father: {fileID: 212099858}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 16.679993, y: -629.57}
+  m_SizeDelta: {x: 400, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &37291559
 MonoBehaviour:
@@ -215,6 +215,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iconImage: {fileID: 1846649323}
   noticeText: {fileID: 1407432958}
+  canUse: 1
 --- !u!1 &44748680
 GameObject:
   m_ObjectHideFlags: 0
@@ -581,6 +582,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9be4b150ca5e5be4b81fc2c424253241, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  panelPrefab: {fileID: 37291561}
 --- !u!1001 &269518735
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -734,6 +736,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: bf03678b7adc94b498773a18d529b3b0, type: 3}
   - {fileID: 21300000, guid: 19b97eadc3d97054bbceb432b263f34a, type: 3}
   cooltimeImage: {fileID: 1094288431}
+  programName: 
   windowImage: {fileID: 1965707720}
   mail: {fileID: 1965707721}
   targetPicker: {fileID: 919332801}
@@ -831,7 +834,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afc8a8b0aa3e9034eaabaa556b0a4107, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectColor: {r: 0.19215685, g: 0.8809186, b: 1, a: 0.5686275}
+  selectColor: {r: 0.41960785, g: 0.9843137, b: 1, a: 0.56078434}
 --- !u!1 &273753638
 GameObject:
   m_ObjectHideFlags: 0
@@ -6057,6 +6060,7 @@ RectTransform:
   - {fileID: 1015103520}
   - {fileID: 1849386741}
   - {fileID: 1524909627}
+  - {fileID: 1854951350}
   m_Father: {fileID: 44748681}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6095,13 +6099,14 @@ MonoBehaviour:
   coolImage: {fileID: 970865005}
   upgradeEffect: {fileID: 1524909628}
   curCoolTime: 5
-  image: {fileID: 0}
+  image: {fileID: 1854951351}
   upgradeButton: {fileID: 1849386744}
   sprites:
+  - {fileID: 21300000, guid: 10272772068b680429fbbfa7b053cdac, type: 3}
   - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 21300000, guid: e873cd56af9801244b7d124daf3a3673, type: 3}
   cooltimeImage: {fileID: 970865005}
+  programName: "\uD06C\uB871"
   chrome:
   - {fileID: 668151493}
   - {fileID: 842279754}
@@ -6138,7 +6143,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: fb592ba706a039e4aa69049da4e1415a, type: 3}
   - {fileID: 21300000, guid: 4572ae744cf90f14495b2ba0aa6e3e88, type: 3}
   - {fileID: 21300000, guid: 4596589bfba71534ead479c98fe6dc99, type: 3}
-  chromes: []
 --- !u!114 &1540880088
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6233,7 +6237,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afc8a8b0aa3e9034eaabaa556b0a4107, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectColor: {r: 0.19215685, g: 0.8809186, b: 1, a: 0.5686275}
+  selectColor: {r: 0.41960785, g: 0.9843137, b: 1, a: 0.56078434}
 --- !u!1 &1543893784
 GameObject:
   m_ObjectHideFlags: 0
@@ -11947,6 +11951,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 2b57496d94883c541a4e76ed9750f49e, type: 3}
   - {fileID: 21300000, guid: 1002bc6b8ca712443acee7fd043a8353, type: 3}
   cooltimeImage: {fileID: 831537467}
+  programName: "\uADF8\uB9BC\uD310"
   paintUI: {fileID: 500248140}
   paint: {fileID: 1734114445}
   drawLine: {fileID: 3171332940395822276}
@@ -12044,7 +12049,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afc8a8b0aa3e9034eaabaa556b0a4107, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectColor: {r: 0.19215685, g: 0.8809186, b: 1, a: 0.5686275}
+  selectColor: {r: 0.41960785, g: 0.9843137, b: 1, a: 0.56078434}
 --- !u!1 &1678512926
 GameObject:
   m_ObjectHideFlags: 0
@@ -12479,6 +12484,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: db73218b4ce66f145938e672c7bbf715, type: 3}
   - {fileID: 21300000, guid: 000bd660071479c47aa022a5afb9dca4, type: 3}
   cooltimeImage: {fileID: 322703501}
+  programName: "\uD734\uC9C0\uD1B5"
   holeScript: {fileID: 1327657316}
   duration: 3
   cooldown: 4
@@ -12538,7 +12544,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afc8a8b0aa3e9034eaabaa556b0a4107, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectColor: {r: 0.19215685, g: 0.8809186, b: 1, a: 0.5686275}
+  selectColor: {r: 0.41960785, g: 0.9843137, b: 1, a: 0.56078434}
 --- !u!1 &1763344897
 GameObject:
   m_ObjectHideFlags: 0
@@ -13191,6 +13197,81 @@ ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 19800000, guid: c9fda59c7a8ae6541ba43453ee86c60e, type: 3}
   m_PrefabInstance: {fileID: 1853867163}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1854951349
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1854951350}
+  - component: {fileID: 1854951352}
+  - component: {fileID: 1854951351}
+  m_Layer: 5
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1854951350
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1854951349}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1540880085}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1854951351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1854951349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_RaycastTarget: 0
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1854951352
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1854951349}
+  m_CullTransparentMesh: 1
 --- !u!1 &1860968009
 GameObject:
   m_ObjectHideFlags: 0
@@ -14644,6 +14725,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: efa83fa65708df947888f2003673136f, type: 3}
   - {fileID: 21300000, guid: 714df82a6cd59064bb055e9a51ac4e4c, type: 3}
   cooltimeImage: {fileID: 816238372}
+  programName: "\uC778\uC2A4\uD0C0\uADF8\uB7AD"
   windowImage: {fileID: 1476351456}
   heartButton: {fileID: 510228070}
 --- !u!114 &2106835656
@@ -14740,7 +14822,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afc8a8b0aa3e9034eaabaa556b0a4107, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectColor: {r: 0.19215685, g: 0.8809186, b: 1, a: 0.5686275}
+  selectColor: {r: 0.41960785, g: 0.9843137, b: 1, a: 0.56078434}
 --- !u!1 &2113991382
 GameObject:
   m_ObjectHideFlags: 0

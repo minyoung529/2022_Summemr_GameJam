@@ -12,6 +12,10 @@ public class CloseButton : MonoBehaviour
     void Start()
     {
         button = GetComponent<Button>();
-        button.onClick.AddListener(() => panel.transform.DOScale(0f, 0.3f).OnComplete(()=> panel.gameObject.SetActive(false)));
+        button.onClick.AddListener(() => panel.transform.DOScale(0f, 0.3f).OnComplete(() =>
+        {
+            panel.gameObject.SetActive(false);
+            panel.transform.DOKill();
+        }));
     }
 }
