@@ -3513,7 +3513,7 @@ MonoBehaviour:
   goldText: {fileID: 1313016155}
   score: 0
   bestScore: 0
-  gold: 100000
+  gold: 0
   dadTowerGage: 0
   brotherTowerGage: 0
   levelCount: 0
@@ -15666,8 +15666,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4131712329925667800}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 3.999, y: 0, z: -1.442}
-  m_LocalScale: {x: 0.1353869, y: 0.1353869, z: 0.1353869}
+  m_LocalPosition: {x: 4.084, y: 0, z: -1.547}
+  m_LocalScale: {x: 0.11437485, y: 0.11437485, z: 0.11437485}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 16
@@ -16330,8 +16330,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8885342125998059103}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -1.09, y: -0, z: 1.6208}
-  m_LocalScale: {x: 0.13389632, y: 0.13389632, z: 0.13389632}
+  m_LocalPosition: {x: -1.0265, y: 0, z: 1.5573}
+  m_LocalScale: {x: 0.12120295, y: 0.12120295, z: 0.12120295}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 17
