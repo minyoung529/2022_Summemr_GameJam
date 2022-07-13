@@ -21,7 +21,7 @@ public class ChromeCollisionImpact : PoolableObject
 
     private IEnumerator DurationCoroutine()
     {
-        yield return (duration);
+        yield return new WaitForSeconds(duration);
         PoolManager.Instance.Push(this);
     }
 

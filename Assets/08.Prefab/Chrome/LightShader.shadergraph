@@ -254,7 +254,7 @@
     "m_Type": "UnityEditor.ShaderGraph.Texture2DMaterialSlot",
     "m_ObjectId": "10aa5b3af3de4c438839f3acd7275b71",
     "m_Id": 0,
-    "m_DisplayName": "MainText",
+    "m_DisplayName": "MainTex",
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",

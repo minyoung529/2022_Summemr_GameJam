@@ -111,6 +111,7 @@ public class Chrome : MonoBehaviour
                 moveDir = dir;
                 ChromeCollisionImpact impact = PoolManager.Instance.Pop(collisionImpact) as ChromeCollisionImpact;
                 impact.transform.position = hit.point;
+                transform.position += new Vector3(0, 0, 1f);
                 impact.SpawnImpact();
             }
         }

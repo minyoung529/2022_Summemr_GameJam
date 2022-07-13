@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1989244217302258489}
   - component: {fileID: 1337158236603953261}
   - component: {fileID: 4980077181281542000}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Smoke Flash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4885,7 +4885,7 @@ GameObject:
   - component: {fileID: 5180453423374907343}
   - component: {fileID: 1660374932088005666}
   - component: {fileID: 2736307223712584621}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9759,7 +9759,7 @@ GameObject:
   - component: {fileID: 4666200849838376129}
   - component: {fileID: 792488012654229326}
   - component: {fileID: 4382088610707315958}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Smoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14633,7 +14633,7 @@ GameObject:
   - component: {fileID: 7985603114063707197}
   - component: {fileID: 7985603114063707187}
   - component: {fileID: 7985603114063707186}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Shockwave
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19509,7 +19509,7 @@ GameObject:
   - component: {fileID: 7985603114883174403}
   - component: {fileID: 7985603114883174407}
   - component: {fileID: 7985603114883174406}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ChromeImpact
   m_TagString: Untagged
   m_Icon: {fileID: 0}
