@@ -15,6 +15,7 @@ public class LoadingManager : MonoBehaviour
 
     private AudioSource audioSource;
     [SerializeField] private AudioClip typingSound;
+    [SerializeField] private AudioClip windowSound;
 
     [SerializeField] private MeshRenderer blackScreen;
     [SerializeField] private Material loadingMat;
@@ -22,6 +23,7 @@ public class LoadingManager : MonoBehaviour
     [SerializeField] private GameObject startMenu;
     private void Awake()
     {
+        startMenu.SetActive(false);
         audioSource = GetComponent<AudioSource>();
         textPath = Application.dataPath + "/02.Scripts/TitleLoading/LoadingText.txt";
         Debug.Log(textPath);
@@ -50,11 +52,13 @@ public class LoadingManager : MonoBehaviour
         text.gameObject.SetActive(false);
         blackScreen.material = loadingMat;
 
+        audioSource.Stop();
         StartCoroutine(Loading());
     }
 
     private IEnumerator Loading()
     {
+        PlayWindowSound();
         loadingFrame.gameObject.SetActive(true);
         yield return new WaitForSeconds(3f);
         loadingFrame.gameObject.SetActive(false);
@@ -65,6 +69,12 @@ public class LoadingManager : MonoBehaviour
     private void PlayTypingSound()
     {
         audioSource.clip = typingSound;
+        audioSource.Play();
+    }
+    
+    private void PlayWindowSound()
+    {
+        audioSource.clip = windowSound;
         audioSource.Play();
     }
 }

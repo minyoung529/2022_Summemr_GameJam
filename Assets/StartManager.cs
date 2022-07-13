@@ -7,17 +7,18 @@ public class StartManager : MonoBehaviour
     [SerializeField]
     AudioSource startAudio;
     [SerializeField]
-    MeshRenderer startMat;
+    GameObject VV;
     [SerializeField]
     GameObject canvas;
 
     public void StartGame()
     {
-        startMat.material.color = Color.cyan;
-        canvas.SetActive(false);
-        startAudio.Play();
-        Invoke("GoMain", 2f);
+        canvas.SetActive(true);
+        VV.SetActive(true);
+        //startAudio.Play();
+        Invoke("GoMain", 0.7f);
     }
+
     void GoMain()
     {
         UIManager.Instance.SceneChange("Main");
