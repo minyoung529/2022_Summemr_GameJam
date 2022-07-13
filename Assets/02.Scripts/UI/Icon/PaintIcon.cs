@@ -13,7 +13,7 @@ public class PaintIcon : ProgramIcon
 
     protected override void ExecuteProgram()
     {
-        SoundManager.Instance.TabOpen();
+        SoundManager.Instance.ProgramOpen();
         OnCoolTime();
         paintUI.SetActive(true);
         paint.SetActive(true);

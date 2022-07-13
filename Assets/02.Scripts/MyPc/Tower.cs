@@ -12,6 +12,8 @@ public class Tower : MonoBehaviour
     float fullSpeed;
 
     [SerializeField]
+    MeshRenderer overMesh;
+    [SerializeField]
     GameObject brokenImage;
 
     // 게이지바
@@ -34,20 +36,22 @@ public class Tower : MonoBehaviour
 
     private void Update()
     {
-        if(GameManager.Instance.dadTowerGage >= maxTowerGage/2 && GameManager.Instance.brotherTowerGage >= maxTowerGage/2)
+
+        if (GameManager.Instance.dadTowerGage >= maxTowerGage && GameManager.Instance.brotherTowerGage >= maxTowerGage)
+        {
+            PlayerPrefs.SetInt("SCORE", GameManager.Instance.score);
+            UIManager.Instance.SceneChange("Over");
+        }
+        else if (GameManager.Instance.dadTowerGage >= maxTowerGage/2 && GameManager.Instance.brotherTowerGage >= maxTowerGage/2)
         {
             // 경고
             if (isBroken) return;
+            SoundManager.Instance.SfxSoundOn(10);
             isBroken = true;
             brokenImage.SetActive(true);
             CameraShake.Instance.Shake();
         }
-        else if (GameManager.Instance.dadTowerGage >= maxTowerGage && GameManager.Instance.brotherTowerGage >= maxTowerGage)
-        {
-            // 게임 오버
-            PlayerPrefs.SetInt("SCORE", GameManager.Instance.score);
-            UIManager.Instance.SceneChange("Over");
-        }
+       
         CheckGage();
 
     }

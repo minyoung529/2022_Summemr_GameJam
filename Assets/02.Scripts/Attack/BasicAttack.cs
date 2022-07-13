@@ -57,6 +57,6 @@ public class BasicAttack : MonoBehaviour
             effect = Instantiate(effectPrefab, attackPosition, Quaternion.Euler(Vector3.right * -90f), null);
         }
 
-        Destroy(effect, 0.3f);
+        Destroy(effect, 0.8f);
     }
 }
