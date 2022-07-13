@@ -3506,10 +3506,10 @@ RectTransform:
   m_Father: {fileID: 383652671}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 258.125, y: -50}
+  m_SizeDelta: {x: 85, y: 85}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1004275467
 MonoBehaviour:
@@ -4327,10 +4327,10 @@ RectTransform:
   m_Father: {fileID: 383652671}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 161.14499, y: -50}
+  m_SizeDelta: {x: 85, y: 85}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1232555398
 MonoBehaviour:
@@ -4612,10 +4612,10 @@ RectTransform:
   m_Father: {fileID: 383652671}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 355.10498, y: -50}
+  m_SizeDelta: {x: 85, y: 85}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1302274232
 MonoBehaviour:
@@ -12460,10 +12460,10 @@ RectTransform:
   m_Father: {fileID: 383652671}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 64.16499, y: -50}
+  m_SizeDelta: {x: 85, y: 85}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1901012071
 MonoBehaviour:
@@ -12868,7 +12868,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1965707720
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12912,10 +12912,8 @@ MonoBehaviour:
   - {fileID: 1232555398}
   - {fileID: 1004275467}
   - {fileID: 1302274232}
-  - {fileID: 0}
   color:
   - {r: 1, g: 0.7396226, b: 0.7396226, a: 1}
-  - {r: 1, g: 0.740607, b: 0.56981134, a: 1}
   - {r: 1, g: 0.98065794, b: 0.56037736, a: 1}
   - {r: 0.70099676, g: 0.9245283, b: 0.68380207, a: 1}
   - {r: 0.60752934, g: 0.83172673, b: 0.8773585, a: 1}
