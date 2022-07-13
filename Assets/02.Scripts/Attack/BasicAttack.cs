@@ -16,7 +16,6 @@ public class BasicAttack : MonoBehaviour
     void Start()
     {
         mainCam = Camera.main;
-        monster = new List<Monster>(FindObjectsOfType<Monster>());
     }
 
     void Update()
@@ -31,7 +30,7 @@ public class BasicAttack : MonoBehaviour
 
     private void Attack()
     {
-        monster = new List<Monster>(FindObjectsOfType<Monster>());
+        monster = GameManager.Instance.monsters;
 
         Predicate<Monster> match = (x) => Vector3.Distance(x.transform.position, attackPosition) < attackDistance;
         List<Monster> targetMonster = monster.FindAll(match);

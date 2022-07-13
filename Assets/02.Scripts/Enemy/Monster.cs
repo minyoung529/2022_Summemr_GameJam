@@ -54,12 +54,6 @@ public class Monster : PoolableObject
     {
         ResetSprite();
         collider.enabled = true;
-
-        seq = DOTween.Sequence();
-
-        seq.Append(transform.DOScaleZ(0.04f, Random.Range(0.4f, 0.7f)));
-        seq.Append(transform.DOScaleZ(0.05f, Random.Range(0.4f, 0.7f)));
-        seq.SetLoops(-1, LoopType.Restart);
     }
     private void Update()
     {
@@ -117,7 +111,6 @@ public class Monster : PoolableObject
     public void Die()
     {
         //Á×´Â ¿¬Ãâ
-        seq.Kill();
         collider.enabled = false;
         isDie = true;
         DieSprite();
@@ -178,6 +171,8 @@ public class Monster : PoolableObject
         rigid.velocity = Vector3.zero;
         transform.position = Vector3.zero;
         transform.rotation = Quaternion.Euler(Vector3.zero);
+
+        GameManager.Instance.monsters.Remove(this);
         //isVaccine = false;
     }
 }

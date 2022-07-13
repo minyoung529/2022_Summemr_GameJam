@@ -156,7 +156,7 @@ public class Mail : MonoBehaviour
         isCorrect = false;
         targetPicker.gameObject.SetActive(false);
 
-        List<Monster> monsters = new List<Monster>(FindObjectsOfType<Monster>());
+        List<Monster> monsters = GameManager.Instance.monsters;
         monsters = monsters.FindAll(x => Vector3.Distance(x.transform.position, targetPicker.position) <= distance);
 
         foreach (Monster m in monsters)
@@ -178,7 +178,7 @@ public class Mail : MonoBehaviour
     {
         yield return new WaitForSeconds(delaySecond * 2f);
 
-        List<Monster> monsters = new List<Monster>(FindObjectsOfType<Monster>());
+        List<Monster> monsters = GameManager.Instance.monsters;
         monsters = monsters.FindAll(x => x.IsVaccine);
 
         foreach (Monster monster in monsters)

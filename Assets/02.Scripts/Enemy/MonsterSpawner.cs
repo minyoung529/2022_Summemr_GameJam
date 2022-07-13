@@ -23,6 +23,7 @@ public class MonsterSpawner : MonoBehaviour
         while (true)
         {
             Monster obj = PoolManager.Instance.Pop(monsterPrefab) as Monster;
+            GameManager.Instance.monsters.Add(obj);
             obj.transform.position = GetRandomCirclePoint();
             obj.spawner = this;
             obj.SetTarget(tower[Random.Range(0, tower.Length)]);

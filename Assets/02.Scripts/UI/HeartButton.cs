@@ -14,7 +14,7 @@ public class HeartButton : MonoBehaviour, IPointerClickHandler
     private Camera mainCam;
 
     private int heartCount = 0;
-    public int emojiCount = 3;
+    public int emojiCount = 5;
     private const int MAX_HEART_COUNT = 3;
 
     private Image image;
