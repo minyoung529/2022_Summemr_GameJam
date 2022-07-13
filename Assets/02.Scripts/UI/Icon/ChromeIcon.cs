@@ -36,6 +36,7 @@ public class ChromeIcon : ProgramIcon
     }
     protected override void ChildLevelUp()
     {
+        chrome[level - 1].gameObject.SetActive(true);
         foreach(Image image in reds)
         {
             image.sprite = redSprites[level - 1];
