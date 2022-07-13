@@ -11,6 +11,17 @@ public class HoleScript : MonoBehaviour
     private BoxCollider range;
     Mesh GeneratedMesh;
 
+    public float holeTime;
+    private float holeSize = 1f;
+    public float HoleSize
+    {
+        get => holeSize;
+        set
+        {
+            holeSize = value;
+        }
+    }
+
     public void Awake()
     {
         range = GetComponent<BoxCollider>();
@@ -28,7 +39,7 @@ public class HoleScript : MonoBehaviour
         float time = 0;
         while(time <= 1f)
         {
-            transform.localScale = Vector3.Lerp(Vector3.zero, Vector3.one * initialScale, time);
+            transform.localScale = Vector3.Lerp(Vector3.zero, Vector3.one * holeSize, time);
             time += Time.deltaTime;
             yield return null;
         }
@@ -45,7 +56,7 @@ public class HoleScript : MonoBehaviour
         float time = 0;
         while (time <= 1f)
         {
-            transform.localScale = Vector3.Lerp(Vector3.one * initialScale, Vector3.zero, time);
+            transform.localScale = Vector3.Lerp(Vector3.one * holeSize, Vector3.zero, time);
             time += Time.deltaTime;
             yield return null;
         }
@@ -59,7 +70,7 @@ public class HoleScript : MonoBehaviour
         {
             transform.hasChanged = false;
             hole2DCollider.transform.position = new Vector2(transform.position.x, transform.position.z);
-            hole2DCollider.transform.localScale = transform.localScale * initialScale;
+            hole2DCollider.transform.localScale = transform.localScale * holeSize;
             MakeHole2D();
             Make3DMeshCollider();
         }

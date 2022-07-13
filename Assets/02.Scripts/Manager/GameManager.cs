@@ -12,8 +12,12 @@ public class GameManager : Singleton<GameManager>
     [SerializeField]
     MeshRenderer startMat;
 
+    [SerializeField]
+    Text goldText;
+
     public int score;
     public int bestScore;
+    public int gold;
     
     // 현재 게이지
     public float dadTowerGage;
@@ -34,11 +38,17 @@ public class GameManager : Singleton<GameManager>
     private void Update()
     {
         UpdateScore();
+        UpdateGold();
     }
 
     void UpdateScore()
     {
         scoreText.text = string.Format($"SCORE\n{score}");
+    }
+
+    void UpdateGold()
+    {
+        goldText.text = string.Format($"GOLD\n{gold}");
     }
 
     void UpScore()
