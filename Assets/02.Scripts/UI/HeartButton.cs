@@ -41,10 +41,12 @@ public class HeartButton : MonoBehaviour, IPointerClickHandler
 
         if (heartCount > MAX_HEART_COUNT)
         {
+        SoundManager.Instance.SfxSoundOn(7);
             StartCoroutine(ExplosionHearts());
         }
         else
         {
+        SoundManager.Instance.SfxSoundOn(6);
             GenerateHeart();
         }
     }

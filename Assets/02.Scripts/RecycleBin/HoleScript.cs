@@ -23,6 +23,7 @@ public class HoleScript : MonoBehaviour
 
     IEnumerator ExtendHole()
     {
+        SoundManager.Instance.SfxSoundOn(8);
         range.enabled = true;
         float time = 0;
         while(time <= 1f)
@@ -40,6 +41,7 @@ public class HoleScript : MonoBehaviour
 
     IEnumerator ContractHole()
     {
+        SoundManager.Instance.SfxSoundOn(9);
         float time = 0;
         while (time <= 1f)
         {

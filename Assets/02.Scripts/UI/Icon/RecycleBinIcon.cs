@@ -14,6 +14,7 @@ public class RecycleBinIcon : ProgramIcon
         if(!isCooldown)
         {
             OnCoolTime();
+            SoundManager.Instance.ProgramOpen();
             StartCoroutine(CooldownCoroutine());
             holeScript.EnableHole();
             StartCoroutine(DurationCoroutine());

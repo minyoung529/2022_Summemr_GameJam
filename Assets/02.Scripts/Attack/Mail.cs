@@ -128,6 +128,7 @@ public class Mail : MonoBehaviour
     {
         if (inputs[inputs.Count - 1] == address[inputs.Count - 1] - '0')
         {
+            SoundManager.Instance.SfxSoundOn(3);
             inputImages[inputs.Count - 1].DOColor(color[inputs.Count - 1], 0.5f);
 
             if (inputs.Count == MAX_ADDRESS_COUNT)
@@ -139,6 +140,7 @@ public class Mail : MonoBehaviour
         }
         else
         {
+            SoundManager.Instance.SfxSoundOn(2);
             rectTransform.DOShakeAnchorPos(1f, 10)
                 .OnComplete(() => transform.DOScale(0f, 0.3f)
                 .OnComplete(() => gameObject.SetActive(false)));
@@ -147,6 +149,7 @@ public class Mail : MonoBehaviour
 
     private void ActVirus()
     {
+        SoundManager.Instance.SfxSoundOn(11);
         isCorrect = false;
         targetPicker.gameObject.SetActive(false);
 

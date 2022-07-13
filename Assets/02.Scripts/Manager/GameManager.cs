@@ -9,6 +9,8 @@ public class GameManager : Singleton<GameManager>
     Text scoreText;
     [SerializeField]
     Text bestScoreText;
+    [SerializeField]
+    MeshRenderer startMat;
 
     public int score;
     public int bestScore;
@@ -26,8 +28,7 @@ public class GameManager : Singleton<GameManager>
 
     private void Awake()
     {
-        bestScore = PlayerPrefs.GetInt("BESTSCORE", 0);
-        bestScoreText.text = string.Format($"BEST SCORE\n{bestScore}");
+        GameStartReset();
         InvokeRepeating("UpScore", 1f, 1f);
     }
     private void Update()
@@ -49,4 +50,13 @@ public class GameManager : Singleton<GameManager>
             PlayerPrefs.SetInt("BESTSCORE", bestScore);
         }
     }
+
+    void GameStartReset()
+    {
+        score = 0;
+        startMat.material.color = Color.white;
+        bestScore = PlayerPrefs.GetInt("BESTSCORE", 0);
+        bestScoreText.text = string.Format($"BEST SCORE\n{bestScore}");
+    }
+
 }

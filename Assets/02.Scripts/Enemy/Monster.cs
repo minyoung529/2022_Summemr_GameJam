@@ -117,7 +117,7 @@ public class Monster : PoolableObject
         isDie = true;
         DieSprite();
         dieEffect.Play();
-        SoundManager.Instance.SfxSoundOn(1);
+        SoundManager.Instance.MonsterDieSound();
         Invoke("DieMonster", 1f);
     }
 

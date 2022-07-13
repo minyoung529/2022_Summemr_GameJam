@@ -7,12 +7,16 @@ public class ChromeIcon : ProgramIcon
     [SerializeField] private Chrome[] chrome;
     protected override void ExecuteProgram()
     {
-        SoundManager.Instance.TabOpen();
+        Invoke("ChromeOnSound", 0.2f);
         OnCoolTime();
-        //OnCoolTime();
         for(int i = 0; i < chrome.Length; i++)
         {
             chrome[i].EnableChrome();
         }
+    }
+
+    void ChromeOnSound()
+    {
+        SoundManager.Instance.SfxSoundOn(12);
     }
 }

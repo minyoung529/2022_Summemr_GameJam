@@ -63,6 +63,7 @@ public class Chrome : MonoBehaviour
             time += Time.deltaTime;
             yield return null;
         }
+        SoundManager.Instance.SfxSoundOn(13);
         DisableChrome();
     }
 
