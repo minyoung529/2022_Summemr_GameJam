@@ -34,6 +34,7 @@ public class SoundManager : Singleton<SoundManager>
     // 11 : 메일 바이러스 떨어뜨리는 효과음
     // 12 : 크롬 스핀 효과음
     // 13 : 되감기 효과음
+    // 14 : 업그레이드 효과음
 
 
     [SerializeField, Header("SFX 효과음")]
@@ -81,5 +82,9 @@ public class SoundManager : Singleton<SoundManager>
     public void MonsterDieSound()
     {
         monsterAudio.PlayOneShot(monsterSFXClip[0]);
+    }
+    public void MonsterDamageSound()
+    {
+        monsterAudio.PlayOneShot(monsterSFXClip[1]);
     }
 }

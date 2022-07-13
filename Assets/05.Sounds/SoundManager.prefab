@@ -180,6 +180,7 @@ MonoBehaviour:
   monsterAudio: {fileID: 1179793968985208449}
   monsterSFXClip:
   - {fileID: 8300000, guid: 2d1b7d162d6b85541a5324db9fcc973e, type: 3}
+  - {fileID: 8300000, guid: b694c63fedb31b24987a3aec0b1e7582, type: 3}
   tabSfxSource: {fileID: 601372841449238792}
   tabSfxClip:
   - {fileID: 8300000, guid: 5fd48ba2d5fda7b44978ddf03a7c6352, type: 3}
@@ -199,6 +200,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: e139fc8c40bc7a242b9576f0b5851224, type: 3}
   - {fileID: 8300000, guid: efbf0f71b5647124e98eff460e064dd4, type: 3}
   - {fileID: 8300000, guid: 6e1d2cd085f4c854e8f636e3271790a7, type: 3}
+  - {fileID: 8300000, guid: a4a9327e98855524c846cc8e2f559e96, type: 3}
 --- !u!1 &601372841449238807
 GameObject:
   m_ObjectHideFlags: 0

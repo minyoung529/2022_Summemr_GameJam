@@ -8,6 +8,8 @@ public abstract class ProgramIcon : MonoBehaviour, IPointerClickHandler
 {
     [SerializeField]
     Image coolImage;
+    [SerializeField]
+    ParticleSystem upgradeEffect;
 
     [SerializeField]
     float curCoolTime;
@@ -76,6 +78,9 @@ public abstract class ProgramIcon : MonoBehaviour, IPointerClickHandler
             level++;
             ++GameManager.Instance.levelArray[transform.GetSiblingIndex()];
             GameManager.Instance.AddLevelCount();
+            
+            upgradeEffect.Play();
+            SoundManager.Instance.SfxSoundOn(14);
         }
         else
         {
