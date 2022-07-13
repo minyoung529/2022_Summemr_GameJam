@@ -47,6 +47,7 @@ public class HoleScript : MonoBehaviour
             time += Time.deltaTime;
             yield return null;
         }
+        transform.localScale = Vector3.zero;
         range.enabled = false;
     }
 
