@@ -19,7 +19,7 @@ public abstract class ProgramIcon : MonoBehaviour, IPointerClickHandler
     protected int level = 1;
     private const int MAX_LEVEL = 3;
 
-    private Image image;
+    public Image image;
     public Button upgradeButton;
     private int[] cost = { 1000, 10000 };
     public Sprite[] sprites;
