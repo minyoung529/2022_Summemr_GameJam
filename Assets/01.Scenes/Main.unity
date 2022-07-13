@@ -5201,6 +5201,10 @@ PrefabInstance:
       propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4398329243476007297, guid: 9ab46ce54c236d84b827d5d9bcae342b, type: 3}
+      propertyPath: simulationSpeed
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 4398329243476007299, guid: 9ab46ce54c236d84b827d5d9bcae342b, type: 3}
       propertyPath: playOnAwake
       value: 0
@@ -15756,6 +15760,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   bulletCount: 10
+  level: 1
 --- !u!4 &3171332940395822277
 Transform:
   m_ObjectHideFlags: 0

@@ -32,6 +32,9 @@ public class DrawLine : MonoBehaviour
     [HideInInspector]
     public int bulletCount = 10;
 
+    [HideInInspector]
+    public int level = 1;
+
     private void Awake()
     {
         _mainCam = Camera.main;
@@ -150,6 +153,7 @@ public class DrawLine : MonoBehaviour
             Vector3 euler = obj.transform.eulerAngles;
             euler.y = Random.Range(0, 360f);
             obj.transform.eulerAngles = euler;
+            obj.ChangeColor(level);
 
             float x = Random.Range(0f, 1f);
             float z = Random.Range(0f, 1f);
