@@ -180,7 +180,7 @@ public class Mail : MonoBehaviour
 
         foreach (Monster monster in monsters)
         {
-            monster.Die();
+            monster.Damaged();
         }
 
         gameObject.SetActive(false);

@@ -78,7 +78,7 @@ public class HeartAttack : PoolableObject
 
     private void Attack(Collision collision)
     {
-        collision.transform.GetComponent<Monster>().Die();
+        collision.transform.GetComponent<Monster>().Damaged();
         Destroy();
     }
 
