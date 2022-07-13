@@ -8,7 +8,7 @@ public class Mail : MonoBehaviour
 {
     [SerializeField] private Button sendButton;
     private string address;
-    private const int MAX_ADDRESS_COUNT = 4;
+    private const int MAX_ADDRESS_COUNT = 3;
 
     private RectTransform rectTransform;
 
@@ -27,6 +27,7 @@ public class Mail : MonoBehaviour
 
     public Image[] inputImages;
     private Text[] text = new Text[MAX_ADDRESS_COUNT];
+    private ParticleSystem[] particles = new ParticleSystem[MAX_ADDRESS_COUNT];
     public Color[] color;
 
     private void Awake()
@@ -36,6 +37,7 @@ public class Mail : MonoBehaviour
         for (int i = 0; i < MAX_ADDRESS_COUNT; ++i)
         {
             text[i] = inputImages[i].GetComponentInChildren<Text>();
+            particles[i] = inputImages[i].GetComponentInChildren<ParticleSystem>();
         }
 
         sendButton.onClick.AddListener(Send);
@@ -131,7 +133,10 @@ public class Mail : MonoBehaviour
         if (inputs[inputs.Count - 1] == address[inputs.Count - 1] - '0')
         {
             SoundManager.Instance.SfxSoundOn(3);
-            inputImages[inputs.Count - 1].DOColor(color[inputs.Count - 1], 0.5f);
+            inputImages[inputs.Count - 1].DOColor(color[inputs.Count - 1], 0.5f).
+                OnComplete(() => inputImages[inputs.Count - 1].DOKill());
+
+            particles[inputs.Count - 1].Play();
 
             if (inputs.Count == MAX_ADDRESS_COUNT)
             {

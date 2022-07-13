@@ -22,7 +22,13 @@ public class VirusObject : PoolableObject
     private void Update()
     {
         if (targetMonster)
+        {
             transform.position = Vector3.MoveTowards(transform.position, targetMonster.transform.position, Time.deltaTime * speed);
+        }
+        else if(gameObject.activeSelf)
+        {
+            PoolManager.Instance.Pop(this);
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
