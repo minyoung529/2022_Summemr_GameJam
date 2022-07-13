@@ -27,7 +27,7 @@ public class FileTower : MonoBehaviour
 
     void Update()
     {
-        file.transform.position = _cam.WorldToScreenPoint(transform.position + new Vector3(0, 0, -1f));
+        file.transform.position = transform.position + Vector3.back;
 
         if (fileType == 1)
             fileImage.fillAmount = Mathf.Lerp(fileImage.fillAmount, GameManager.Instance.dadTowerGage / 100, Time.deltaTime * fullSpeed);
