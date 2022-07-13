@@ -8,6 +8,7 @@ public class Chrome : MonoBehaviour
     [SerializeField] private float moveSpeed = 10f;
     [SerializeField] private float rotateSpeed = 10f;
     [SerializeField] private float duration;
+    [SerializeField] private TrailSpawner trailSpawner;
     private Vector3 startPos;
     private Vector3 beforePos;
     private Vector3 currentPos;
@@ -49,6 +50,7 @@ public class Chrome : MonoBehaviour
         Vector2 point = Random.insideUnitCircle.normalized;
         Vector3 dir = new Vector3(point.x, 0, point.y);
         moveDir = dir;
+        trailSpawner.EnableSpawn();
         StartCoroutine(DurationCoroutine());
     }
 
@@ -73,7 +75,8 @@ public class Chrome : MonoBehaviour
         seq.Join(transform.DORotate(transform.rotation.eulerAngles + new Vector3(0, 360f, 0), 1f, RotateMode.FastBeyond360));
         seq.Append(transform.DORotate(new Vector3(90f, 0, 0), 0.1f));
         seq.AppendCallback(() => 
-        { 
+        {
+            trailSpawner.DisableSpawn();
             animator.SetTrigger(rechangeTrigger);
         });
     }
