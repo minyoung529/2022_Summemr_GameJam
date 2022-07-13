@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 4596589bfba71534ead479c98fe6dc99, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fb592ba706a039e4aa69049da4e1415a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -140,7 +140,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e2a09528d392151458a03036416bd836, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1adf6c49afd79b149b64cec2a0dee781, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -215,7 +215,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 29ed45b91ebd6eb4d981e145ca0e1de3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f9205ca344a762e43b32005ad99c82ef, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -290,7 +290,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 58ce28e9886ad674d91fe2eaacea72ec, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b551f4f300af0da478f4078bb747ea54, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -375,10 +375,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 197321f9aba47494b8bc2c9418da5c2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 30
-  rotateSpeed: -10000
   duration: 5
   trailSpawner: {fileID: 1469275940}
+  collisionImpact: {fileID: 7985603114883174406, guid: 281b13e87b892f043a2f4777cfd813fa, type: 3}
+  rotateSpeed: -10000
+  moveSpeed: 30
 --- !u!135 &4814020959114642753
 SphereCollider:
   m_ObjectHideFlags: 0
