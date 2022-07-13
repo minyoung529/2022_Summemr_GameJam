@@ -175,4 +175,9 @@ public class Monster : PoolableObject
         transform.rotation = Quaternion.Euler(Vector3.zero);
         //isVaccine = false;
     }
+
+    private void OnDisable()
+    {
+        seq.Kill();
+    }
 }

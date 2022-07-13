@@ -1,0 +1,10 @@
+Microsotf Winbows(R) Recovery Console
+
+The Recovery Console provides system repair and recovery functionality.
+Type EXIT to exit the Recovery Console and restart the computer.
+
+1: C:\WINBOWS
+
+Your Computer Has Infected With Virus, You Should Probably Protect Your Folder...
+GoodLuck.
+(System Will Start Soon)
