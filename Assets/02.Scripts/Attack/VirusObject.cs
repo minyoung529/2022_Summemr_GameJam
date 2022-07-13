@@ -27,7 +27,7 @@ public class VirusObject : PoolableObject
         }
         else if(gameObject.activeSelf)
         {
-            PoolManager.Instance.Pop(this);
+            PoolManager.Instance.Push(this);
         }
     }
 
@@ -37,7 +37,7 @@ public class VirusObject : PoolableObject
         {
             gameObject.SetActive(false);
             targetMonster.IsVaccine = true;
-            PoolManager.Instance.Pop(this);
+            PoolManager.Instance.Push(this);
         }
     }
 

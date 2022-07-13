@@ -6,7 +6,6 @@ using DG.Tweening;
 
 public class Mail : MonoBehaviour
 {
-    [SerializeField] private Button sendButton;
     private string address;
     private const int MAX_ADDRESS_COUNT = 3;
 
@@ -39,8 +38,6 @@ public class Mail : MonoBehaviour
             text[i] = inputImages[i].GetComponentInChildren<Text>();
             particles[i] = inputImages[i].GetComponentInChildren<ParticleSystem>();
         }
-
-        sendButton.onClick.AddListener(Send);
     }
 
     private void Update()

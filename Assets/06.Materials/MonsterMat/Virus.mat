@@ -144,7 +144,7 @@ Material:
     - _ReceiveShadows: 1
     - _Scale: 0
     - _Shininess: 0
-    - _Smoothness: 0.5
+    - _Smoothness: 0
     - _SmoothnessSource: 0
     - _SmoothnessTextureChannel: 0
     - _SpecSource: 0
