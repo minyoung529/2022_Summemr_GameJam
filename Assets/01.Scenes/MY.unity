@@ -13955,7 +13955,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   effectPrefab: {fileID: 3470310218930553508, guid: 9e716d8e57a0e6647a0044c3534407f1, type: 3}
   attackDistance: 1
-  force: 0.5
+  target: {fileID: 919332797}
 --- !u!114 &1956621238 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4814020958200061472, guid: 221d05494a1933c40921852ca19689ee, type: 3}
