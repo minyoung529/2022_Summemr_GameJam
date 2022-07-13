@@ -82,4 +82,8 @@ public class SoundManager : Singleton<SoundManager>
     {
         monsterAudio.PlayOneShot(monsterSFXClip[0]);
     }
+    public void MonsterDamageSound()
+    {
+        monsterAudio.PlayOneShot(monsterSFXClip[1]);
+    }
 }

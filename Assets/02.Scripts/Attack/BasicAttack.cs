@@ -37,7 +37,7 @@ public class BasicAttack : MonoBehaviour
 
         foreach(Monster monster in targetMonster)
         {
-            monster.Die();
+            monster.Damaged();
             //monster.ExplosionDamage(attackPosition, force);
         }
     }
