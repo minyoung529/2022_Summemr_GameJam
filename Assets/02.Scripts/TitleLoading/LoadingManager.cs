@@ -8,7 +8,6 @@ using UnityEngine.UI;
 public class LoadingManager : MonoBehaviour
 {
     [SerializeField] private Text text;
-    private string textPath;
     private string loadingText;
 
     [SerializeField] private float typeDelay;
@@ -23,9 +22,8 @@ public class LoadingManager : MonoBehaviour
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
-        textPath = Application.dataPath + "/02.Scripts/TitleLoading/LoadingText.txt";
-        Debug.Log(textPath);
-        loadingText = File.ReadAllText(textPath);
+        TextAsset textFile = Resources.Load("LoadingText") as TextAsset;
+        loadingText = textFile.text;
     }
 
     private void Start()

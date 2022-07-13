@@ -32,7 +32,6 @@ public class TrailScript : PoolableObject
     {
         float time = 0f;
         float alpha = images[0].color.a;
-        Debug.Log(alpha);
         while (time <= duration)
         {
             SetAlpha(alpha * (duration - time));
