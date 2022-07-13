@@ -330,7 +330,7 @@ RectTransform:
   m_GameObject: {fileID: 4814020959114642876}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.9996759, y: 0.9996759, z: 0.9996759}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4814020957670120056}
   - {fileID: 4814020958514690676}
@@ -423,7 +423,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 1196750702617407679, guid: bc44430bb0fcfc94c892f958df266d81, type: 3}
   startAlpha: 1
-  delay: 0.0001
+  delay: 0.01
   center: {fileID: 4814020957670120063}
   g: {fileID: 4814020958514690683}
   r: {fileID: 4814020958200061472}

@@ -352,5 +352,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72d257b5816f62947805ac821fa18553, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 0.4
+  duration: 0.3
   trailColor: {r: 1, g: 0.00941265, b: 0, a: 0}

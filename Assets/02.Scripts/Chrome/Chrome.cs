@@ -106,6 +106,7 @@ public class Chrome : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(beforePos, moveDir, out hit, 10f, 1 << platformMask))
             {
+                transform.position = hit.point - moveDir * 0.5f;
                 Vector3 dir = Vector3.Dot(-moveDir, hit.normal) * hit.normal * 2 + moveDir; //반사각 구하기
                 dir.y = 0;
                 moveDir = dir;
