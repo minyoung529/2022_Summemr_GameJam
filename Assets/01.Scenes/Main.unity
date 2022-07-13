@@ -3384,6 +3384,20 @@ MonoBehaviour:
   gold: 100000
   dadTowerGage: 0
   brotherTowerGage: 0
+  levelCount: 0
+  wallpaperRenderer: {fileID: 1112510374}
+  crtRenderer: {fileID: 1454811581}
+  textures:
+  - {fileID: 2800000, guid: 05d54c3cce074b246852f9772869de60, type: 3}
+  - {fileID: 2800000, guid: 237ffd9de7c87e646b960db60cc165f0, type: 3}
+  - {fileID: 2800000, guid: 8ce84661fc7c69842bb382c4f540369e, type: 3}
+  - {fileID: 2800000, guid: 13998836d9238f44e948213a98c41d68, type: 3}
+  - {fileID: 2800000, guid: c6844e70fecabc746865ad13a7fd706b, type: 3}
+  - {fileID: 2800000, guid: cb94d3192796cda48a19e1465c7ef003, type: 3}
+  - {fileID: 2800000, guid: 8cc752a1d0807ee469cdf72758a03f05, type: 3}
+  - {fileID: 2800000, guid: 9611595d8ed1d3d4bbdaa11bce84b54c, type: 3}
+  levelArray: 0000000000000000000000000000000000000000
+  monsters: []
 --- !u!1 &933222283
 GameObject:
   m_ObjectHideFlags: 0
@@ -5374,7 +5388,7 @@ GameObject:
   - component: {fileID: 1454811582}
   - component: {fileID: 1454811581}
   m_Layer: 4
-  m_Name: Wallpaper (1)
+  m_Name: Retro
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12921,7 +12935,7 @@ MonoBehaviour:
   - {fileID: 8885342125998059099}
   wallPaper: {fileID: 1112510376}
   spawnRange: 12
-  spawnDelay: 0.1
+  spawnDelay: 0.2
   poolingMonsterCount: 100
 --- !u!4 &1932288086
 Transform:

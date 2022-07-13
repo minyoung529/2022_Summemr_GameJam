@@ -24,11 +24,12 @@ public class GameManager : Singleton<GameManager>
     public float brotherTowerGage;
 
     public int levelCount = 0;
-    new public Renderer renderer;
+    public Renderer wallpaperRenderer;
+    public Renderer crtRenderer;
 
     public Texture[] textures;
 
-    public int[] levelArray = { 0, 0, 0, 0, 0 };
+    public int[] levelArray;
 
     [HideInInspector]
     public List<Monster> monsters;
@@ -96,16 +97,26 @@ public class GameManager : Singleton<GameManager>
         if (isCorrect)
         {
             StartCoroutine(ChangeWallpaper());
-            levelCount++;
         }
     }
 
     private IEnumerator ChangeWallpaper()
     {
-        for (int i = levelCount; i < 4 * (levelCount + 1); i++)
+        yield return null;
+
+        for (int i = 4 * levelCount; i < 4 * (levelCount + 1); i++)
         {
-            renderer.material.SetTexture("_BaseMap", textures[i]);
-            yield return new WaitForSeconds(2f);
+            wallpaperRenderer.material.SetTexture("_BaseMap", textures[i]);
+
+            crtRenderer.material.EnableKeyword("RGB_STRIPES_ON");
+            crtRenderer.material.SetFloat("RGB_STRIPES_ON", 1.0f);
+            yield return new WaitForSeconds(0.07f);
+
+            crtRenderer.material.DisableKeyword("RGB_STRIPES_ON");
+            crtRenderer.material.SetFloat("RGB_STRIPES_ON", 0.0f);
+            yield return new WaitForSeconds(1.8f);
         }
+
+        levelCount++;
     }
 }

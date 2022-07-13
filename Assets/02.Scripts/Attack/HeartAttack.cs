@@ -98,7 +98,6 @@ public class HeartAttack : PoolableObject
         rigid.Sleep();
 
         isExplosion = false;
-        Debug.Log(transform.position);
         count = 0;
     }
 }
