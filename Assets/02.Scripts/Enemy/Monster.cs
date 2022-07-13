@@ -214,9 +214,4 @@ public class Monster : PoolableObject
         GameManager.Instance.monsters.Remove(this);
         //isVaccine = false;
     }
-
-    private void OnDisable()
-    {
-        seq.Kill();
-    }
 }
