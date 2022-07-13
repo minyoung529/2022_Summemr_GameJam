@@ -33,10 +33,13 @@ public class Monster : PoolableObject
 
     Sequence seq;
 
+    new private Collider collider;
+
     private void Awake()
     {
         meshRenderer = GetComponent<MeshRenderer>();
         rigid = GetComponent<Rigidbody>();
+        collider = GetComponent<Collider>();
     }
 
     /// <summary>
@@ -50,6 +53,7 @@ public class Monster : PoolableObject
     private void OnEnable()
     {
         ResetSprite();
+        collider.enabled = true;
 
         seq = DOTween.Sequence();
 
@@ -114,6 +118,7 @@ public class Monster : PoolableObject
     {
         //Á×´Â ¿¬Ãâ
         seq.Kill();
+        collider.enabled = false;
         isDie = true;
         DieSprite();
         dieEffect.Play();

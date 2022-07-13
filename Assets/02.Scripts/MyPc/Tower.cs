@@ -36,7 +36,6 @@ public class Tower : MonoBehaviour
 
     private void Update()
     {
-
         if (GameManager.Instance.dadTowerGage >= maxTowerGage && GameManager.Instance.brotherTowerGage >= maxTowerGage)
         {
             PlayerPrefs.SetInt("SCORE", GameManager.Instance.score);

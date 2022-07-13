@@ -162,7 +162,7 @@ Material:
     - _Axis: {r: 3.13, g: 0, b: 0, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissionColor: {r: 0.405423, g: 2.0631526, b: 0, a: 1}
+    - _EmissionColor: {r: 0.14471193, g: 14.646858, b: 0, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _InnerEmission: {r: 0, g: 0, b: 0, a: 0}
     - _MovementDirection: {r: 0, g: -1, b: 0, a: 1}

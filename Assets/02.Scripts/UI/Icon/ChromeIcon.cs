@@ -33,6 +33,7 @@ public class ChromeIcon : ProgramIcon
     void ChromeOnSound()
     {
         SoundManager.Instance.SfxSoundOn(12);
+    }
     protected override void ChildLevelUp()
     {
         foreach(Image image in reds)

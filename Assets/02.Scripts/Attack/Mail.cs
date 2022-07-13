@@ -126,6 +126,8 @@ public class Mail : MonoBehaviour
 
     private void Send()
     {
+        if (inputs.Count == 0 || inputs.Count > MAX_ADDRESS_COUNT) return;
+
         if (inputs[inputs.Count - 1] == address[inputs.Count - 1] - '0')
         {
             SoundManager.Instance.SfxSoundOn(3);
