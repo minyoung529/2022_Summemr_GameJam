@@ -8,7 +8,7 @@ public class Mail : MonoBehaviour
 {
     [SerializeField] private Button sendButton;
     private string address;
-    private const int MAX_ADDRESS_COUNT = 5;
+    private const int MAX_ADDRESS_COUNT = 4;
 
     private RectTransform rectTransform;
 

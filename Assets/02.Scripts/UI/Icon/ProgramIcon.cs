@@ -73,9 +73,9 @@ public abstract class ProgramIcon : MonoBehaviour, IPointerClickHandler
         {
             GameManager.Instance.gold -= cost[level - 1];
 
+            level++;
             ++GameManager.Instance.levelArray[transform.GetSiblingIndex()];
             GameManager.Instance.AddLevelCount();
-            level++;
         }
         else
         {

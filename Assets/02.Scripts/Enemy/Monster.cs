@@ -54,6 +54,7 @@ public class Monster : PoolableObject
     {
         ResetSprite();
         collider.enabled = true;
+        rigid.useGravity = true;
     }
     private void Update()
     {
@@ -111,7 +112,12 @@ public class Monster : PoolableObject
     public void Die()
     {
         //Á×´Â ¿¬Ãâ
+
+        GameManager.Instance.gold += 100;
+
         collider.enabled = false;
+        rigid.useGravity = false;
+        rigid.velocity = Vector3.zero;
         isDie = true;
         DieSprite();
         dieEffect.Play();

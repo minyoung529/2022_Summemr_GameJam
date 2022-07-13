@@ -30,6 +30,7 @@ public class GameManager : Singleton<GameManager>
     public Texture[] textures;
 
     public int[] levelArray;
+    int maxLevel = 2;
 
     [HideInInspector]
     public List<Monster> monsters;
@@ -83,11 +84,10 @@ public class GameManager : Singleton<GameManager>
     public void AddLevelCount()
     {
         bool isCorrect = true;
-        int num = levelArray[0];
 
         foreach (int level in levelArray)
         {
-            if (num != level)
+            if (level < maxLevel)
             {
                 isCorrect = false;
                 break;
@@ -96,6 +96,7 @@ public class GameManager : Singleton<GameManager>
 
         if (isCorrect)
         {
+            ++maxLevel;
             StartCoroutine(ChangeWallpaper());
         }
     }
