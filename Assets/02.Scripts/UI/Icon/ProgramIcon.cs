@@ -14,9 +14,25 @@ public abstract class ProgramIcon : MonoBehaviour, IPointerClickHandler
     float coolTime;
     private bool canExecute;
 
+    protected int level = 1;
+    private const int MAX_LEVEL = 3;
+
+    private Image image;
+    public Button upgradeButton;
+    private int[] cost = { 1000, 10000 };
+    public Sprite[] sprites;
+
+    public Image cooltimeImage;
+
+    private void Start()
+    {
+        image = GetComponent<Image>();
+        upgradeButton.onClick.AddListener(LevelUp);
+    }
+
     public void OnPointerClick(PointerEventData eventData)
     {
-        if(!canExecute)
+        if (!canExecute)
         {
             StartCoroutine(OnFirstClick());
         }
@@ -49,6 +65,35 @@ public abstract class ProgramIcon : MonoBehaviour, IPointerClickHandler
             yield return new WaitForFixedUpdate();
         }
         coolImage.gameObject.SetActive(false);
+    }
+
+    public void LevelUp()
+    {
+        if (GameManager.Instance.gold >= cost[level - 1])
+        {
+            GameManager.Instance.gold -= cost[level - 1];
+            level++;
+        }
+        else
+        {
+            return;
+        }
+
+
+        image.sprite = sprites[level - 1];
+        cooltimeImage.sprite = sprites[level - 1];
+
+        if (level == MAX_LEVEL)
+        {
+            upgradeButton.gameObject.SetActive(false);
+        }
+
+        ChildLevelUp();
+    }
+
+    protected virtual void ChildLevelUp()
+    {
+
     }
 
     protected abstract void ExecuteProgram();

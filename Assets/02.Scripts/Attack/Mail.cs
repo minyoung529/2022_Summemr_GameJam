@@ -52,7 +52,7 @@ public class Mail : MonoBehaviour
             {
                 Vector3 pos = hitInfo.point;
 
-                pos.y = 0.2f;
+                pos.y = 0f;
                 targetPicker.position = Vector3.MoveTowards(targetPicker.transform.position, pos, Time.deltaTime * 20f);
             }
 
@@ -134,6 +134,7 @@ public class Mail : MonoBehaviour
             {
                 isCorrect = true;
                 transform.DOScale(0f, 0.3f);
+
                 targetPicker.gameObject.SetActive(true);
             }
         }

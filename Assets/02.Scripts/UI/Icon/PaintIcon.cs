@@ -9,7 +9,9 @@ public class PaintIcon : ProgramIcon
     GameObject paintUI;
     [SerializeField]
     GameObject paint;
-    
+
+    public DrawLine drawLine;
+
 
     protected override void ExecuteProgram()
     {
@@ -17,5 +19,17 @@ public class PaintIcon : ProgramIcon
         OnCoolTime();
         paintUI.SetActive(true);
         paint.SetActive(true);
+    }
+
+    protected override void ChildLevelUp()
+    {
+        if (level == 2)
+        {
+            drawLine.bulletCount = 20;
+        }
+        else
+        {
+            drawLine.bulletCount = 30;
+        }
     }
 }
