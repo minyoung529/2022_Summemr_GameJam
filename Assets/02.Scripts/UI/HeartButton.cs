@@ -43,12 +43,12 @@ public class HeartButton : MonoBehaviour, IPointerClickHandler
 
         if (heartCount > MAX_HEART_COUNT)
         {
-        SoundManager.Instance.SfxSoundOn(7);
+            SoundManager.Instance.SfxSoundOn(7);
             StartCoroutine(ExplosionHearts());
         }
         else
         {
-        SoundManager.Instance.SfxSoundOn(6);
+            SoundManager.Instance.SfxSoundOn(6);
             GenerateHeart();
         }
     }
@@ -83,7 +83,11 @@ public class HeartButton : MonoBehaviour, IPointerClickHandler
         heartParticle.gameObject.SetActive(false);
 
         heartCount = 0;
-        instagramWindow.DOScale(0f, 0.3f).OnComplete(() => instagramWindow.gameObject.SetActive(false));
+        instagramWindow.DOScale(0f, 0.3f).OnComplete(() =>
+        {
+            instagramWindow.gameObject.SetActive(false);
+            instagramWindow.DOKill();
+        });
         image.sprite = buttonSprites[0];
 
         Vector3 initPos = new Vector3(-8.8f, 0f, -5f);

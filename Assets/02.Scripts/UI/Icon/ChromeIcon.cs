@@ -17,8 +17,6 @@ public class ChromeIcon : ProgramIcon
     [SerializeField] private Sprite[] greenSprites;
     [SerializeField] private Sprite[] circleSprites;
 
-    [SerializeField] private Sprite[] chromes;
-
     protected override void ExecuteProgram()
     {
         Invoke("ChromeOnSound", 0.2f);

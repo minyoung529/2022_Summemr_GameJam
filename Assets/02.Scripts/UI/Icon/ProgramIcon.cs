@@ -26,10 +26,24 @@ public abstract class ProgramIcon : MonoBehaviour, IPointerClickHandler
 
     public Image cooltimeImage;
 
+    private bool isNotice = false;
+
+    public string programName;
+
     private void Start()
     {
         //image = GetComponent<Image>();
         upgradeButton.onClick.AddListener(LevelUp);
+    }
+
+    private void Update()
+    {
+        if (!isNotice && level > 0 && level < MAX_LEVEL && GameManager.Instance.gold >= cost[level - 1])
+        {
+            string info = $"{programName} ·¹º§ {level + 1}";
+            NoticeManager.AddNotice(image.sprite, info);
+            isNotice = true;
+        }
     }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -78,6 +92,9 @@ public abstract class ProgramIcon : MonoBehaviour, IPointerClickHandler
             level++;
             ++GameManager.Instance.levelArray[transform.GetSiblingIndex()];
             GameManager.Instance.AddLevelCount();
+
+            if (level != MAX_LEVEL)
+                isNotice = false;
 
             upgradeEffect.Play();
             SoundManager.Instance.SfxSoundOn(14);
