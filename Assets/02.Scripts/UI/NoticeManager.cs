@@ -10,7 +10,7 @@ public class NoticeManager : MonoBehaviour
 
     private void Start()
     {
-        for(int i = 0; i < 5; i++)
+        for (int i = 0; i < 5; i++)
         {
             NoticePanel panel = Instantiate(panelPrefab, transform);
             panels.Add(panel);
@@ -20,6 +20,8 @@ public class NoticeManager : MonoBehaviour
     public static void AddNotice(Sprite sprite, string info)
     {
         NoticePanel panel = panels.Find(x => x.canUse);
-        panel.SetInfo(sprite, info);
+
+        if (panel)
+            panel.SetInfo(sprite, info);
     }
 }

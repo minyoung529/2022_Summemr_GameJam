@@ -23,9 +23,13 @@ public class FileTower : MonoBehaviour
 
     Camera _cam;
 
+    public Texture angryTexture;
+    bool isAngry = false;
     Vector3 offset;
 
     private bool isDragging = false;
+
+    public static Vector3 DiePosition;
 
     void Awake()
     {
@@ -53,14 +57,34 @@ public class FileTower : MonoBehaviour
             if (fileType == 1)
             {
                 GameManager.Instance.dadTowerGage += monster.attackPower;
+
+                if(!isAngry && GameManager.Instance.dadTowerGage >= 50f)
+                {
+                    isAngry = true;
+                    renderer.material.SetTexture("_BaseMap", angryTexture);
+                    renderer.transform.DOShakePosition(1f);
+                }
                 if (GameManager.Instance.dadTowerGage >= 100f)
+                {
                     Die();
+                }
             }
             if (fileType == 2)
             {
                 GameManager.Instance.brotherTowerGage += monster.attackPower;
+
+                if (!isAngry && GameManager.Instance.brotherTowerGage >= 50f)
+                {
+                    isAngry = true;
+                    renderer.material.SetTexture("_BaseMap", angryTexture);
+                    renderer.transform.DOShakePosition(1f);
+                }
+
                 if (GameManager.Instance.brotherTowerGage >= 100f)
+                {
                     Die();
+
+                }
             }
 
             if (!isDie)
@@ -75,12 +99,13 @@ public class FileTower : MonoBehaviour
             Monster monster = other.GetComponent<Monster>();
 
             if (!isDragging)
-                monster.DieMonsterByTower();
+                monster.Die();
         }
     }
 
     private void OnMouseDrag()
     {
+        if (isDie) return;
         isDragging = true;
 
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -116,6 +141,7 @@ public class FileTower : MonoBehaviour
     {
         if (isDie) return;
         isDie = true;
+        DiePosition = transform.position;
         collider.isTrigger = true;
         FindObjectOfType<MonsterSpawner>().tower.Remove(this);
         renderer.material.DOColor(new Color32(144, 24, 0, 255), 3f);
