@@ -110,7 +110,6 @@ public abstract class ProgramIcon : MonoBehaviour, IPointerClickHandler
     }
     public void OnCoolTime()
     {
-        Debug.Log("ÄðÅ¸ÀÓ");
         StartCoroutine(OnCool());
     }
     IEnumerator OnCool()

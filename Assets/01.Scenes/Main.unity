@@ -6013,7 +6013,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coolImage: {fileID: 970865005}
   upgradeEffect: {fileID: 1524909628}
-  curCoolTime: 30
+  curCoolTime: 20
   image: {fileID: 1854951351}
   upgradeButton: {fileID: 1849386744}
   sprites:
