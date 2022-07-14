@@ -186,12 +186,12 @@ public class MonsterSpawner : MonoBehaviour
 
     internal void AddPoint(int score)
     {
-        if (score > 3500 && !isSquareCoroutine)
+        if (score > 3100 && !isSquareCoroutine)
         {
             isSquareCoroutine = true;
             StartCoroutine(SquareCoroutine());
         }
-        else if (score > 2000 && !isHorVer)
+        if (score > 2000 && !isHorVer)
         {
             isHorVer = true;
             StartCoroutine(VerHorCoroutine());
@@ -209,11 +209,11 @@ public class MonsterSpawner : MonoBehaviour
         {
             spawnDelay = 0.1f;
         }
-        else if (score > 800)
+        else if (score > 1200)
         {
             spawnDelay = 0.15f;
         }
-        else if (score > 300)
+        else if (score > 500)
         {
             spawnDelay = 0.2f;
         }
@@ -227,7 +227,7 @@ public class MonsterSpawner : MonoBehaviour
 
             CirclePattern(Random.Range(3f, 5f), MonsterType.FAST, 60);
             Debug.Log("Ciircle");
-            yield return new WaitForSeconds(25f);
+            yield return new WaitForSeconds(10f);
         }
     }
 
@@ -246,7 +246,7 @@ public class MonsterSpawner : MonoBehaviour
                 SpawnVerArr((MonsterType)Random.Range(1, 3), 3, 2);
             }
 
-            yield return new WaitForSeconds(25f);
+            yield return new WaitForSeconds(10f);
         }
     }
 }
