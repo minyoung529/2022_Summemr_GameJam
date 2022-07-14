@@ -1694,7 +1694,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 32743
+    m_Bits: 65511
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -15971,6 +15971,7 @@ MonoBehaviour:
   fileImage: {fileID: 7005687697724105130}
   renderer: {fileID: 402313815}
   isDie: 0
+  angryTexture: {fileID: 2800000, guid: 815d5b217747bca4cbe76cfe562f0f45, type: 3}
 --- !u!1 &4131712329925667800
 GameObject:
   m_ObjectHideFlags: 0
@@ -16679,6 +16680,7 @@ MonoBehaviour:
   fileImage: {fileID: 7005687697300478432}
   renderer: {fileID: 1408883379}
   isDie: 0
+  angryTexture: {fileID: 2800000, guid: 114854642933a2f42aa826ba12ff4672, type: 3}
 --- !u!33 &8885342125998059098
 MeshFilter:
   m_ObjectHideFlags: 0
