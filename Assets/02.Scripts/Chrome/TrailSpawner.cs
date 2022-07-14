@@ -14,28 +14,14 @@ public class TrailSpawner : MonoBehaviour
     [SerializeField] private Image r;
     [SerializeField] private Image y;
 
-
-    public void EnableSpawn()
+    public void SpawnTrails(Vector3 pos, Quaternion rot)
     {
-        StartCoroutine(MakeTrails());
-    }
-    public void DisableSpawn()
-    {
-        StopAllCoroutines();
-    }
-
-    IEnumerator MakeTrails()
-    {
-        while (true)
-        {
-            TrailScript obj = PoolManager.Instance.Pop(prefab) as TrailScript;
-            obj.transform.SetParent(transform.parent);
-            obj.transform.localScale = Vector3.one;
-            obj.transform.SetPositionAndRotation(transform.position, transform.rotation);
-            obj.gameObject.SetActive(true);
-            obj.SpawnTrail(startAlpha);
-            obj.SetSprite(center.sprite, g.sprite, r.sprite, y.sprite);
-            yield return new WaitForSeconds(delay);
-        }
+        TrailScript obj = PoolManager.Instance.Pop(prefab) as TrailScript;
+        obj.transform.SetParent(transform.parent);
+        obj.transform.localScale = Vector3.one;
+        obj.transform.SetPositionAndRotation(pos, rot);
+        obj.gameObject.SetActive(true);
+        obj.SpawnTrail(startAlpha);
+        obj.SetSprite(center.sprite, g.sprite, r.sprite, y.sprite);
     }
 }

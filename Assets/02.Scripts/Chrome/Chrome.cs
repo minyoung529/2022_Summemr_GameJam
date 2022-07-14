@@ -33,36 +33,70 @@ public class Chrome : MonoBehaviour
 
     private void Awake()
     {
+        beforePos = transform.position;
         _rect = transform.GetComponent<RectTransform>();
         startPos = _rect.anchoredPosition;
         animator = GetComponent<Animator>();
         platformMask = LayerMask.NameToLayer("Platform");
     }
 
-    private void FixedUpdate()
+    private void Update()
+    {
+        Move();
+        CheckCollision();
+    }
+
+    #region 충돌 관련
+    private LayerMask platformMask;
+    public void CheckCollision()
     {
         if (!isMoving) return;
         beforePos = currentPos;
         currentPos = transform.position;
         RaycastHit hit;
-        if (Physics.Raycast(beforePos, moveDir, out hit, (currentPos - beforePos).magnitude, 1 << platformMask))
+        if (Physics.Raycast(beforePos, currentPos - beforePos, out hit, (currentPos - beforePos).magnitude, 1 << platformMask))
         {
-            transform.position = hit.point - moveDir * 0.5f;
-            Vector3 dir = Vector3.Dot(-moveDir, hit.normal) * hit.normal * 2 + moveDir; //반사각 구하기
+            //_rect.position = hit.point;
+            //Vector3 dir = -moveDir.normalized * (_rect.rect.width / 2);
+            //_rect.anchoredPosition += new Vector2(dir.x, dir.z);
+            //currentPos = transform.position;
+            //trailSpawner.SpawnTrails(currentPos, transform.rotation);
+
+            Vector3 dir;
+
+            dir = Vector3.Dot(-moveDir, hit.normal) * hit.normal * 2 + moveDir; //반사각 구하기
             dir.y = 0;
             moveDir = dir;
-            ChromeCollisionImpact impact = PoolManager.Instance.Pop(collisionImpact) as ChromeCollisionImpact;
-            impact.transform.position = hit.point;
-            transform.position += new Vector3(0, 0, 1f);
-            impact.SpawnImpact();
+
+            SpawnImpact(hit.point);
+        }
+        else
+        {
+            trailSpawner.SpawnTrails(transform.position, transform.rotation);
         }
     }
 
+    public void SpawnImpact(Vector3 point)
+    {
+        ChromeCollisionImpact impact = PoolManager.Instance.Pop(collisionImpact) as ChromeCollisionImpact;
+        impact.transform.position = point;
+        transform.position += new Vector3(0, 0, 1f);
+        impact.SpawnImpact();
+    }
+    #endregion
+
     #region 스킬 사용 함수
+
+    private void Move()
+    {
+        if (!isMoving) return;
+        transform.position += moveDir * moveSpeed * Time.deltaTime;
+        Vector3 dir = transform.rotation.eulerAngles + new Vector3(0, rotateSpeed * Time.deltaTime, 0);
+        transform.rotation = Quaternion.Euler(dir);
+    }
     public void EnableChrome()
     {
         if (isMoving) return;
-        isMoving = true;
         animator.SetTrigger(changeTrigger);
     }
 
@@ -71,46 +105,44 @@ public class Chrome : MonoBehaviour
         Vector2 point = Random.insideUnitCircle.normalized;
         Vector3 dir = new Vector3(point.x, 0, point.y);
         moveDir = dir;
-        trailSpawner.EnableSpawn();
+        isMoving = true;
         StartCoroutine(DurationCoroutine());
     }
 
     private IEnumerator DurationCoroutine()
     {
-        float time = 0f;
-        while(time <= duration)
-        {
-            transform.position += moveDir * moveSpeed * Time.deltaTime;
-            Vector3 dir = transform.rotation.eulerAngles + new Vector3(0, rotateSpeed * Time.deltaTime, 0);
-            transform.rotation = Quaternion.Euler(dir);
-            time += Time.deltaTime;
-            yield return null;
-        }
+        //float time = 0f;
+        //while(time <= duration)
+        //{
+        //    transform.position += moveDir * moveSpeed * Time.deltaTime;
+        //    Vector3 dir = transform.rotation.eulerAngles + new Vector3(0, rotateSpeed * Time.deltaTime, 0);
+        //    transform.rotation = Quaternion.Euler(dir);
+        //    time += Time.deltaTime;
+        //    yield return null;
+        //}
+        yield return new WaitForSeconds(duration);
         SoundManager.Instance.SfxSoundOn(13);
         DisableChrome();
     }
 
     public void DisableChrome()
     {
+        isMoving = false;
         seq = DOTween.Sequence();
         seq.Append(_rect.DOAnchorPos(startPos, 1f));
         seq.Join(transform.DORotate(transform.rotation.eulerAngles + new Vector3(0, 360f, 0), 1f, RotateMode.FastBeyond360));
         seq.Append(transform.DORotate(new Vector3(90f, 0, 0), 0.1f));
-        seq.AppendCallback(() => 
+        seq.AppendCallback(() =>
         {
-            trailSpawner.DisableSpawn();
+            moveDir = Vector3.zero;
             animator.SetTrigger(rechangeTrigger);
         });
     }
 
     public void EndRechange()
     {
-        isMoving = false;
+        
     }
-    #endregion
-
-    #region 충돌 관련
-    private LayerMask platformMask;
     #endregion
 
     private void OnDisable()

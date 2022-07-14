@@ -120,4 +120,10 @@ public class GameManager : Singleton<GameManager>
 
         levelCount++;
     }
+
+    [ContextMenu("µ·")]
+    public void Cheat()
+    {
+        gold += 100000;
+    }
 }
