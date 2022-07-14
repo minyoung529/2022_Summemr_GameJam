@@ -21,11 +21,11 @@ public class VirusObject : PoolableObject
 
     private void Update()
     {
-        if (targetMonster)
+        if (targetMonster.gameObject.activeSelf)
         {
             transform.position = Vector3.MoveTowards(transform.position, targetMonster.transform.position, Time.deltaTime * speed);
         }
-        else if(gameObject.activeSelf)
+        else
         {
             PoolManager.Instance.Push(this);
         }

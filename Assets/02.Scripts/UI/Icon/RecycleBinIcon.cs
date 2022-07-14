@@ -40,11 +40,11 @@ public class RecycleBinIcon : ProgramIcon
 
         if (level == 2)
         {
-            hole.HoleSize = 1.4f;
+            hole.HoleSize = 1.3f;
         }
         else
         {
-            hole.HoleSize = 2f;
+            hole.HoleSize = 1.8f;
         }
     }
 }

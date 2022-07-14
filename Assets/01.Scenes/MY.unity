@@ -3230,7 +3230,7 @@ MonoBehaviour:
   levelArray: 0000000000000000000000000000000000000000
   monsters: []
   isOpenMenu: 0
-  monsterSpawner: {fileID: 0}
+  fieldSize: {x: 9, y: 5}
 --- !u!1 &933222283
 GameObject:
   m_ObjectHideFlags: 0
@@ -5763,7 +5763,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coolImage: {fileID: 970865005}
   upgradeEffect: {fileID: 1524909628}
-  curCoolTime: 5
+  curCoolTime: 12
   image: {fileID: 1854951351}
   upgradeButton: {fileID: 1849386744}
   sprites:
