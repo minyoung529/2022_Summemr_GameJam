@@ -11,6 +11,7 @@ public class Help : MonoBehaviour
 
     void Start()
     {
+        transform.localScale = Vector3.one;
         image = GetComponent<Image>();
         text = GetComponentInChildren<Text>();
 

@@ -44,7 +44,7 @@ public class Selecting : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     public void OnDrag(PointerEventData eventData)
     {
-        if (IsChrome) return;
+        if (IsChrome && name.Contains("Chrome")) return;
 
         Vector3 pos = transform.position;
         Ray ray = _cam.ScreenPointToRay(Input.mousePosition);
