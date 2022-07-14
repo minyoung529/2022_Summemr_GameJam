@@ -11672,7 +11672,7 @@ MonoBehaviour:
   upgradeRenderer: {fileID: 792556981}
   paintUI: {fileID: 500248140}
   paint: {fileID: 1734114445}
-  drawLine: {fileID: 3171332940395822276}
+  gagueUpgradeFactor: 2
 --- !u!114 &1657828585
 MonoBehaviour:
   m_ObjectHideFlags: 0

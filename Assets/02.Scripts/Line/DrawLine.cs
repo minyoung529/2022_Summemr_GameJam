@@ -43,8 +43,9 @@ public class DrawLine : MonoBehaviour
         bulletCount = 10;
     }
 
-    private void Start()
+    private void OnEnable()
     {
+        currentDrawAmount = maxDrawAmount;
         UpdateGague();
     }
 
@@ -94,8 +95,6 @@ public class DrawLine : MonoBehaviour
     // 라인 만들기
     void createLine(Vector3 mousePos)
     {
-        currentDrawAmount = maxDrawAmount;
-        UpdateGague();
         positionCount = 2;
         GameObject line = new GameObject("Line");
         LineRenderer lineRend = line.AddComponent<LineRenderer>();
@@ -140,9 +139,15 @@ public class DrawLine : MonoBehaviour
         }
     }
 
+    public void UpgradeMaxGague(float value)
+    {
+        maxDrawAmount *= value;
+    }
+
     public void UpdateGague()
     {
-        gague.localScale = new Vector3(currentDrawAmount / 5, 1, 1);
+        Debug.Log("게이지 업데이트");
+        gague.localScale = new Vector3(currentDrawAmount / maxDrawAmount * (maxDrawAmount * 0.1f), 1, 1);
     }
 
     // 공격 준비
@@ -177,7 +182,6 @@ public class DrawLine : MonoBehaviour
                 obj.ChangeColor(level);
 
                 obj.SetDirection(dir, 3f);
-                Debug.Log(dir);
                 obj.transform.localScale = Vector3.one * Random.Range(transform.localScale.x - 0.1f, transform.localScale.x + 0.1f);
                 dir = -dir;
             }
