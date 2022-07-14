@@ -53,6 +53,7 @@ public class Tower : MonoBehaviour
 
             Sequence seq = DOTween.Sequence();
             seq.Append(Camera.main.transform.DOMove(position, 4f));
+            seq.AppendInterval(2f);
             seq.AppendCallback(() => UIManager.Instance.SceneChange("Over"));
         }
         else if (GameManager.Instance.dadTowerGage >= maxTowerGage/2 && GameManager.Instance.brotherTowerGage >= maxTowerGage/2)

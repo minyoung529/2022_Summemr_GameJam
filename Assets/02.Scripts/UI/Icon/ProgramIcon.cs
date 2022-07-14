@@ -39,11 +39,18 @@ public abstract class ProgramIcon : MonoBehaviour, IPointerClickHandler
 
     private void Update()
     {
-        if (!isNotice && level > 0 && level < MAX_LEVEL && GameManager.Instance.gold >= cost[level - 1])
+        if (level > 0 && level < MAX_LEVEL)
         {
-            string info = $"{programName} 레벨 {level + 1}";
-            NoticeManager.AddNotice(image.sprite, info);
-            isNotice = true;
+            if (!isNotice && GameManager.Instance.gold >= cost[level - 1])
+            {
+                string info = $"{programName} 레벨 {level + 1}";
+                NoticeManager.AddNotice(image.sprite, info);
+                isNotice = true;
+            }
+            else if(isNotice && GameManager.Instance.gold < cost[level - 1])
+            {
+                isNotice = false;
+            }
         }
     }
 

@@ -39,7 +39,7 @@ public class FileTower : MonoBehaviour
 
     void Update()
     {
-        file.transform.position = transform.position + Vector3.back * 0.85f;
+        file.transform.position = transform.position + Vector3.back * 0.7f;
 
         if (fileType == 1)
             fileImage.fillAmount = Mathf.Lerp(fileImage.fillAmount, GameManager.Instance.dadTowerGage / 100, Time.deltaTime * fullSpeed);
