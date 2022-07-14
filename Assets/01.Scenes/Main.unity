@@ -737,6 +737,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 19b97eadc3d97054bbceb432b263f34a, type: 3}
   cooltimeImage: {fileID: 1094288431}
   programName: 
+  upgradeMaterial: {fileID: 2100000, guid: 31e5d88870143ff41b1952ac68f7d52a, type: 2}
+  upgradeRenderer: {fileID: 1983950721}
   windowImage: {fileID: 1965707720}
   mail: {fileID: 1965707721}
   targetPicker: {fileID: 919332801}
@@ -835,7 +837,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectColor: {r: 0.41960785, g: 0.9843137, b: 1, a: 0.56078434}
-  canvas: {fileID: 1122604090}
   coolRect: {fileID: 1094288430}
 --- !u!1 &273753638
 GameObject:
@@ -6069,7 +6070,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c9fda59c7a8ae6541ba43453ee86c60e, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c9fda59c7a8ae6541ba43453ee86c60e, type: 3}
       propertyPath: m_LocalScale.x
@@ -6183,9 +6184,9 @@ RectTransform:
   - {fileID: 668151492}
   - {fileID: 842279753}
   - {fileID: 1015103520}
-  - {fileID: 1849386741}
   - {fileID: 1524909627}
   - {fileID: 1854951350}
+  - {fileID: 1849386741}
   m_Father: {fileID: 44748681}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6232,6 +6233,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: e873cd56af9801244b7d124daf3a3673, type: 3}
   cooltimeImage: {fileID: 970865005}
   programName: "\uD06C\uB871"
+  upgradeMaterial: {fileID: 2100000, guid: 31e5d88870143ff41b1952ac68f7d52a, type: 2}
+  upgradeRenderer: {fileID: 1849386745}
   chrome:
   - {fileID: 668151493}
   - {fileID: 842279754}
@@ -6363,7 +6366,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectColor: {r: 0.41960785, g: 0.9843137, b: 1, a: 0.56078434}
-  canvas: {fileID: 1122604090}
   coolRect: {fileID: 970865004}
 --- !u!1 &1543893784
 GameObject:
@@ -12079,6 +12081,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 1002bc6b8ca712443acee7fd043a8353, type: 3}
   cooltimeImage: {fileID: 831537467}
   programName: "\uADF8\uB9BC\uD310"
+  upgradeMaterial: {fileID: 2100000, guid: 31e5d88870143ff41b1952ac68f7d52a, type: 2}
+  upgradeRenderer: {fileID: 792556981}
   paintUI: {fileID: 500248140}
   paint: {fileID: 1734114445}
   drawLine: {fileID: 3171332940395822276}
@@ -12177,7 +12181,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectColor: {r: 0.41960785, g: 0.9843137, b: 1, a: 0.56078434}
-  canvas: {fileID: 1122604090}
   coolRect: {fileID: 831537466}
 --- !u!1 &1678512926
 GameObject:
@@ -12626,6 +12629,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 000bd660071479c47aa022a5afb9dca4, type: 3}
   cooltimeImage: {fileID: 322703501}
   programName: "\uD734\uC9C0\uD1B5"
+  upgradeMaterial: {fileID: 2100000, guid: 31e5d88870143ff41b1952ac68f7d52a, type: 2}
+  upgradeRenderer: {fileID: 1708378810}
   holeScript: {fileID: 1327657316}
   duration: 3
   cooldown: 4
@@ -12686,7 +12691,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectColor: {r: 0.41960785, g: 0.9843137, b: 1, a: 0.56078434}
-  canvas: {fileID: 1122604090}
   coolRect: {fileID: 322703500}
 --- !u!1 &1763344897
 GameObject:
@@ -13087,7 +13091,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1540880085}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -13370,7 +13374,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1540880085}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -14028,7 +14032,7 @@ MonoBehaviour:
   - {fileID: 4131712329925667795}
   - {fileID: 8885342125998059096}
   wallPaper: {fileID: 1112510376}
-  spawnRange: 12
+  spawnRange: {x: 15, y: 10}
   spawnDelay: 0.2
   poolingMonsterCount: 100
 --- !u!4 &1932288086
@@ -14869,6 +14873,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 714df82a6cd59064bb055e9a51ac4e4c, type: 3}
   cooltimeImage: {fileID: 816238372}
   programName: "\uC778\uC2A4\uD0C0\uADF8\uB7AD"
+  upgradeMaterial: {fileID: 2100000, guid: 31e5d88870143ff41b1952ac68f7d52a, type: 2}
+  upgradeRenderer: {fileID: 1678512931}
   windowImage: {fileID: 1476351456}
   heartButton: {fileID: 510228070}
 --- !u!114 &2106835656
@@ -14966,7 +14972,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectColor: {r: 0.41960785, g: 0.9843137, b: 1, a: 0.56078434}
-  canvas: {fileID: 1122604090}
   coolRect: {fileID: 816238371}
 --- !u!1 &2113991382
 GameObject:
@@ -15540,6 +15545,10 @@ MonoBehaviour:
   brotherGageImage: {fileID: 954515130}
   broPerText: {fileID: 1865900214}
   dadPerText: {fileID: 853340223}
+  closeOnGameOver:
+  - {fileID: 629233012}
+  - {fileID: 1734114445}
+  - {fileID: 919332797}
 --- !u!1 &1337717630041599093
 GameObject:
   m_ObjectHideFlags: 0
@@ -16786,6 +16795,7 @@ MonoBehaviour:
   fileImage: {fileID: 7005687697724105130}
   renderer: {fileID: 402313815}
   isDie: 0
+  angryTexture: {fileID: 2800000, guid: 815d5b217747bca4cbe76cfe562f0f45, type: 3}
 --- !u!1 &4131712329925667800
 GameObject:
   m_ObjectHideFlags: 0
@@ -17494,6 +17504,7 @@ MonoBehaviour:
   fileImage: {fileID: 7005687697300478432}
   renderer: {fileID: 1408883379}
   isDie: 0
+  angryTexture: {fileID: 2800000, guid: 114854642933a2f42aa826ba12ff4672, type: 3}
 --- !u!33 &8885342125998059098
 MeshFilter:
   m_ObjectHideFlags: 0

@@ -52,6 +52,11 @@ public class GameManager : Singleton<GameManager>
         Time.timeScale = 1;
         GameStartReset();
         InvokeRepeating("UpScore", 1f, 1f);
+
+        for(int i = 0; i < levelArray.Length; ++i)
+        {
+            levelArray[i] = 1;
+        }
     }
     private void Update()
     {
@@ -131,8 +136,8 @@ public class GameManager : Singleton<GameManager>
 
         if (isCorrect)
         {
-            ++maxLevel;
             StartCoroutine(ChangeWallpaper());
+            ++maxLevel;
         }
     }
 

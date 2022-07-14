@@ -29,6 +29,8 @@ public class Tower : MonoBehaviour
 
     bool isBroken = false;
 
+    public GameObject[] closeOnGameOver;
+
     private void Awake()
     {
         ResetGame();
@@ -45,6 +47,10 @@ public class Tower : MonoBehaviour
             Vector3 position = FileTower.DiePosition;
             position.y += 2f;
             GameManager.Instance.IsGameOver = true;
+
+            foreach (var obj in closeOnGameOver)
+                obj.SetActive(false);
+
             Sequence seq = DOTween.Sequence();
             seq.Append(Camera.main.transform.DOMove(position, 4f));
             seq.AppendCallback(() => UIManager.Instance.SceneChange("Over"));
