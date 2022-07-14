@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PaintingBullet : PoolableObject
 {
+    public PaintIcon _icon;
     private Rigidbody rigid;
     private MeshRenderer meshRenderer;
     private float scale;
@@ -56,7 +57,7 @@ public class PaintingBullet : PoolableObject
     public void SetDirection(Vector3 dir, float range)
     {
         Sequence seq = DOTween.Sequence();
-        seq.Append(transform.DOMove(transform.position + dir * range, 1f));
+        seq.Append(transform.DOMove(transform.position + dir * range, 1f*_icon.level));
         seq.AppendCallback(() => PoolManager.Instance.Push(this));
     }
 
