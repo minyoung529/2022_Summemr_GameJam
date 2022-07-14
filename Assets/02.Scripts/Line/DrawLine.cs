@@ -43,6 +43,7 @@ public class DrawLine : MonoBehaviour
 
     void Update()
     {
+        if (GameManager.Instance.isOpenMenu) return;
         DrawMouse();
     }
 

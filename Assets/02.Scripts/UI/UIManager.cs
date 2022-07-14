@@ -13,6 +13,8 @@ public class UIManager : Singleton<UIManager>
     {
         ui.SetActive(false);
     }
+    
+   
     public void Quit()
     {
         Application.Quit();
