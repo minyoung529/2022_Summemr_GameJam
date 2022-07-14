@@ -201,11 +201,11 @@ public class MonsterSpawner : MonoBehaviour
         {
             spawnDelay = 0.035f;
         }
-        if (score > 2500)
+        else if (score > 2500)
         {
             spawnDelay = 0.07f;
         }
-        if (score > 2000)
+        else if (score > 2000)
         {
             spawnDelay = 0.1f;
         }
