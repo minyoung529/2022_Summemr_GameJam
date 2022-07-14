@@ -2034,10 +2034,6 @@ PrefabInstance:
       propertyPath: _iconC
       value: 
       objectReference: {fileID: 1540880087}
-    - target: {fileID: 4814020959114642752, guid: 221d05494a1933c40921852ca19689ee, type: 3}
-      propertyPath: duration
-      value: 2.7
-      objectReference: {fileID: 0}
     - target: {fileID: 4814020959114642755, guid: 221d05494a1933c40921852ca19689ee, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -13310,7 +13306,7 @@ MonoBehaviour:
   - {fileID: 8885342125998059096}
   wallPaper: {fileID: 1112510376}
   spawnRange: {x: 10, y: 6}
-  spawnDelay: 0.35
+  spawnDelay: 0.45
   squareDelay: 6
   poolingMonsterCount: 100
 --- !u!4 &1932288086
