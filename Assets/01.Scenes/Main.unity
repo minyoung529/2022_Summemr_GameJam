@@ -13319,7 +13319,7 @@ MonoBehaviour:
   - {fileID: 4131712329925667795}
   - {fileID: 8885342125998059096}
   wallPaper: {fileID: 1112510376}
-  spawnRange: {x: 15, y: 10}
+  spawnRange: {x: 10, y: 6}
   spawnDelay: 0.2
   poolingMonsterCount: 100
 --- !u!4 &1932288086
