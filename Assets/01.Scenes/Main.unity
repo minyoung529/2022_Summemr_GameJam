@@ -3230,6 +3230,7 @@ MonoBehaviour:
   levelArray: 0000000000000000000000000000000000000000
   monsters: []
   isOpenMenu: 0
+  monsterSpawner: {fileID: 0}
 --- !u!1 &933222283
 GameObject:
   m_ObjectHideFlags: 0
@@ -13297,7 +13298,8 @@ MonoBehaviour:
   - {fileID: 8885342125998059096}
   wallPaper: {fileID: 1112510376}
   spawnRange: {x: 10, y: 6}
-  spawnDelay: 0.2
+  spawnDelay: 0.35
+  squareDelay: 15
   poolingMonsterCount: 100
 --- !u!4 &1932288086
 Transform:
