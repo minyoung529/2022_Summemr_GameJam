@@ -45,27 +45,27 @@ public class GameOver : MonoBehaviour
         // D
         // F
         int score = PlayerPrefs.GetInt("SCORE");
-        if (score < 1000)
+        if (score < 500)
         {
             rank += "F";
         }
-        else if (score < 2000)
+        else if (score < 700)
         {
             rank += "D";
         }
-        else if (score < 3000)
+        else if (score < 1000)
         {
             rank += "C";
         }
-        else if (score < 4000)
+        else if (score < 1500)
         {
             rank += "B";
         }
-        else if (score < 5000)
+        else if (score < 3000)
         {
             rank += "A";
         }
-        else if (score < 8000)
+        else if (score < 4000)
         {
             rank += "S";
         }

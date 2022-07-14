@@ -103,7 +103,7 @@ public class Monster : PoolableObject
 
         if (transform.position.y < -20f)
         {
-            GameManager.Instance.gold += 100;
+            GameManager.Instance.gold += 500;
             DieMonster();
         }
     }
@@ -162,7 +162,7 @@ public class Monster : PoolableObject
     {
         //�״� ����
 
-        GameManager.Instance.gold += 100;
+        GameManager.Instance.gold += 500;
 
         collider.enabled = false;
         vaccineCollider.enabled = false;
