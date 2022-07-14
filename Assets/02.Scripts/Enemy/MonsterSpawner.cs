@@ -203,6 +203,11 @@ public class MonsterSpawner : MonoBehaviour
         currentDelay = spawnDelay / (time * delayFactor);
     }
 
+    public void Wave()
+    {
+
+    }
+
     private IEnumerator SquareCoroutine()
     {
         while (true)

@@ -159,7 +159,7 @@ public class Monster : PoolableObject
     {
         //�״� ����
 
-        GameManager.Instance.gold += 50;
+        GameManager.Instance.gold += 100;
 
         collider.enabled = false;
         vaccineCollider.enabled = false;
