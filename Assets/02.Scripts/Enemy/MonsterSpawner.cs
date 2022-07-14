@@ -7,7 +7,7 @@ public class MonsterSpawner : MonoBehaviour
     [SerializeField] private Monster[] monsterPrefab;
     public List<FileTower> tower;
     [SerializeField] private Transform wallPaper;
-    [SerializeField] private float spawnRange = 15f;
+    [SerializeField] private Vector2 spawnRange = new Vector2(15f, 10f);
     [SerializeField] private float spawnDelay = 1f;
     [SerializeField] private int poolingMonsterCount = 100;
 
@@ -66,7 +66,8 @@ public class MonsterSpawner : MonoBehaviour
 
     private Vector3 GetRandomCirclePoint()
     {
-        Vector2 point = Random.insideUnitCircle.normalized * spawnRange;
+        Vector2 point = Random.Range(0, 2) == 1 ? new Vector2(spawnRange.x, Random.Range(-spawnRange.y, spawnRange.y)) : new Vector2(Random.Range(-spawnRange.x, spawnRange.x), spawnRange.y);
+        point *= Random.Range(0, 2) == 1 ? 1 : -1;
         return new Vector3(point.x, wallPaper.position.y + 1, point.y);
     }
 }
