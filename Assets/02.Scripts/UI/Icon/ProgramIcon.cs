@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using DG.Tweening;
 
 public abstract class ProgramIcon : MonoBehaviour, IPointerClickHandler
 {
@@ -21,6 +22,7 @@ public abstract class ProgramIcon : MonoBehaviour, IPointerClickHandler
 
     public Image image;
     public Button upgradeButton;
+    private Image upgradeButtonImage;
     private int[] cost = { 10000, 50000 };
     public Sprite[] sprites;
 
@@ -31,9 +33,11 @@ public abstract class ProgramIcon : MonoBehaviour, IPointerClickHandler
     public Material upgradeMaterial;
     public Image upgradeRenderer;
 
+    private Sequence zoomSequence;
+
     private void Start()
     {
-        //image = GetComponent<Image>();
+        upgradeButtonImage = upgradeButton.GetComponent<Image>();
         upgradeButton.onClick.AddListener(LevelUp);
     }
 
@@ -43,13 +47,34 @@ public abstract class ProgramIcon : MonoBehaviour, IPointerClickHandler
         {
             if (!isNotice && GameManager.Instance.gold >= cost[level - 1])
             {
+                upgradeButton.transform.DOKill();
+
+                if (zoomSequence == null)
+                {
+                    zoomSequence = DOTween.Sequence().SetAutoKill(false);
+                    zoomSequence.Append(upgradeButton.transform.DOScale(1.1f, 0.7f));
+                    zoomSequence.Append(upgradeButton.transform.DOScale(1f, 0.4f));
+
+                    zoomSequence.SetLoops(-1, LoopType.Restart);
+                }
+                else
+                {
+                    zoomSequence.Restart();
+                }
+
                 string info = $"{programName} ·¹º§ {level + 1}";
                 NoticeManager.AddNotice(image.sprite, info);
+                upgradeButtonImage.color = Color.white;
+
+                if (level == MAX_LEVEL - 1)
+                {
+                    upgradeButtonImage.material.SetColor("_BaseColor", Color.white);
+                }
                 isNotice = true;
             }
-            else if(isNotice && GameManager.Instance.gold < cost[level - 1])
+            else if (isNotice && GameManager.Instance.gold < cost[level - 1])
             {
-                isNotice = false;
+                DisableUpgrade();
             }
         }
     }
@@ -107,6 +132,8 @@ public abstract class ProgramIcon : MonoBehaviour, IPointerClickHandler
             if (level != MAX_LEVEL)
                 isNotice = false;
 
+            DisableUpgrade();
+
             upgradeEffect.Play();
             SoundManager.Instance.SfxSoundOn(14);
         }
@@ -128,10 +155,29 @@ public abstract class ProgramIcon : MonoBehaviour, IPointerClickHandler
         ChildLevelUp();
     }
 
+    private void DisableUpgrade()
+    {
+        zoomSequence.Pause();
+        isNotice = false;
+        upgradeButtonImage.color = Color.gray;
+
+        if (level == MAX_LEVEL - 1)
+        {
+            Color32 color = Color.white;
+            color.a = 4;
+            upgradeButtonImage.material.SetColor("_BaseColor", color);
+        }
+    }
+
     protected virtual void ChildLevelUp()
     {
 
     }
 
     protected abstract void ExecuteProgram();
+
+    private void OnDisable()
+    {
+        zoomSequence.Kill();
+    }
 }

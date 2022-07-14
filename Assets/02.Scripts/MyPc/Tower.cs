@@ -15,26 +15,10 @@ public class Tower : MonoBehaviour
     MeshRenderer overMesh;
     [SerializeField]
     GameObject brokenImage;
-
-    // 게이지바
-    [SerializeField, Header("아빠 타워 용량 게이지바")]
-    Image dadGageImage;
-    [SerializeField, Header("오빠 타워 용량 게이지바")]
-    Image brotherGageImage;
     
-    [SerializeField]
-    Text broPerText;
-    [SerializeField]
-    Text dadPerText;
-
     bool isBroken = false;
 
     public GameObject[] closeOnGameOver;
-
-    private void Awake()
-    {
-        ResetGame();
-    }
 
     private void Update()
     {
@@ -65,24 +49,5 @@ public class Tower : MonoBehaviour
             brokenImage.SetActive(true);
             CameraShake.Instance.Shake();
         }
-       
-        CheckGage();
-
     }
-
-    private void ResetGame()
-    {
-        // 타워 리셋
-        brotherGageImage.fillAmount = 0;
-        dadGageImage.fillAmount = 0;
-
-    }
-    void CheckGage()
-    {
-        dadPerText.text = string.Format($"{GameManager.Instance.dadTowerGage}%");
-        broPerText.text = string.Format($"{GameManager.Instance.brotherTowerGage}%");
-        brotherGageImage.fillAmount = Mathf.Lerp(brotherGageImage.fillAmount, GameManager.Instance.brotherTowerGage / maxTowerGage, Time.deltaTime * fullSpeed);
-        dadGageImage.fillAmount = Mathf.Lerp(dadGageImage.fillAmount, GameManager.Instance.dadTowerGage / maxTowerGage, Time.deltaTime * fullSpeed);
-    }
-
 }
