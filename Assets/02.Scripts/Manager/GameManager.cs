@@ -40,6 +40,9 @@ public class GameManager : Singleton<GameManager>
 
     public bool isOpenMenu = false;
 
+    [SerializeField] private Vector2 fieldSize = new Vector2(9f, 5f);
+    public Vector2 FieldSize => fieldSize;
+
     public void OnCoolTime(Image cool, float coolTime)
     {
         cool.gameObject.SetActive(true);

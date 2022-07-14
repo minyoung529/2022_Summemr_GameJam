@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -52,9 +53,11 @@ public class PaintingBullet : PoolableObject
         transform.localScale = Vector3.one * scale;
     }
 
-    public void SetDirection(Vector3 velocity)
+    public void SetDirection(Vector3 dir, float range)
     {
-        rigid.AddForce(velocity * 600f);
+        Sequence seq = DOTween.Sequence();
+        seq.Append(transform.DOMove(transform.position + dir * range, 1f));
+        seq.AppendCallback(() => PoolManager.Instance.Push(this));
     }
 
     private void OnTriggerEnter(Collider other)

@@ -10,6 +10,7 @@ public class MonsterSpawner : MonoBehaviour
     [SerializeField] private Vector2 spawnRange = new Vector2(15f, 10f);
     [SerializeField] private float spawnDelay = 1f;
     [SerializeField] private int poolingMonsterCount = 100;
+    private float currentSpawnDelay = 1f;
 
     private float time = 0f;
 
@@ -26,6 +27,7 @@ public class MonsterSpawner : MonoBehaviour
     private void Update()
     {
         time += Time.deltaTime;
+        currentSpawnDelay = spawnDelay / time;
     }
 
     private IEnumerator SpawnMonster()
@@ -38,7 +40,7 @@ public class MonsterSpawner : MonoBehaviour
             obj.transform.position = GetRandomCirclePoint();
             obj.spawner = this;
             obj.SetTarget(tower[Random.Range(0, tower.Count)].transform);
-            yield return new WaitForSeconds(spawnDelay);
+            yield return new WaitForSeconds(currentSpawnDelay);
         }
     }
 
@@ -50,7 +52,7 @@ public class MonsterSpawner : MonoBehaviour
         }
         else
         {
-            spawnDelay = 0.1f;
+            currentSpawnDelay = 0.1f;
         }
 
         int rand = Random.Range(1, 101);

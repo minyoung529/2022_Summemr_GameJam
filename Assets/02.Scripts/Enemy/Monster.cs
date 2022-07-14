@@ -127,6 +127,7 @@ public class Monster : PoolableObject
 
     public void Damaged()
     {
+        if (Mathf.Abs(transform.position.x) > GameManager.Instance.FieldSize.x || Mathf.Abs(transform.position.y) > GameManager.Instance.FieldSize.y) return;
         heart--;
         if (heart <= 0)
         {

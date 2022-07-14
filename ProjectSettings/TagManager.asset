@@ -12,6 +12,8 @@ TagManager:
   - BROTHERFILE
   - Tower
   - Hole
+  - Chrome
+  - FxTemporaire
   layers:
   - Default
   - TransparentFX
@@ -28,7 +30,7 @@ TagManager:
   - RaycastCollider
   - Monster
   - File
-  - 
+  - Bullet
   - 
   - 
   - 
