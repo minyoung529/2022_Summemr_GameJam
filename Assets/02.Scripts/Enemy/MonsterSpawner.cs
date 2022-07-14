@@ -191,18 +191,27 @@ public class MonsterSpawner : MonoBehaviour
             isSquareCoroutine = true;
             StartCoroutine(SquareCoroutine());
         }
-        else if(score > 2000 && !isHorVer)
+        else if (score > 2000 && !isHorVer)
         {
             isHorVer = true;
             StartCoroutine(VerHorCoroutine());
         }
-        else if(score>300)
+
+        if (score > 4000)
         {
-            spawnDelay = 0.2f;
+            spawnDelay = 0.07f;
         }
-        else if(score > 1000)
+        if (score > 3000)
         {
             spawnDelay = 0.1f;
+        }
+        else if (score > 2000)
+        {
+            spawnDelay = 0.15f;
+        }
+        else if (score > 1000)
+        {
+            spawnDelay = 0.2f;
         }
     }
 
