@@ -6,7 +6,7 @@ public class MonsterVaccineCollider : MonoBehaviour
 {
     Monster monster;
 
-    private void Start()
+    private void Awake()
     {
         monster = GetComponentInParent<Monster>();
     }

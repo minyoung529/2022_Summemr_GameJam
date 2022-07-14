@@ -10,7 +10,8 @@ public class Monster : PoolableObject
     [SerializeField] private ParticleSystem[] dieEffect;
     [SerializeField] private ParticleSystem damageEffect;
     public MonsterSpawner spawner;
-    private Rigidbody rigid;
+    [HideInInspector]
+    public Rigidbody rigid;
     private Transform target;
     private int heart = 1;
     public int attackPower = 10;
@@ -40,6 +41,9 @@ public class Monster : PoolableObject
 
     new private Collider collider;
     private Collider vaccineCollider;
+
+    private Rigidbody targetRigid;
+
 
     private void Awake()
     {
@@ -85,7 +89,13 @@ public class Monster : PoolableObject
         else
         {
             if (isDie) return;
-            MoveToTarget();
+
+            if (target)
+                MoveToTarget();
+            else if (targetRigid.gameObject.activeSelf)
+                rigid.velocity = targetRigid.velocity;
+            else
+                target = spawner.tower[Random.Range(0, spawner.tower.Count)].transform;
         }
 
         if (transform.position.y < -20f)
@@ -137,6 +147,11 @@ public class Monster : PoolableObject
             SoundManager.Instance.MonsterDamageSound();
             damageEffect.Play();
         }
+    }
+
+    public void SetTargetRigid(Rigidbody target)
+    {
+        targetRigid = target;
     }
 
     public void Die()
