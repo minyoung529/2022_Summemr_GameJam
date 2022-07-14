@@ -197,23 +197,23 @@ public class MonsterSpawner : MonoBehaviour
             StartCoroutine(VerHorCoroutine());
         }
 
-        if (score > 3000)
+        if (score > 3500)
         {
             spawnDelay = 0.035f;
         }
-        else if (score > 2500)
+        else if (score > 2900)
         {
             spawnDelay = 0.07f;
         }
-        else if (score > 2000)
+        else if (score > 2500)
         {
             spawnDelay = 0.1f;
         }
-        else if (score > 1200)
+        else if (score > 1500)
         {
             spawnDelay = 0.17f;
         }
-        else if (score > 500)
+        else if (score > 900)
         {
             spawnDelay = 0.25f;
         }
