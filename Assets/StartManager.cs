@@ -11,6 +11,10 @@ public class StartManager : MonoBehaviour
     [SerializeField]
     GameObject canvas;
 
+    private void Start()
+    {
+        Screen.SetResolution(1920, 1080, true);
+    }
     public void StartGame()
     {
         canvas.SetActive(false);
