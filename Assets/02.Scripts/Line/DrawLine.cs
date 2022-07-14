@@ -5,7 +5,11 @@ using UnityEngine;
 public class DrawLine : MonoBehaviour
 {
     [SerializeField]
-    Transform attackPos;
+    private float maxDrawAmount = 2f; //그리기 제한
+    private float currentDrawAmount = 2f;
+
+    [SerializeField]
+    private Transform gague;
 
     public PoolableObject bullet;
 
@@ -39,6 +43,12 @@ public class DrawLine : MonoBehaviour
         bulletCount = 10;
     }
 
+    private void OnEnable()
+    {
+        currentDrawAmount = maxDrawAmount;
+        UpdateGague();
+    }
+
     void Update()
     {
         if (GameManager.Instance.isOpenMenu) return;
@@ -48,7 +58,7 @@ public class DrawLine : MonoBehaviour
     // 마우스 드래그로 그리기
     void DrawMouse()
     {
-        Vector3 mousePos = _mainCam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0.3f));
+        Vector3 mousePos = _mainCam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, _mainCam.transform.position.y - transform.position.y));
         Ray ray = _mainCam.ScreenPointToRay(Input.mousePosition);
 
         RaycastHit hit;
@@ -95,8 +105,8 @@ public class DrawLine : MonoBehaviour
         line.transform.parent = transform;
         line.transform.position = mousePos;
 
-        lineRend.startWidth = 0.003f;
-        lineRend.endWidth = 0.003f;
+        lineRend.startWidth = 0.3f;
+        lineRend.endWidth = 0.3f;
         lineRend.numCornerVertices = 5;
         lineRend.numCapVertices = 5;
 
@@ -117,13 +127,27 @@ public class DrawLine : MonoBehaviour
     // 라인 연결
     void connectLine(Vector3 mousePos)
     {
+        if (currentDrawAmount <= 0) return;
         if (PrevPos != null && Mathf.Abs(Vector3.Distance(PrevPos, mousePos)) >= 0.001f)
         {
             PrevPos = mousePos;
             positionCount++;
             curLine.positionCount = positionCount;
-            curLine.SetPosition(positionCount - 1, mousePos);
+            curLine.SetPosition(positionCount - 1, mousePos + new Vector3(0, 0.1f)); //y축 방향으로 조금 움직여서 그림판 보다 앞에 위치하기 위해 더해줌
+            currentDrawAmount -= (curLine.GetPosition(positionCount - 1) - curLine.GetPosition(positionCount - 2)).magnitude;
+            UpdateGague();
         }
+    }
+
+    public void UpgradeMaxGague(float value)
+    {
+        maxDrawAmount *= value;
+    }
+
+    public void UpdateGague()
+    {
+        Debug.Log("게이지 업데이트");
+        gague.localScale = new Vector3(currentDrawAmount / maxDrawAmount * (maxDrawAmount * 0.1f), 1, 1);
     }
 
     // 공격 준비
@@ -139,30 +163,28 @@ public class DrawLine : MonoBehaviour
 
         SoundManager.Instance.SfxSoundOn(0);
 
-        // 오브젝트 사이즈 줄어들고 왼쪽 아래로 이동
-        LineRenderer lr = madeLine.GetComponent<LineRenderer>();
-        for (int i = 0; i < lr.positionCount; i++)
+        for (int i = 0; i < positionCount - 1; i++)
         {
-            Vector3 v = lr.GetPosition(i);
-            v += new Vector3(-0.18f, 0, -0.08f);
-            lr.SetPosition(i, v);
-        }
+            Vector3 dir = curLine.GetPosition(i + 1) - curLine.GetPosition(i);
+            dir = Vector3.Cross(dir, Vector3.up).normalized;
+            if (dir.sqrMagnitude <= 0) continue;
 
-        for (int i = 0; i < bulletCount; i++)
-        {
-            PaintingBullet obj = PoolManager.Instance.Pop(bullet) as PaintingBullet;
-            obj.transform.position = attackPos.position;
+            for (int j = 0; j < 2; j++)
+            {
+                PaintingBullet obj = PoolManager.Instance.Pop(bullet) as PaintingBullet;
+                Vector3 pos = curLine.GetPosition(i);
+                pos.y = transform.position.y;
+                obj.transform.position = pos;
 
-            Vector3 euler = obj.transform.eulerAngles;
-            euler.y = Random.Range(0, 360f);
-            obj.transform.eulerAngles = euler;
-            obj.ChangeColor(level);
+                Vector3 euler = obj.transform.eulerAngles;
+                euler.y = Random.Range(0, 360f);
+                obj.transform.eulerAngles = euler;
+                obj.ChangeColor(level);
 
-            float x = Random.Range(0f, 1f);
-            float z = Random.Range(0f, 1f);
-            obj.SetDirection(new Vector3(x, 0, z));
-
-            obj.transform.localScale = Vector3.one * Random.Range(transform.localScale.x - 0.1f, transform.localScale.x + 0.1f);
+                obj.SetDirection(dir, 3f);
+                obj.transform.localScale = Vector3.one * Random.Range(transform.localScale.x - 0.1f, transform.localScale.x + 0.1f);
+                dir = -dir;
+            }
         }
 
         defaultMaterial.color *= 300f;

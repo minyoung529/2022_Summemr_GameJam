@@ -35,6 +35,11 @@ public abstract class ProgramIcon : MonoBehaviour, IPointerClickHandler
 
     private Sequence zoomSequence;
 
+    protected virtual void Awake()
+    {
+
+    }
+
     private void Start()
     {
         upgradeButtonImage = upgradeButton.GetComponent<Image>();

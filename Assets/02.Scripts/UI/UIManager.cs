@@ -23,6 +23,7 @@ public class UIManager : Singleton<UIManager>
             }
             else
             {
+                if (GameManager.Instance == null) return;
                 GameManager.Instance.SetMenu();
             }
         }

@@ -9,9 +9,15 @@ public class MonsterSpawner : MonoBehaviour
     [SerializeField] private Transform wallPaper;
     [SerializeField] private Vector2 spawnRange = new Vector2(15f, 10f);
     [SerializeField] private float spawnDelay = 1f;
+    [SerializeField] private float squareDelay = 15f;
     [SerializeField] private int poolingMonsterCount = 100;
 
+    private WaitForSeconds waitSquareDelay;
+
     private float time = 0f;
+
+    private bool isSquareCoroutine = false;
+    private bool isHorVer = false;
 
     void Start()
     {
@@ -20,6 +26,10 @@ public class MonsterSpawner : MonoBehaviour
             PoolManager.Instance.CreatePool(monsterPrefab[i], poolingMonsterCount);
         }
         // StartCoroutine(SpawnMonster());
+
+        waitSquareDelay = new WaitForSeconds(squareDelay);
+
+        StartCoroutine(SpawnMonster());
     }
 
     private void Update()
@@ -46,31 +56,33 @@ public class MonsterSpawner : MonoBehaviour
     {
         Monster centerMonster = PoolManager.Instance.Pop(monsterPrefab[(int)type]) as Monster;
         GameManager.Instance.monsters.Add(centerMonster);
-        centerMonster.transform.position = GetRandomCirclePoint();
+        centerMonster.transform.position = GetLeftRightPoint();
         centerMonster.spawner = this;
+
         int towerT = Random.Range(0, tower.Count);
         centerMonster.SetTarget(tower[towerT].transform);
 
-        for (int i=1;i<=cnt;i++)
+        for (int i = 1; i <= cnt; i++)
         {
             Monster obj = PoolManager.Instance.Pop(monsterPrefab[(int)type]) as Monster;
             Monster obj2 = PoolManager.Instance.Pop(monsterPrefab[(int)type]) as Monster;
             GameManager.Instance.monsters.Add(obj);
             GameManager.Instance.monsters.Add(obj2);
-            obj.transform.position = centerMonster.transform.position+new Vector3(0, 0, dis*i);
-            obj2.transform.position = centerMonster.transform.position+new Vector3(0, 0, (-dis)*i);
+            obj.transform.position = centerMonster.transform.position + new Vector3(0, 0, dis * i);
+            obj2.transform.position = centerMonster.transform.position + new Vector3(0, 0, (-dis) * i);
             obj.spawner = this;
             obj2.spawner = this;
-            obj.SetTargetRigid(centerMonster.rigid);
-            obj2.SetTargetRigid(centerMonster.rigid);
+            obj.SetTargetRigid(centerMonster);
+            obj2.SetTargetRigid(centerMonster);
         }
     }
     void SpawnHorArr(MonsterType type, int cnt, float dis)
     {
         Monster centerMonster = PoolManager.Instance.Pop(monsterPrefab[(int)type]) as Monster;
         GameManager.Instance.monsters.Add(centerMonster);
-        centerMonster.transform.position = GetRandomCirclePoint();
+        centerMonster.transform.position = GetTopBottomPoint();
         centerMonster.spawner = this;
+
         int towerT = Random.Range(0, tower.Count);
         centerMonster.SetTarget(tower[towerT].transform);
 
@@ -84,20 +96,16 @@ public class MonsterSpawner : MonoBehaviour
             obj2.transform.position = centerMonster.transform.position + new Vector3((-dis) * i, 0, 0);
             obj.spawner = this;
             obj2.spawner = this;
-            obj.SetTargetRigid(centerMonster.rigid);
-            obj2.SetTargetRigid(centerMonster.rigid);
+            obj.SetTargetRigid(centerMonster);
+            obj2.SetTargetRigid(centerMonster);
         }
     }
 
     private int GetMonsterType()
     {
-        if (time <= 50f)
+        if (time <= 70f)
         {
             return (int)MonsterType.BASIC;
-        }
-        else
-        {
-            spawnDelay = 0.1f;
         }
 
         int rand = Random.Range(1, 101);
@@ -119,6 +127,20 @@ public class MonsterSpawner : MonoBehaviour
         return new Vector3(point.x, wallPaper.position.y + 1, point.y);
     }
 
+    private Vector3 GetTopBottomPoint()
+    {
+        Vector2 point = new Vector2(Random.Range(-spawnRange.x, spawnRange.x), spawnRange.y);
+        point.y *= Random.Range(0, 2) == 1 ? 1 : -1;
+        return new Vector3(point.x, wallPaper.position.y + 1, point.y);
+    }
+
+    private Vector3 GetLeftRightPoint()
+    {
+        Vector2 point = new Vector2(spawnRange.x, Random.Range(-spawnRange.y, spawnRange.y));
+        point.x *= Random.Range(0, 2) == 1 ? 1 : -1;
+        return new Vector3(point.x, wallPaper.position.y + 1, point.y);
+    }
+
     private void CirclePattern(float radius, MonsterType type, int count)
     {
         int target = Random.Range(0, tower.Count);
@@ -129,7 +151,7 @@ public class MonsterSpawner : MonoBehaviour
         else
             center.x -= radius;
 
-        if(center.z > 0)
+        if (center.z > 0)
             center.z += radius;
         else
             center.z -= radius;
@@ -157,8 +179,74 @@ public class MonsterSpawner : MonoBehaviour
             else
             {
                 if (centerMonster)
-                    obj.SetTargetRigid(centerMonster.rigid);
+                    obj.SetTargetRigid(centerMonster);
             }
+        }
+    }
+
+    internal void AddPoint(int score)
+    {
+        if (score > 3100 && !isSquareCoroutine)
+        {
+            isSquareCoroutine = true;
+            StartCoroutine(SquareCoroutine());
+        }
+        if (score > 2000 && !isHorVer)
+        {
+            isHorVer = true;
+            StartCoroutine(VerHorCoroutine());
+        }
+
+        if (score > 3500)
+        {
+            spawnDelay = 0.035f;
+        }
+        else if (score > 2900)
+        {
+            spawnDelay = 0.07f;
+        }
+        else if (score > 2500)
+        {
+            spawnDelay = 0.1f;
+        }
+        else if (score > 1500)
+        {
+            spawnDelay = 0.17f;
+        }
+        else if (score > 900)
+        {
+            spawnDelay = 0.25f;
+        }
+    }
+
+    private IEnumerator SquareCoroutine()
+    {
+        while (true)
+        {
+            if (tower.Count == 0) yield break;
+
+            CirclePattern(Random.Range(3f, 5f), MonsterType.FAST, 60);
+            Debug.Log("Ciircle");
+            yield return new WaitForSeconds(10f);
+        }
+    }
+
+    private IEnumerator VerHorCoroutine()
+    {
+        while (true)
+        {
+            if (tower.Count == 0) yield break;
+
+            if (Random.Range(0, 2) == 0)
+            {
+                SpawnHorArr((MonsterType)Random.Range(1, 3), 3, 2);
+            }
+            else
+            {
+                SpawnVerArr((MonsterType)Random.Range(1, 3), 3, 2);
+            }
+
+            yield return new WaitForSeconds(10f);
         }
     }
 }

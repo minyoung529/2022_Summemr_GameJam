@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 1551165347257333550}
   - component: {fileID: 1551165347257333549}
   - component: {fileID: 1551165347257333548}
-  - component: {fileID: 1551165347257333547}
   - component: {fileID: 1551165347257333551}
   - component: {fileID: 2876169173631019910}
-  m_Layer: 0
+  - component: {fileID: -2587490868300266957}
+  m_Layer: 15
   m_Name: PaintBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -84,20 +84,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &1551165347257333547
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1551165347257333546}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!54 &1551165347257333551
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -131,3 +117,16 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 3eb642d09b050624b9e8d85997db48be, type: 2}
   - {fileID: 2100000, guid: 0e61acaf0e72ad04496869211fc255f3, type: 2}
   - {fileID: 2100000, guid: f5d93ba8e39e25545bea0406271c1918, type: 2}
+--- !u!65 &-2587490868300266957
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1551165347257333546}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.0000002, z: 10}
+  m_Center: {x: 0, y: 0, z: 0}
