@@ -48,6 +48,7 @@ public class GameManager : Singleton<GameManager>
 
     private void Start()
     {
+        Time.timeScale = 1;
         GameStartReset();
         InvokeRepeating("UpScore", 1f, 1f);
     }
@@ -55,9 +56,9 @@ public class GameManager : Singleton<GameManager>
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            isOpenMenu = !isOpenMenu;
             if (isOpenMenu)
             {
+            isOpenMenu = true;
                 menuPanel.SetActive(true);
                 Time.timeScale = 0;
             }
@@ -72,6 +73,7 @@ public class GameManager : Singleton<GameManager>
 
     public void MenuClose()
     {
+            isOpenMenu = false;
                 Time.timeScale = 1;
         menuPanel.SetActive(false);
     }
