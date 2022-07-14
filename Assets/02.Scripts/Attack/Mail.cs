@@ -138,6 +138,8 @@ public class Mail : MonoBehaviour
             if (inputs.Count == MAX_ADDRESS_COUNT)
             {
                 isCorrect = true;
+
+                UIManager.Instance.EnactiveWindow(gameObject);
                 transform.DOScale(0f, 0.3f).OnComplete(() => transform.DOKill());
 
                 targetPicker.gameObject.SetActive(true);
