@@ -18,7 +18,7 @@ public class Help : MonoBehaviour
         Sequence seq = DOTween.Sequence();
         seq.AppendInterval(2.5f);
         seq.Append(image.DOFade(0f, 3f));
-        seq.Append(text.DOFade(0f, 3f));
+        seq.Join(text.DOFade(0f, 3f));
         seq.AppendCallback(() => gameObject.SetActive(false));
     }
 

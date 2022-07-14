@@ -7,7 +7,7 @@ using DG.Tweening;
 public class Mail : MonoBehaviour
 {
     private string address;
-    private const int MAX_ADDRESS_COUNT = 3;
+    private const int MAX_ADDRESS_COUNT = 1;
 
     private RectTransform rectTransform;
 
