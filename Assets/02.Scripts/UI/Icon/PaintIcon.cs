@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using System;
 
 public class PaintIcon : ProgramIcon
 {
@@ -10,8 +11,23 @@ public class PaintIcon : ProgramIcon
     GameObject paintUI;
     [SerializeField]
     GameObject paint;
+    [SerializeField]
+    private float gagueUpgradeFactor = 2f;
 
-    public DrawLine drawLine;
+    private DrawLine paintCompo = null;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        try
+        {
+            paintCompo = paint.transform.Find("MSPaint (1)").GetComponent<DrawLine>();
+        }
+        catch(NullReferenceException ne)
+        {
+            Debug.LogError("그림판 컴포넌트를 찾을 수 없습니다. 경로를 확인해주세요");
+        }
+    }
 
 
     protected override void ExecuteProgram()
@@ -28,15 +44,6 @@ public class PaintIcon : ProgramIcon
 
     protected override void ChildLevelUp()
     {
-        if (level == 2)
-        {
-            drawLine.bulletCount = 20;
-        }
-        else
-        {
-            drawLine.bulletCount = 30;
-        }
-
-        drawLine.level = level;
+        paintCompo.UpgradeMaxGague(gagueUpgradeFactor);
     }
 }
