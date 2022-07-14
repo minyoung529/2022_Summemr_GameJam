@@ -25,10 +25,11 @@ public abstract class ProgramIcon : MonoBehaviour, IPointerClickHandler
     public Sprite[] sprites;
 
     public Image cooltimeImage;
-
     private bool isNotice = false;
-
     public string programName;
+
+    public Material upgradeMaterial;
+    public Image upgradeRenderer;
 
     private void Start()
     {
@@ -88,6 +89,9 @@ public abstract class ProgramIcon : MonoBehaviour, IPointerClickHandler
         if (GameManager.Instance.gold >= cost[level - 1])
         {
             GameManager.Instance.gold -= cost[level - 1];
+
+            if (level == 1)
+                upgradeRenderer.material = upgradeMaterial;
 
             level++;
             ++GameManager.Instance.levelArray[transform.GetSiblingIndex()];

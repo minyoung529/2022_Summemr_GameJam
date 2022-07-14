@@ -38,8 +38,16 @@ public class Tower : MonoBehaviour
     {
         if (GameManager.Instance.dadTowerGage >= maxTowerGage && GameManager.Instance.brotherTowerGage >= maxTowerGage)
         {
+            if (GameManager.Instance.IsGameOver) return;
+
             PlayerPrefs.SetInt("SCORE", GameManager.Instance.score);
-            UIManager.Instance.SceneChange("Over");
+
+            Vector3 position = FileTower.DiePosition;
+            position.y += 2f;
+            GameManager.Instance.IsGameOver = true;
+            Sequence seq = DOTween.Sequence();
+            seq.Append(Camera.main.transform.DOMove(position, 4f));
+            seq.AppendCallback(() => UIManager.Instance.SceneChange("Over"));
         }
         else if (GameManager.Instance.dadTowerGage >= maxTowerGage/2 && GameManager.Instance.brotherTowerGage >= maxTowerGage/2)
         {

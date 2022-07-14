@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class GameManager : Singleton<GameManager>
 {
+    public bool IsGameOver { get;  set; }
     [SerializeField]
     Text scoreText;
     [SerializeField]

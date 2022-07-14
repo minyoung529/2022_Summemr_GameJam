@@ -29,6 +29,8 @@ public class FileTower : MonoBehaviour
 
     private bool isDragging = false;
 
+    public static Vector3 DiePosition;
+
     void Awake()
     {
         _cam = Camera.main;
@@ -103,6 +105,7 @@ public class FileTower : MonoBehaviour
 
     private void OnMouseDrag()
     {
+        if (isDie) return;
         isDragging = true;
 
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -138,6 +141,7 @@ public class FileTower : MonoBehaviour
     {
         if (isDie) return;
         isDie = true;
+        DiePosition = transform.position;
         collider.isTrigger = true;
         FindObjectOfType<MonsterSpawner>().tower.Remove(this);
         renderer.material.DOColor(new Color32(144, 24, 0, 255), 3f);

@@ -737,6 +737,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 19b97eadc3d97054bbceb432b263f34a, type: 3}
   cooltimeImage: {fileID: 1094288431}
   programName: 
+  upgradeMaterial: {fileID: 2100000, guid: 31e5d88870143ff41b1952ac68f7d52a, type: 2}
+  upgradeRenderer: {fileID: 1983950721}
   windowImage: {fileID: 1965707720}
   mail: {fileID: 1965707721}
   targetPicker: {fileID: 919332801}
@@ -6114,6 +6116,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: e873cd56af9801244b7d124daf3a3673, type: 3}
   cooltimeImage: {fileID: 970865005}
   programName: "\uD06C\uB871"
+  upgradeMaterial: {fileID: 2100000, guid: 31e5d88870143ff41b1952ac68f7d52a, type: 2}
+  upgradeRenderer: {fileID: 1849386745}
   chrome:
   - {fileID: 668151493}
   - {fileID: 842279754}
@@ -11959,6 +11963,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 1002bc6b8ca712443acee7fd043a8353, type: 3}
   cooltimeImage: {fileID: 831537467}
   programName: "\uADF8\uB9BC\uD310"
+  upgradeMaterial: {fileID: 2100000, guid: 31e5d88870143ff41b1952ac68f7d52a, type: 2}
+  upgradeRenderer: {fileID: 792556981}
   paintUI: {fileID: 500248140}
   paint: {fileID: 1734114445}
   drawLine: {fileID: 3171332940395822276}
@@ -12492,6 +12498,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 000bd660071479c47aa022a5afb9dca4, type: 3}
   cooltimeImage: {fileID: 322703501}
   programName: "\uD734\uC9C0\uD1B5"
+  upgradeMaterial: {fileID: 2100000, guid: 31e5d88870143ff41b1952ac68f7d52a, type: 2}
+  upgradeRenderer: {fileID: 1708378810}
   holeScript: {fileID: 1327657316}
   duration: 3
   cooldown: 4
@@ -14770,6 +14778,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 714df82a6cd59064bb055e9a51ac4e4c, type: 3}
   cooltimeImage: {fileID: 816238372}
   programName: "\uC778\uC2A4\uD0C0\uADF8\uB7AD"
+  upgradeMaterial: {fileID: 2100000, guid: 31e5d88870143ff41b1952ac68f7d52a, type: 2}
+  upgradeRenderer: {fileID: 1678512931}
   windowImage: {fileID: 1476351456}
   heartButton: {fileID: 510228070}
 --- !u!114 &2106835656
