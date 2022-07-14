@@ -5,7 +5,11 @@ using UnityEngine;
 public class DrawLine : MonoBehaviour
 {
     [SerializeField]
-    Transform attackPos;
+    private float maxDrawAmount = 2f; //그리기 제한
+    private float currentDrawAmount = 2f;
+
+    [SerializeField]
+    private Transform gague;
 
     public PoolableObject bullet;
 
@@ -37,6 +41,11 @@ public class DrawLine : MonoBehaviour
     {
         _mainCam = Camera.main;
         bulletCount = 10;
+    }
+
+    private void Start()
+    {
+        UpdateGague();
     }
 
     void Update()
@@ -85,6 +94,8 @@ public class DrawLine : MonoBehaviour
     // 라인 만들기
     void createLine(Vector3 mousePos)
     {
+        currentDrawAmount = maxDrawAmount;
+        UpdateGague();
         positionCount = 2;
         GameObject line = new GameObject("Line");
         LineRenderer lineRend = line.AddComponent<LineRenderer>();
@@ -117,13 +128,21 @@ public class DrawLine : MonoBehaviour
     // 라인 연결
     void connectLine(Vector3 mousePos)
     {
+        if (currentDrawAmount <= 0) return;
         if (PrevPos != null && Mathf.Abs(Vector3.Distance(PrevPos, mousePos)) >= 0.001f)
         {
             PrevPos = mousePos;
             positionCount++;
             curLine.positionCount = positionCount;
-            curLine.SetPosition(positionCount - 1, mousePos + new Vector3(0, 0.1f));
+            curLine.SetPosition(positionCount - 1, mousePos + new Vector3(0, 0.1f)); //y축 방향으로 조금 움직여서 그림판 보다 앞에 위치하기 위해 더해줌
+            currentDrawAmount -= (curLine.GetPosition(positionCount - 1) - curLine.GetPosition(positionCount - 2)).magnitude;
+            UpdateGague();
         }
+    }
+
+    public void UpdateGague()
+    {
+        gague.localScale = new Vector3(currentDrawAmount / 5, 1, 1);
     }
 
     // 공격 준비
@@ -139,9 +158,6 @@ public class DrawLine : MonoBehaviour
 
         SoundManager.Instance.SfxSoundOn(0);
 
-        // 오브젝트 사이즈 줄어들고 왼쪽 아래로 이동
-        LineRenderer lr = madeLine.GetComponent<LineRenderer>();
-
         for (int i = 0; i < positionCount - 1; i++)
         {
             Vector3 dir = curLine.GetPosition(i + 1) - curLine.GetPosition(i);
@@ -153,7 +169,6 @@ public class DrawLine : MonoBehaviour
                 PaintingBullet obj = PoolManager.Instance.Pop(bullet) as PaintingBullet;
                 Vector3 pos = curLine.GetPosition(i);
                 pos.y = transform.position.y;
-                Debug.Log(pos);
                 obj.transform.position = pos;
 
                 Vector3 euler = obj.transform.eulerAngles;
