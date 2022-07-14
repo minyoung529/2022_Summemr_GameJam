@@ -59,7 +59,6 @@ public class Chrome : MonoBehaviour
         currentPos = transform.position;
         RaycastHit hit;
         Vector3 distance = currentPos - beforePos;
-        Debug.Log(distance);
         Debug.DrawRay(currentPos, moveDir.normalized, Color.red);
 
         if (Physics.Raycast(currentPos, moveDir.normalized, out hit, 1f, platformMask))

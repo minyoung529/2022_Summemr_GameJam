@@ -95,7 +95,10 @@ public class Monster : PoolableObject
             else if (!targetMonster.isDie)
                 rigid.velocity = targetMonster.rigid.velocity;
             else
+            {
+                if (spawner.tower.Count == 0) return;
                 target = spawner.tower[Random.Range(0, spawner.tower.Count)].transform;
+            }
         }
 
         if (transform.position.y < -20f)

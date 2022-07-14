@@ -187,20 +187,32 @@ public class MonsterSpawner : MonoBehaviour
         }
     }
 
+    [SerializeField] private int[] difficultPoint;
+    private int currentPoint = 0;
+    [SerializeField] private float factorIncrease = 1f;
     internal void AddPoint(int score)
     {
-        if (score > 3100 && !isSquareCoroutine)
+        if (score > 700 && !isSquareCoroutine)
         {
             isSquareCoroutine = true;
             StartCoroutine(SquareCoroutine());
         }
-        if (score > 2000 && !isHorVer)
+        if (score > 500 && !isHorVer)
         {
             isHorVer = true;
             StartCoroutine(VerHorCoroutine());
         }
 
+        if(score >= difficultPoint[currentPoint])
+        {
+            delayFactor *= factorIncrease;
+            if(currentPoint != difficultPoint.Length - 1)
+            {
+                currentPoint++;
+            }
+        }
         currentDelay = spawnDelay / (time * delayFactor);
+        Debug.Log(currentDelay);
     }
 
     public void Wave()
@@ -208,15 +220,19 @@ public class MonsterSpawner : MonoBehaviour
 
     }
 
+    private bool isPatternExcute = false;
+
     private IEnumerator SquareCoroutine()
     {
         while (true)
         {
             if (tower.Count == 0) yield break;
-
-            CirclePattern(Random.Range(3f, 5f), MonsterType.FAST, 60);
+            if (isPatternExcute)
+                yield return new WaitForSeconds(10f);
+            StartCoroutine(PatternDelayCoroutine());
+            CirclePattern(Random.Range(3f, 5f), MonsterType.FAST, 40);
             Debug.Log("Ciircle");
-            yield return new WaitForSeconds(10f);
+            yield return new WaitForSeconds(30f * (currentDelay * 1000));
         }
     }
 
@@ -226,6 +242,8 @@ public class MonsterSpawner : MonoBehaviour
         {
             if (tower.Count == 0) yield break;
 
+            if (isPatternExcute)
+                yield return new WaitForSeconds(10f);
             if (Random.Range(0, 2) == 0)
             {
                 SpawnHorArr((MonsterType)Random.Range(1, 3), 3, 2);
@@ -235,7 +253,14 @@ public class MonsterSpawner : MonoBehaviour
                 SpawnVerArr((MonsterType)Random.Range(1, 3), 3, 2);
             }
 
-            yield return new WaitForSeconds(10f);
+            yield return new WaitForSeconds(10f * (currentDelay * 1000));
         }
+    }
+
+    private IEnumerator PatternDelayCoroutine()
+    {
+        isPatternExcute = true;
+        yield return new WaitForSeconds(10f);
+        isPatternExcute = false;
     }
 }

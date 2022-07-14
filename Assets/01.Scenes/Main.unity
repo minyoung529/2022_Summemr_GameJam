@@ -2753,6 +2753,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ChromeImage (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 4814020959114642876, guid: 221d05494a1933c40921852ca19689ee, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 221d05494a1933c40921852ca19689ee, type: 3}
 --- !u!224 &842279753 stripped
@@ -3212,6 +3216,7 @@ MonoBehaviour:
   bestScoreText: {fileID: 1763344899}
   startMat: {fileID: 1112510374}
   menuPanel: {fileID: 1625965082402927087}
+  spawner: {fileID: 1932288085}
   goldText: {fileID: 1313016155}
   score: 0
   bestScore: 0
@@ -3584,6 +3589,10 @@ PrefabInstance:
     - target: {fileID: 4814020959114642876, guid: 221d05494a1933c40921852ca19689ee, type: 3}
       propertyPath: m_Name
       value: ChromeImage (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4814020959114642876, guid: 221d05494a1933c40921852ca19689ee, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 221d05494a1933c40921852ca19689ee, type: 3}
@@ -13370,10 +13379,12 @@ MonoBehaviour:
   - {fileID: 8885342125998059096}
   wallPaper: {fileID: 1112510376}
   spawnRange: {x: 10, y: 6}
-  delayFactor: 3
+  delayFactor: 1
   spawnDelay: 0.35
   squareDelay: 15
   poolingMonsterCount: 100
+  difficultPoint: fa000000f4010000e8030000d0070000
+  factorIncrease: 2
 --- !u!4 &1932288086
 Transform:
   m_ObjectHideFlags: 0

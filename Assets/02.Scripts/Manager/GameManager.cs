@@ -14,6 +14,8 @@ public class GameManager : Singleton<GameManager>
     MeshRenderer startMat;
     [SerializeField]
     GameObject menuPanel;
+    [SerializeField]
+    private MonsterSpawner spawner;
 
     [SerializeField]
     Text goldText;
@@ -114,6 +116,8 @@ public class GameManager : Singleton<GameManager>
             bestScore = score;
             PlayerPrefs.SetInt("BESTSCORE", bestScore);
         }
+
+        spawner.AddPoint(score);
     }
 
     void GameStartReset()
