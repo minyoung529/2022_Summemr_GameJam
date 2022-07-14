@@ -62,7 +62,6 @@ public class FileTower : MonoBehaviour
                 {
                     isAngry = true;
                     renderer.material.SetTexture("_BaseMap", angryTexture);
-                    renderer.transform.DOShakePosition(1f);
                 }
                 if (GameManager.Instance.dadTowerGage >= 100f)
                 {
@@ -77,13 +76,11 @@ public class FileTower : MonoBehaviour
                 {
                     isAngry = true;
                     renderer.material.SetTexture("_BaseMap", angryTexture);
-                    renderer.transform.DOShakePosition(1f);
                 }
 
                 if (GameManager.Instance.brotherTowerGage >= 100f)
                 {
                     Die();
-
                 }
             }
 

@@ -81,13 +81,16 @@ public abstract class ProgramIcon : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (!canExecute)
+        if(coolImage.fillAmount<=0.02f)
         {
-            StartCoroutine(OnFirstClick());
-        }
-        else
-        {
-            ExecuteProgram();
+            if (!canExecute)
+            {
+                StartCoroutine(OnFirstClick());
+            }
+            else
+            {
+                ExecuteProgram();
+            }
         }
     }
 

@@ -20,6 +20,8 @@ public class Tower : MonoBehaviour
 
     public GameObject[] closeOnGameOver;
 
+    public GameObject retro;
+
     private void Update()
     {
         if (GameManager.Instance.dadTowerGage >= maxTowerGage && GameManager.Instance.brotherTowerGage >= maxTowerGage)
@@ -34,6 +36,8 @@ public class Tower : MonoBehaviour
 
             foreach (var obj in closeOnGameOver)
                 obj.SetActive(false);
+
+            retro.gameObject.SetActive(false);
 
             Sequence seq = DOTween.Sequence();
             seq.Append(Camera.main.transform.DOMove(position, 4f));
