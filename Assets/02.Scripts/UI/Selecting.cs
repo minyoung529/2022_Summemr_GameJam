@@ -4,20 +4,20 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class Selecting : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IDragHandler
+public class Selecting : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IDragHandler, IBeginDragHandler
 {
     private Image fileImage;
     public Color selectColor;
     [SerializeField]
-    private Canvas canvas;
-    [SerializeField]
     RectTransform coolRect;
     RectTransform rectTransform;
 
-    Vector3 defaultPos;
+    Camera _cam;
+    Vector3 offset;
 
     private void Start()
     {
+        _cam = Camera.main;
         rectTransform = GetComponent<RectTransform>();
         fileImage = GetComponent<Image>();
     }
@@ -42,8 +42,40 @@ public class Selecting : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     public void OnDrag(PointerEventData eventData)
     {
-        rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
+        Vector3 pos = transform.position;
+        Ray ray = _cam.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hitInfo;
+
+        if (Physics.Raycast(ray, out hitInfo))
+        {
+            pos = hitInfo.point;
+            pos.y = 0f;
+
+            pos.x -= offset.x;
+            pos.z -= offset.z;
+
+            if (Mathf.Abs(pos.x) > 7f)
+            {
+                pos.x = transform.position.x;
+            }
+            if (Mathf.Abs(pos.z) > 3.3f)
+            {
+                pos.z = transform.position.z;
+            }
+        }
+        rectTransform.transform.position = pos;
         coolRect.anchoredPosition = rectTransform.anchoredPosition;
+    }
+
+    public void OnBeginDrag(PointerEventData eventData)
+    {
+        Ray ray = _cam.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hitInfo;
+
+        if (Physics.Raycast(ray, out hitInfo))
+        {
+            offset = hitInfo.point - transform.position;
+        }
     }
 
     #endregion
