@@ -375,7 +375,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 197321f9aba47494b8bc2c9418da5c2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 2.7
+  duration: 1.5
   trailSpawner: {fileID: 1469275940}
   collisionImpact: {fileID: 7985603114883174406, guid: 281b13e87b892f043a2f4777cfd813fa, type: 3}
   _iconC: {fileID: 0}

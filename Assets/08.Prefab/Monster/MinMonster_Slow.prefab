@@ -52,12 +52,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 2
-  speed: 0.3
+  speed: 0.45
   dieEffect:
   - {fileID: 1297914084022453529}
   - {fileID: 5279283787404616268}
   damageEffect: {fileID: 4401619421952456395}
   spawner: {fileID: 0}
+  rigid: {fileID: 0}
   attackPower: 10
   materials:
   - {fileID: 2100000, guid: 089590a32fbde324c898d19b52cfb873, type: 2}
