@@ -39,10 +39,23 @@ public class Chrome : MonoBehaviour
         platformMask = LayerMask.NameToLayer("Platform");
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
+        if (!isMoving) return;
         beforePos = currentPos;
         currentPos = transform.position;
+        RaycastHit hit;
+        if (Physics.Raycast(beforePos, moveDir, out hit, (currentPos - beforePos).magnitude, 1 << platformMask))
+        {
+            transform.position = hit.point - moveDir * 0.5f;
+            Vector3 dir = Vector3.Dot(-moveDir, hit.normal) * hit.normal * 2 + moveDir; //반사각 구하기
+            dir.y = 0;
+            moveDir = dir;
+            ChromeCollisionImpact impact = PoolManager.Instance.Pop(collisionImpact) as ChromeCollisionImpact;
+            impact.transform.position = hit.point;
+            transform.position += new Vector3(0, 0, 1f);
+            impact.SpawnImpact();
+        }
     }
 
     #region 스킬 사용 함수
@@ -98,25 +111,6 @@ public class Chrome : MonoBehaviour
 
     #region 충돌 관련
     private LayerMask platformMask;
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.transform.CompareTag("Platform"))
-        {
-            RaycastHit hit;
-            if (Physics.Raycast(beforePos, moveDir, out hit, 10f, 1 << platformMask))
-            {
-                transform.position = hit.point - moveDir * 0.5f;
-                Vector3 dir = Vector3.Dot(-moveDir, hit.normal) * hit.normal * 2 + moveDir; //반사각 구하기
-                dir.y = 0;
-                moveDir = dir;
-                ChromeCollisionImpact impact = PoolManager.Instance.Pop(collisionImpact) as ChromeCollisionImpact;
-                impact.transform.position = hit.point;
-                transform.position += new Vector3(0, 0, 1f);
-                impact.SpawnImpact();
-            }
-        }
-    }
     #endregion
 
     private void OnDisable()

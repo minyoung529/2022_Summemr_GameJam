@@ -26,5 +26,6 @@ public class LoadingBarMove : MonoBehaviour
     private void OnDisable()
     {
         seq.Kill();
+        rect.DOKill();
     }
 }
