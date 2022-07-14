@@ -7,7 +7,7 @@ public class Monster : PoolableObject
 {
     [SerializeField] private MonsterType type;
     [SerializeField] private float speed = 10f;
-    [SerializeField] private ParticleSystem dieEffect;
+    [SerializeField] private ParticleSystem[] dieEffect;
     [SerializeField] private ParticleSystem damageEffect;
     public MonsterSpawner spawner;
     private Rigidbody rigid;
@@ -39,7 +39,7 @@ public class Monster : PoolableObject
     public Material[] materials;
 
     new private Collider collider;
-    new private Collider vaccineCollider;
+    private Collider vaccineCollider;
 
     private void Awake()
     {
@@ -151,7 +151,12 @@ public class Monster : PoolableObject
         rigid.velocity = Vector3.zero;
         isDie = true;
         DieSprite();
-        dieEffect.Play();
+
+        foreach (ParticleSystem p in dieEffect)
+        {
+            p.Play();
+        }
+
         SoundManager.Instance.MonsterDieSound();
         Invoke("DieMonster", 1f);
     }
