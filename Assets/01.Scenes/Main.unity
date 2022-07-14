@@ -12086,7 +12086,7 @@ SortingGroup:
   m_Enabled: 1
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
 --- !u!1 &1734281803
 GameObject:
   m_ObjectHideFlags: 0
@@ -13426,6 +13426,7 @@ MonoBehaviour:
   - {fileID: 8885342125998059096}
   wallPaper: {fileID: 1112510376}
   spawnRange: {x: 10, y: 6}
+  delayFactor: 1
   spawnDelay: 0.35
   squareDelay: 15
   poolingMonsterCount: 100
