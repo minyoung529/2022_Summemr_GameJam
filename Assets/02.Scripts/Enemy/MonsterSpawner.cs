@@ -9,9 +9,14 @@ public class MonsterSpawner : MonoBehaviour
     [SerializeField] private Transform wallPaper;
     [SerializeField] private Vector2 spawnRange = new Vector2(15f, 10f);
     [SerializeField] private float spawnDelay = 1f;
+    [SerializeField] private float squareDelay = 15f;
     [SerializeField] private int poolingMonsterCount = 100;
 
+    private WaitForSeconds waitSquareDelay;
+
     private float time = 0f;
+
+    private bool isSquareCoroutine = false;
 
     void Start()
     {
@@ -20,6 +25,10 @@ public class MonsterSpawner : MonoBehaviour
             PoolManager.Instance.CreatePool(monsterPrefab[i], poolingMonsterCount);
         }
         // StartCoroutine(SpawnMonster());
+
+        waitSquareDelay = new WaitForSeconds(squareDelay);
+
+        StartCoroutine(SpawnMonster());
     }
 
     private void Update()
@@ -129,7 +138,7 @@ public class MonsterSpawner : MonoBehaviour
         else
             center.x -= radius;
 
-        if(center.z > 0)
+        if (center.z > 0)
             center.z += radius;
         else
             center.z -= radius;
@@ -157,8 +166,27 @@ public class MonsterSpawner : MonoBehaviour
             else
             {
                 if (centerMonster)
-                    obj.SetTargetRigid(centerMonster.rigid);
+                    obj.SetTargetRigid(centerMonster);
             }
+        }
+    }
+
+    internal void AddPoint(int score)
+    {
+        if (score > 60 && !isSquareCoroutine)
+        {
+            isSquareCoroutine = true;
+            StartCoroutine(SquareCoroutine());
+        }
+    }
+
+    private IEnumerator SquareCoroutine()
+    {
+        while (true)
+        {
+            CirclePattern(Random.Range(3f, 5f), MonsterType.FAST, 60);
+            Debug.Log("Ciircle");
+            yield return new WaitForSeconds(15f);
         }
     }
 }
