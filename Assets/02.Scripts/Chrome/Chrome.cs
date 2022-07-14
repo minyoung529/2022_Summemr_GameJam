@@ -9,6 +9,7 @@ public class Chrome : MonoBehaviour
     [SerializeField] private TrailSpawner trailSpawner;
     [SerializeField] private ChromeCollisionImpact collisionImpact;
 
+
     #region 이동 및 회전
     private RectTransform _rect;
     private Sequence seq;
@@ -37,14 +38,16 @@ public class Chrome : MonoBehaviour
         _rect = transform.GetComponent<RectTransform>();
         startPos = _rect.anchoredPosition;
         animator = GetComponent<Animator>();
-        platformMask = LayerMask.NameToLayer("Platform");
+        platformMask = 1 << LayerMask.NameToLayer("Platform");
     }
 
     private void Update()
     {
         Move();
         CheckCollision();
+        CheckLimit();
     }
+ 
 
     #region 충돌 관련
     private LayerMask platformMask;
@@ -54,7 +57,11 @@ public class Chrome : MonoBehaviour
         beforePos = currentPos;
         currentPos = transform.position;
         RaycastHit hit;
-        if (Physics.Raycast(beforePos, currentPos - beforePos, out hit, (currentPos - beforePos).magnitude, 1 << platformMask))
+        Vector3 distance = currentPos - beforePos;
+        Debug.Log(distance);
+        Debug.DrawRay(currentPos, moveDir.normalized, Color.red);
+
+        if (Physics.Raycast(currentPos, moveDir.normalized, out hit, 1f, platformMask))
         {
             //_rect.position = hit.point;
             //Vector3 dir = -moveDir.normalized * (_rect.rect.width / 2);
@@ -62,11 +69,12 @@ public class Chrome : MonoBehaviour
             //currentPos = transform.position;
             //trailSpawner.SpawnTrails(currentPos, transform.rotation);
 
-            Vector3 dir;
-
-            dir = Vector3.Dot(-moveDir, hit.normal) * hit.normal * 2 + moveDir; //반사각 구하기
+            
+            Vector3 dir = Vector3.Reflect(moveDir, hit.normal);
+            //dir = Vector3.Dot(-moveDir, hit.normal) * hit.normal * 2 + moveDir; //반사각 구하기
             dir.y = 0;
-            moveDir = dir;
+          
+            moveDir = dir.normalized;
 
             SpawnImpact(hit.point);
         }
@@ -80,7 +88,6 @@ public class Chrome : MonoBehaviour
     {
         ChromeCollisionImpact impact = PoolManager.Instance.Pop(collisionImpact) as ChromeCollisionImpact;
         impact.transform.position = point;
-        transform.position += new Vector3(0, 0, 1f);
         impact.SpawnImpact();
     }
     #endregion
@@ -94,6 +101,37 @@ public class Chrome : MonoBehaviour
         Vector3 dir = transform.rotation.eulerAngles + new Vector3(0, rotateSpeed * Time.deltaTime, 0);
         transform.rotation = Quaternion.Euler(dir);
     }
+
+
+    #region 비상용 버그 방지
+    [SerializeField] private Vector2 limit = Vector2.zero;
+    private void CheckLimit()
+    {
+        if (Mathf.Abs(transform.position.x) > limit.x)
+        {
+            if (transform.position.x < 0)
+            {
+                transform.position = new Vector3(-limit.x, transform.position.y, transform.position.z);
+            }
+            else
+            {
+                transform.position = new Vector3(limit.x, transform.position.y, transform.position.z);
+            }
+        }
+        if (Mathf.Abs(transform.position.z) > limit.y)
+        {
+            if (transform.position.z < 0)
+            {
+                transform.position = new Vector3(transform.position.x, transform.position.y, -limit.y);
+            }
+            else
+            {
+                transform.position = new Vector3(transform.position.x, transform.position.y, limit.y);
+            }
+        }
+    }
+    #endregion
+
     public void EnableChrome()
     {
         if (isMoving) return;
