@@ -57,7 +57,7 @@ public class PaintingBullet : PoolableObject
     public void SetDirection(Vector3 dir, float range)
     {
         Sequence seq = DOTween.Sequence();
-        seq.Append(transform.DOMove(transform.position + dir * range, 1f*_icon.level));
+        seq.Append(transform.DOMove(transform.position + dir * range, 1f*_icon.level+1));
         seq.AppendCallback(() => PoolManager.Instance.Push(this));
     }
 

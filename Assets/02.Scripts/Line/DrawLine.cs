@@ -172,6 +172,7 @@ public class DrawLine : MonoBehaviour
             for (int j = 0; j < 2; j++)
             {
                 PaintingBullet obj = PoolManager.Instance.Pop(bullet) as PaintingBullet;
+                obj._icon = _iconP;
                 Vector3 pos = curLine.GetPosition(i);
                 pos.y = transform.position.y;
                 obj.transform.position = pos;
