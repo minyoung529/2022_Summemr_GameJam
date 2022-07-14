@@ -68,6 +68,7 @@ public abstract class ProgramIcon : MonoBehaviour, IPointerClickHandler
 
                 if (level == MAX_LEVEL - 1)
                 {
+                    upgradeRenderer.material = upgradeMaterial;
                     upgradeButtonImage.material.SetColor("_BaseColor", Color.white);
                 }
                 isNotice = true;
@@ -126,9 +127,6 @@ public abstract class ProgramIcon : MonoBehaviour, IPointerClickHandler
         {
             GameManager.Instance.gold -= cost[level - 1];
 
-            if (level == 1)
-                upgradeRenderer.material = upgradeMaterial;
-
             level++;
             ++GameManager.Instance.levelArray[transform.GetSiblingIndex()];
             GameManager.Instance.AddLevelCount();
@@ -164,12 +162,11 @@ public abstract class ProgramIcon : MonoBehaviour, IPointerClickHandler
         zoomSequence.Pause();
         isNotice = false;
         upgradeButtonImage.color = Color.gray;
+        upgradeRenderer.material = null;
 
         if (level == MAX_LEVEL - 1)
         {
-            Color32 color = Color.white;
-            color.a = 4;
-            upgradeButtonImage.material.SetColor("_BaseColor", color);
+            upgradeButtonImage.material = null;
         }
     }
 
