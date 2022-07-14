@@ -11,6 +11,8 @@ public class GameManager : Singleton<GameManager>
     Text bestScoreText;
     [SerializeField]
     MeshRenderer startMat;
+    [SerializeField]
+    GameObject menuPanel;
 
     [SerializeField]
     Text goldText;
@@ -35,6 +37,8 @@ public class GameManager : Singleton<GameManager>
     [HideInInspector]
     public List<Monster> monsters;
 
+    public bool isOpenMenu = false;
+
     public void OnCoolTime(Image cool, float coolTime)
     {
         cool.gameObject.SetActive(true);
@@ -49,8 +53,27 @@ public class GameManager : Singleton<GameManager>
     }
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            isOpenMenu = !isOpenMenu;
+            if (isOpenMenu)
+            {
+                menuPanel.SetActive(true);
+                Time.timeScale = 0;
+            }
+            else
+            {
+                MenuClose();
+            }
+        }
         UpdateScore();
         UpdateGold();
+    }
+
+    public void MenuClose()
+    {
+                Time.timeScale = 1;
+        menuPanel.SetActive(false);
     }
 
     void UpdateScore()
