@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 using UnityEngine.UI;
 
 public class FileTower : MonoBehaviour
@@ -15,14 +16,21 @@ public class FileTower : MonoBehaviour
     GameObject file;
     [SerializeField]
     Image fileImage;
+    new public MeshRenderer renderer;
+
+    public bool isDie;
+    new private Collider collider;
 
     Camera _cam;
 
     Vector3 offset;
 
+    private bool isDragging = false;
+
     void Awake()
     {
         _cam = Camera.main;
+        collider = GetComponent<Collider>();
     }
 
     void Update()
@@ -39,25 +47,42 @@ public class FileTower : MonoBehaviour
     {
         if (collision.collider.CompareTag("Monster"))
         {
-            //���� ���� type�� ���� ���ݹ��� ���� �뷮 ����
             Monster monster = collision.collider.GetComponent<Monster>();
             if (monster.IsVaccine) return;
 
             if (fileType == 1)
             {
                 GameManager.Instance.dadTowerGage += monster.attackPower;
+                if (GameManager.Instance.dadTowerGage >= 100f)
+                    Die();
             }
             if (fileType == 2)
             {
                 GameManager.Instance.brotherTowerGage += monster.attackPower;
+                if (GameManager.Instance.brotherTowerGage >= 100f)
+                    Die();
             }
 
-            collision.transform.GetComponent<Monster>().DieMonster();
+            if (!isDie)
+                monster.DieMonsterByTower();
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Monster"))
+        {
+            Monster monster = other.GetComponent<Monster>();
+
+            if (!isDragging)
+                monster.DieMonsterByTower();
         }
     }
 
     private void OnMouseDrag()
     {
+        isDragging = true;
+
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hitInfo;
 
@@ -82,10 +107,23 @@ public class FileTower : MonoBehaviour
         }
     }
 
+    private void OnMouseUp()
+    {
+        isDragging = false;
+    }
+
+    private void Die()
+    {
+        if (isDie) return;
+        isDie = true;
+        collider.isTrigger = true;
+        FindObjectOfType<MonsterSpawner>().tower.Remove(this);
+        renderer.material.DOColor(new Color32(144, 24, 0, 255), 3f);
+    }
+
     private void OnMouseDown()
     {
-        Debug.Log("DOWN");
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Ray ray = _cam.ScreenPointToRay(Input.mousePosition);
         RaycastHit hitInfo;
 
         if (Physics.Raycast(ray, out hitInfo))

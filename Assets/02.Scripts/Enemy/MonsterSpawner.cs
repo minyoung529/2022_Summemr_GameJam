@@ -5,8 +5,7 @@ using UnityEngine;
 public class MonsterSpawner : MonoBehaviour
 {
     [SerializeField] private Monster[] monsterPrefab;
-    [SerializeField] private Transform[] tower;
-    public Transform[] Tower => tower;
+    public List<FileTower> tower;
     [SerializeField] private Transform wallPaper;
     [SerializeField] private float spawnRange = 15f;
     [SerializeField] private float spawnDelay = 1f;
@@ -37,7 +36,7 @@ public class MonsterSpawner : MonoBehaviour
             GameManager.Instance.monsters.Add(obj);
             obj.transform.position = GetRandomCirclePoint();
             obj.spawner = this;
-            obj.SetTarget(tower[Random.Range(0, tower.Length)]);
+            obj.SetTarget(tower[Random.Range(0, tower.Count)].transform);
             yield return new WaitForSeconds(spawnDelay);
         }
     }

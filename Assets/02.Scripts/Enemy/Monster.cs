@@ -97,11 +97,6 @@ public class Monster : PoolableObject
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.CompareTag("Tower"))
-        {
-            if (!isVaccine)
-                DieMonster();
-        }
         if (other.transform.CompareTag("Chrome"))
         {
             Damaged();
@@ -163,6 +158,12 @@ public class Monster : PoolableObject
 
     public void DieMonster()
     {
+        PoolManager.Instance.Push(this);
+    }
+
+    public void DieMonsterByTower()
+    {
+        if (IsVaccine) return;
         PoolManager.Instance.Push(this);
     }
 
