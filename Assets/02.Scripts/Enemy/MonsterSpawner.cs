@@ -8,7 +8,9 @@ public class MonsterSpawner : MonoBehaviour
     public List<FileTower> tower;
     [SerializeField] private Transform wallPaper;
     [SerializeField] private Vector2 spawnRange = new Vector2(15f, 10f);
+    [SerializeField] private float delayFactor = 1f;
     [SerializeField] private float spawnDelay = 1f;
+    private float currentDelay = 1f;
     [SerializeField] private float squareDelay = 15f;
     [SerializeField] private int poolingMonsterCount = 100;
 
@@ -21,6 +23,7 @@ public class MonsterSpawner : MonoBehaviour
 
     void Start()
     {
+        currentDelay = spawnDelay;
         for (int i = 0; i < (int)MonsterType.COUNT; i++)
         {
             PoolManager.Instance.CreatePool(monsterPrefab[i], poolingMonsterCount);
@@ -197,26 +200,7 @@ public class MonsterSpawner : MonoBehaviour
             StartCoroutine(VerHorCoroutine());
         }
 
-        if (score > 3500)
-        {
-            spawnDelay = 0.035f;
-        }
-        else if (score > 2900)
-        {
-            spawnDelay = 0.07f;
-        }
-        else if (score > 2500)
-        {
-            spawnDelay = 0.1f;
-        }
-        else if (score > 1500)
-        {
-            spawnDelay = 0.17f;
-        }
-        else if (score > 900)
-        {
-            spawnDelay = 0.25f;
-        }
+        currentDelay = spawnDelay / (time * delayFactor);
     }
 
     private IEnumerator SquareCoroutine()
