@@ -9,6 +9,7 @@ public class Chrome : MonoBehaviour
     [SerializeField] private TrailSpawner trailSpawner;
     [SerializeField] private ChromeCollisionImpact collisionImpact;
 
+    public ChromeIcon _iconC;
 
     #region 이동 및 회전
     private RectTransform _rect;
@@ -179,7 +180,7 @@ public class Chrome : MonoBehaviour
 
     public void EndRechange()
     {
-        
+        _iconC.OnCoolTime();
     }
     #endregion
 

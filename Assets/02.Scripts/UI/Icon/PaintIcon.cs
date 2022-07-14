@@ -18,8 +18,6 @@ public class PaintIcon : ProgramIcon
     {
         SoundManager.Instance.ProgramOpen();
 
-        OnCoolTime();
-
         UIManager.Instance.ActiveWindow(paint);
         paintUI.SetActive(true);
 

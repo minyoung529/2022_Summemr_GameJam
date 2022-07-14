@@ -20,8 +20,6 @@ public class ChromeIcon : ProgramIcon
     protected override void ExecuteProgram()
     {
         Invoke("ChromeOnSound", 0.2f);
-        OnCoolTime();
-        //OnCoolTime();
         for(int i = 0; i < level; i++)
         {
             chrome[i].EnableChrome();

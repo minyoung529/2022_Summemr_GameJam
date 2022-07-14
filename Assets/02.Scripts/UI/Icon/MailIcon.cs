@@ -17,7 +17,6 @@ public class MailIcon : ProgramIcon
         UIManager.Instance.ActiveWindow(windowImage.gameObject);
         windowImage.transform.localScale = Vector3.zero;
         windowImage.transform.DOScale(1.2f, 0.3f);
-        OnCoolTime();
     }
 
     protected override void ChildLevelUp()

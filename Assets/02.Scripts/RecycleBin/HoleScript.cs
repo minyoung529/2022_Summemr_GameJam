@@ -11,6 +11,8 @@ public class HoleScript : MonoBehaviour
     private BoxCollider range;
     Mesh GeneratedMesh;
 
+    public RecycleBinIcon _iconR;
+
     public float holeTime;
     private float holeSize = 1f;
     public float HoleSize
@@ -62,6 +64,7 @@ public class HoleScript : MonoBehaviour
         }
         transform.localScale = Vector3.zero;
         range.enabled = false;
+        _iconR.OnCoolTime();
     }
 
     private void FixedUpdate()
