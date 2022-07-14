@@ -736,7 +736,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: bf03678b7adc94b498773a18d529b3b0, type: 3}
   - {fileID: 21300000, guid: 19b97eadc3d97054bbceb432b263f34a, type: 3}
   cooltimeImage: {fileID: 1094288431}
-  programName: 
+  programName: "\uBA54\uC77C"
   windowImage: {fileID: 1965707720}
   mail: {fileID: 1965707721}
   targetPicker: {fileID: 919332801}

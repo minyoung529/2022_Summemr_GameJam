@@ -37,6 +37,9 @@ public class PoolManager : Singleton<PoolManager>
     /// <param name="obj">Push«“ ¥ÎªÛ</param>
     public void Push(PoolableObject obj)
     {
-        pools[obj.name].Push(obj);
+        if (pools.ContainsKey(obj.name))
+        {
+            pools[obj.name].Push(obj);
+        }
     }
 }

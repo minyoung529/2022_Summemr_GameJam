@@ -38,15 +38,15 @@ public class Monster : PoolableObject
     private MeshRenderer meshRenderer;
     public Material[] materials;
 
-   // Sequence seq;
-
     new private Collider collider;
+    new private Collider vaccineCollider;
 
     private void Awake()
     {
         meshRenderer = GetComponent<MeshRenderer>();
         rigid = GetComponent<Rigidbody>();
         collider = GetComponent<Collider>();
+        vaccineCollider = transform.GetChild(0).GetComponent<Collider>();
         if (type == MonsterType.SLOW)
         {
             attackPower = 20;
@@ -79,6 +79,7 @@ public class Monster : PoolableObject
     {
         if (isVaccine)
         {
+            if (isDie) return;
             VaccineMove();
         }
         else
@@ -98,7 +99,8 @@ public class Monster : PoolableObject
     {
         if (other.transform.CompareTag("Tower"))
         {
-            DieMonster();
+            if (!isVaccine)
+                DieMonster();
         }
         if (other.transform.CompareTag("Chrome"))
         {
@@ -149,6 +151,7 @@ public class Monster : PoolableObject
         GameManager.Instance.gold += 100;
 
         collider.enabled = false;
+        vaccineCollider.enabled = false;
         rigid.useGravity = false;
         rigid.velocity = Vector3.zero;
         isDie = true;
@@ -192,6 +195,10 @@ public class Monster : PoolableObject
     {
         StopAllCoroutines();
         meshRenderer.material = materials[0];
+
+        rigid.useGravity = true;
+        collider.enabled = true;
+        vaccineCollider.enabled = true;
 
         rigid.velocity = Vector3.zero;
         transform.position = Vector3.zero;

@@ -40,14 +40,16 @@ public class FileTower : MonoBehaviour
         if (collision.collider.CompareTag("Monster"))
         {
             //���� ���� type�� ���� ���ݹ��� ���� �뷮 ����
-                int attack = collision.collider.GetComponent<Monster>().attackPower;
+            Monster monster = collision.collider.GetComponent<Monster>();
+            if (monster.IsVaccine) return;
+
             if (fileType == 1)
             {
-                GameManager.Instance.dadTowerGage += attack;
+                GameManager.Instance.dadTowerGage += monster.attackPower;
             }
             if (fileType == 2)
             {
-                GameManager.Instance.brotherTowerGage += attack;
+                GameManager.Instance.brotherTowerGage += monster.attackPower;
             }
 
             collision.transform.GetComponent<Monster>().DieMonster();
@@ -69,7 +71,7 @@ public class FileTower : MonoBehaviour
 
             if (Mathf.Abs(pos.x) > 5.5f)
             {
-                pos.x = transform.position.x ;
+                pos.x = transform.position.x;
             }
             if (Mathf.Abs(pos.z) > 3)
             {

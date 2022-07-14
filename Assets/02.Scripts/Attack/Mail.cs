@@ -187,5 +187,7 @@ public class Mail : MonoBehaviour
         {
             monster.Die();
         }
+
+        gameObject.SetActive(false);
     }
 }
