@@ -24,6 +24,7 @@ public class ChromeIcon : ProgramIcon
         {
             chrome[i].EnableChrome();
         }
+        Selecting.IsChrome = true;
     }
 
     void ChromeOnSound()

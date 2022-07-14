@@ -15,6 +15,8 @@ public class Selecting : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     Camera _cam;
     Vector3 offset;
 
+    public static bool IsChrome;
+
     private void Start()
     {
         _cam = Camera.main;
@@ -42,6 +44,8 @@ public class Selecting : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     public void OnDrag(PointerEventData eventData)
     {
+        if (IsChrome) return;
+
         Vector3 pos = transform.position;
         Ray ray = _cam.ScreenPointToRay(Input.mousePosition);
         RaycastHit hitInfo;
@@ -69,6 +73,8 @@ public class Selecting : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+        if (IsChrome) return;
+
         Ray ray = _cam.ScreenPointToRay(Input.mousePosition);
         RaycastHit hitInfo;
 

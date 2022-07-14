@@ -181,6 +181,7 @@ public class Chrome : MonoBehaviour
     public void EndRechange()
     {
         _iconC.OnCoolTime();
+        Selecting.IsChrome = false;
     }
     #endregion
 
