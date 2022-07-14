@@ -21,6 +21,10 @@ public class UIManager : Singleton<UIManager>
                 );
                 windowStack.RemoveAt(windowStack.Count - 1);
             }
+            else
+            {
+                GameManager.Instance.SetMenu();
+            }
         }
     }
 

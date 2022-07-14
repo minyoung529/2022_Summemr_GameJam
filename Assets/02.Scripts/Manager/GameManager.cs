@@ -54,28 +54,37 @@ public class GameManager : Singleton<GameManager>
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            if (isOpenMenu)
-            {
-            isOpenMenu = true;
-                menuPanel.SetActive(true);
-                Time.timeScale = 0;
-            }
-            else
-            {
-                MenuClose();
-            }
-        }
         UpdateScore();
         UpdateGold();
     }
 
-    public void MenuClose()
+    public void SetMenu()
     {
+        if (!isOpenMenu)
+        {
+            MenuOpen();
+        }
+        else
+        {
+            MenuClose();
+        }
+    }
+
+    private void MenuOpen()
+    {
+        isOpenMenu = true;
+        menuPanel.SetActive(true);
+        Time.timeScale = 0;
+    }
+
+    private void MenuClose()
+    {
+        if (menuPanel)
+        {
             isOpenMenu = false;
-                Time.timeScale = 1;
-        menuPanel.SetActive(false);
+            Time.timeScale = 1;
+            menuPanel.SetActive(false);
+        }
     }
 
     void UpdateScore()
