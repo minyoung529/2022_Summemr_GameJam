@@ -1448,6 +1448,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 4edc5a2d818a4dc4096bf955a823e4e9, type: 3}
   - {fileID: 21300000, guid: 4d05fff43f29c4448af09cb974755edd, type: 3}
   instagramWindow: {fileID: 1476351456}
+  _iconI: {fileID: 2106835655}
 --- !u!114 &510228071
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2028,22 +2029,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1540880085}
     m_Modifications:
-    - target: {fileID: 4814020957670120063, guid: 221d05494a1933c40921852ca19689ee, type: 3}
-      propertyPath: m_Sprite
+    - target: {fileID: 4814020959114642752, guid: 221d05494a1933c40921852ca19689ee, type: 3}
+      propertyPath: _iconC
       value: 
-      objectReference: {fileID: 21300000, guid: fb592ba706a039e4aa69049da4e1415a, type: 3}
-    - target: {fileID: 4814020957897554265, guid: 221d05494a1933c40921852ca19689ee, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 1adf6c49afd79b149b64cec2a0dee781, type: 3}
-    - target: {fileID: 4814020958200061472, guid: 221d05494a1933c40921852ca19689ee, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: f9205ca344a762e43b32005ad99c82ef, type: 3}
-    - target: {fileID: 4814020958514690683, guid: 221d05494a1933c40921852ca19689ee, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: b551f4f300af0da478f4078bb747ea54, type: 3}
+      objectReference: {fileID: 1540880087}
     - target: {fileID: 4814020959114642755, guid: 221d05494a1933c40921852ca19689ee, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2497,7 +2486,7 @@ MonoBehaviour:
   m_FillMethod: 4
   m_FillAmount: 1
   m_FillClockwise: 1
-  m_FillOrigin: 1
+  m_FillOrigin: 2
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
 --- !u!222 &816238373
@@ -2572,7 +2561,7 @@ MonoBehaviour:
   m_FillMethod: 4
   m_FillAmount: 1
   m_FillClockwise: 1
-  m_FillOrigin: 1
+  m_FillOrigin: 2
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
 --- !u!222 &831537468
@@ -2687,6 +2676,18 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: b551f4f300af0da478f4078bb747ea54, type: 3}
+    - target: {fileID: 4814020959114642752, guid: 221d05494a1933c40921852ca19689ee, type: 3}
+      propertyPath: _iconC
+      value: 
+      objectReference: {fileID: 1540880087}
+    - target: {fileID: 4814020959114642752, guid: 221d05494a1933c40921852ca19689ee, type: 3}
+      propertyPath: limit.x
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4814020959114642752, guid: 221d05494a1933c40921852ca19689ee, type: 3}
+      propertyPath: limit.y
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4814020959114642755, guid: 221d05494a1933c40921852ca19689ee, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3373,7 +3374,7 @@ MonoBehaviour:
   m_FillMethod: 4
   m_FillAmount: 1
   m_FillClockwise: 1
-  m_FillOrigin: 1
+  m_FillOrigin: 2
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
 --- !u!222 &970865006
@@ -3407,6 +3408,18 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: b551f4f300af0da478f4078bb747ea54, type: 3}
+    - target: {fileID: 4814020959114642752, guid: 221d05494a1933c40921852ca19689ee, type: 3}
+      propertyPath: _iconC
+      value: 
+      objectReference: {fileID: 1540880087}
+    - target: {fileID: 4814020959114642752, guid: 221d05494a1933c40921852ca19689ee, type: 3}
+      propertyPath: limit.x
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4814020959114642752, guid: 221d05494a1933c40921852ca19689ee, type: 3}
+      propertyPath: limit.y
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4814020959114642755, guid: 221d05494a1933c40921852ca19689ee, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3592,7 +3605,7 @@ MonoBehaviour:
   m_FillMethod: 4
   m_FillAmount: 1
   m_FillClockwise: 1
-  m_FillOrigin: 1
+  m_FillOrigin: 2
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
 --- !u!222 &1094288432
@@ -4708,6 +4721,7 @@ MonoBehaviour:
   ground2DCollider: {fileID: 1489134317}
   GeneratedMeshCollider: {fileID: 1851337054}
   initialScale: 1
+  _iconR: {fileID: 1734281807}
   holeTime: 0
 --- !u!4 &1327657317
 Transform:
@@ -13455,6 +13469,7 @@ MonoBehaviour:
   - {r: 1, g: 0.7396226, b: 0.7396226, a: 1}
   - {r: 1, g: 0.98065794, b: 0.56037736, a: 1}
   - {r: 0.60752934, g: 0.83172673, b: 0.8773585, a: 1}
+  _iconM: {fileID: 271894392}
 --- !u!1 &1983950716
 GameObject:
   m_ObjectHideFlags: 0
@@ -15872,6 +15887,7 @@ MonoBehaviour:
   _whatIsBoard:
     serializedVersion: 2
     m_Bits: 512
+  _iconP: {fileID: 1657828584}
   bulletCount: 10
   level: 1
 --- !u!4 &3171332940395822277

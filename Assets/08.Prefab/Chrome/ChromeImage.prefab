@@ -378,8 +378,10 @@ MonoBehaviour:
   duration: 5
   trailSpawner: {fileID: 1469275940}
   collisionImpact: {fileID: 7985603114883174406, guid: 281b13e87b892f043a2f4777cfd813fa, type: 3}
+  _iconC: {fileID: 0}
   rotateSpeed: -10000
   moveSpeed: 30
+  limit: {x: 9, y: 5}
 --- !u!135 &4814020959114642753
 SphereCollider:
   m_ObjectHideFlags: 0
