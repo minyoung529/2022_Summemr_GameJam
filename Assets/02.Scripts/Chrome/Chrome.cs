@@ -112,22 +112,22 @@ public class Chrome : MonoBehaviour
         {
             if (transform.position.x < 0)
             {
-                transform.position = new Vector3(-limit.x, transform.position.y, transform.position.z);
+                transform.position = new Vector3(-limit.x + 1, transform.position.y, transform.position.z);
             }
             else
             {
-                transform.position = new Vector3(limit.x, transform.position.y, transform.position.z);
+                transform.position = new Vector3(limit.x - 1, transform.position.y, transform.position.z);
             }
         }
         if (Mathf.Abs(transform.position.z) > limit.y)
         {
             if (transform.position.z < 0)
             {
-                transform.position = new Vector3(transform.position.x, transform.position.y, -limit.y);
+                transform.position = new Vector3(transform.position.x, transform.position.y, -limit.y + 1);
             }
             else
             {
-                transform.position = new Vector3(transform.position.x, transform.position.y, limit.y);
+                transform.position = new Vector3(transform.position.x, transform.position.y, limit.y - 1);
             }
         }
     }
