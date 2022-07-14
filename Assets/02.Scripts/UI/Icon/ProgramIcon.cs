@@ -85,7 +85,7 @@ public abstract class ProgramIcon : MonoBehaviour, IPointerClickHandler
         while (coolTime > 0.0f)
         {
             coolTime -= Time.deltaTime;
-            coolImage.fillAmount = 1 - (1.0f / coolTime);
+            coolImage.fillAmount = (coolTime / curCoolTime);
             yield return new WaitForFixedUpdate();
         }
         coolImage.gameObject.SetActive(false);
