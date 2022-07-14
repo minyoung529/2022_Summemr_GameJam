@@ -1289,7 +1289,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 430538741}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: 27305794e090bf04b91dead7fb58fcbd, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: b5060592eb9bd6c46ab9644fa0f75921, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
@@ -2279,7 +2279,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1657828582}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -11492,8 +11492,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 638494539}
-  - {fileID: 123956269}
   - {fileID: 792556977}
+  - {fileID: 123956269}
   m_Father: {fileID: 44748681}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -14129,6 +14129,7 @@ MonoBehaviour:
   upgradeRenderer: {fileID: 1678512931}
   windowImage: {fileID: 1476351456}
   heartButton: {fileID: 510228070}
+  videPlayer: {fileID: 430538742}
 --- !u!114 &2106835656
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14653,6 +14654,7 @@ MonoBehaviour:
   - {fileID: 629233012}
   - {fileID: 1734114445}
   - {fileID: 919332797}
+  retro: {fileID: 1454811580}
 --- !u!1 &1337717630041599093
 GameObject:
   m_ObjectHideFlags: 0
