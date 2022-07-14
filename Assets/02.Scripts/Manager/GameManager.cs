@@ -40,6 +40,8 @@ public class GameManager : Singleton<GameManager>
 
     public bool isOpenMenu = false;
 
+    public MonsterSpawner monsterSpawner;
+
     public void OnCoolTime(Image cool, float coolTime)
     {
         cool.gameObject.SetActive(true);
@@ -49,6 +51,7 @@ public class GameManager : Singleton<GameManager>
 
     private void Start()
     {
+        monsterSpawner = FindObjectOfType<MonsterSpawner>();
         Time.timeScale = 1;
         GameStartReset();
         InvokeRepeating("UpScore", 1f, 1f);
@@ -106,6 +109,8 @@ public class GameManager : Singleton<GameManager>
     void UpScore()
     {
         score += 10;
+
+        monsterSpawner.AddPoint(score);
         if (score > bestScore)
         {
             bestScore = score;

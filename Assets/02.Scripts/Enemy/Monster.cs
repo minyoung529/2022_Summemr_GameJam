@@ -42,7 +42,7 @@ public class Monster : PoolableObject
     new private Collider collider;
     private Collider vaccineCollider;
 
-    private Rigidbody targetRigid;
+    private Monster targetMonster;
 
 
     private void Awake()
@@ -92,8 +92,8 @@ public class Monster : PoolableObject
 
             if (target)
                 MoveToTarget();
-            else if (targetRigid.gameObject.activeSelf)
-                rigid.velocity = targetRigid.velocity;
+            else if (!targetMonster.isDie)
+                rigid.velocity = targetMonster.rigid.velocity;
             else
                 target = spawner.tower[Random.Range(0, spawner.tower.Count)].transform;
         }
@@ -149,9 +149,9 @@ public class Monster : PoolableObject
         }
     }
 
-    public void SetTargetRigid(Rigidbody target)
+    public void SetTargetRigid(Monster target)
     {
-        targetRigid = target;
+        targetMonster = target;
     }
 
     public void Die()
@@ -196,7 +196,16 @@ public class Monster : PoolableObject
 
     private void VaccineMove()
     {
-        Vector3 dir = -(target.position - transform.position).normalized * speed;
+        Vector3 dir;
+
+        if (target)
+        {
+            dir = -(target.position - transform.position).normalized * speed;
+        }
+        else
+        {
+            dir = -(targetMonster.target.transform.position - transform.position).normalized * speed;
+        }
         dir.y = rigid.velocity.y;
         rigid.velocity = dir;
     }
