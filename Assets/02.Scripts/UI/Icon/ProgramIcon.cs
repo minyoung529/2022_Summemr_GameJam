@@ -17,7 +17,7 @@ public abstract class ProgramIcon : MonoBehaviour, IPointerClickHandler
     float coolTime;
     private bool canExecute;
 
-    protected int level = 1;
+    public int level = 1;
     private const int MAX_LEVEL = 3;
 
     public Image image;
