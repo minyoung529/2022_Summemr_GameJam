@@ -736,7 +736,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: bf03678b7adc94b498773a18d529b3b0, type: 3}
   - {fileID: 21300000, guid: 19b97eadc3d97054bbceb432b263f34a, type: 3}
   cooltimeImage: {fileID: 1094288431}
-  programName: 
+  programName: "\uBA54\uC77C"
   windowImage: {fileID: 1965707720}
   mail: {fileID: 1965707721}
   targetPicker: {fileID: 919332801}
@@ -2980,6 +2980,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ChromeImage (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 4814020959114642876, guid: 221d05494a1933c40921852ca19689ee, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 221d05494a1933c40921852ca19689ee, type: 3}
 --- !u!224 &842279753 stripped
@@ -3848,6 +3852,10 @@ PrefabInstance:
     - target: {fileID: 4814020959114642876, guid: 221d05494a1933c40921852ca19689ee, type: 3}
       propertyPath: m_Name
       value: ChromeImage (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4814020959114642876, guid: 221d05494a1933c40921852ca19689ee, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 221d05494a1933c40921852ca19689ee, type: 3}
@@ -6103,7 +6111,7 @@ MonoBehaviour:
   upgradeButton: {fileID: 1849386744}
   sprites:
   - {fileID: 21300000, guid: 10272772068b680429fbbfa7b053cdac, type: 3}
-  - {fileID: 0}
+  - {fileID: 21300000, guid: d5f8b28d55eef384698538895b520bca, type: 3}
   - {fileID: 21300000, guid: e873cd56af9801244b7d124daf3a3673, type: 3}
   cooltimeImage: {fileID: 970865005}
   programName: "\uD06C\uB871"
@@ -13947,7 +13955,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   effectPrefab: {fileID: 3470310218930553508, guid: 9e716d8e57a0e6647a0044c3534407f1, type: 3}
   attackDistance: 1
-  force: 0.5
+  target: {fileID: 919332797}
 --- !u!114 &1956621238 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4814020958200061472, guid: 221d05494a1933c40921852ca19689ee, type: 3}

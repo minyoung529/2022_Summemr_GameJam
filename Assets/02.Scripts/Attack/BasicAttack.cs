@@ -8,7 +8,9 @@ public class BasicAttack : MonoBehaviour
 {
     [SerializeField] private GameObject effectPrefab;
     [SerializeField] private float attackDistance = 0.7f;
-    [SerializeField] private float force = 0.7f;
+
+    public GameObject target;
+
     private Camera mainCam;
     private List<Monster> monster;
     private Vector3 attackPosition;
@@ -20,7 +22,7 @@ public class BasicAttack : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !target.activeSelf)
         {
             if (EventSystem.current.IsPointerOverGameObject()) return;
             GenerateEffect();

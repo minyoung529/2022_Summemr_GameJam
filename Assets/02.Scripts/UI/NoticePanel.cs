@@ -23,7 +23,7 @@ public class NoticePanel : MonoBehaviour
     {
         gameObject.SetActive(true);
         image.color = Color.clear;
-        image.DOColor(originalColor, 0.5f).OnComplete(() => image.DOKill());
+        image.DOColor(originalColor, 0.5f);
 
         iconImage.sprite = sprite;
 
@@ -36,6 +36,13 @@ public class NoticePanel : MonoBehaviour
     private IEnumerator DisableCoroutine()
     {
         yield return new WaitForSeconds(3f);
+
+        image.DOColor(originalColor, 0.5f).OnComplete(() =>
+        {
+            image.DOKill();
+            gameObject.SetActive(false);
+        });
+
         gameObject.SetActive(false);
         canUse = true;
     }

@@ -7,7 +7,7 @@ public class Monster : PoolableObject
 {
     [SerializeField] private MonsterType type;
     [SerializeField] private float speed = 10f;
-    [SerializeField] private ParticleSystem dieEffect;
+    [SerializeField] private ParticleSystem[] dieEffect;
     [SerializeField] private ParticleSystem damageEffect;
     public MonsterSpawner spawner;
     private Rigidbody rigid;
@@ -38,15 +38,15 @@ public class Monster : PoolableObject
     private MeshRenderer meshRenderer;
     public Material[] materials;
 
-   // Sequence seq;
-
     new private Collider collider;
+    private Collider vaccineCollider;
 
     private void Awake()
     {
         meshRenderer = GetComponent<MeshRenderer>();
         rigid = GetComponent<Rigidbody>();
         collider = GetComponent<Collider>();
+        vaccineCollider = transform.GetChild(0).GetComponent<Collider>();
         if (type == MonsterType.SLOW)
         {
             attackPower = 20;
@@ -79,6 +79,7 @@ public class Monster : PoolableObject
     {
         if (isVaccine)
         {
+            if (isDie) return;
             VaccineMove();
         }
         else
@@ -89,16 +90,13 @@ public class Monster : PoolableObject
 
         if (transform.position.y < -20f)
         {
+            GameManager.Instance.gold += 100;
             DieMonster();
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.CompareTag("Tower"))
-        {
-            DieMonster();
-        }
         if (other.transform.CompareTag("Chrome"))
         {
             Damaged();
@@ -148,17 +146,29 @@ public class Monster : PoolableObject
         GameManager.Instance.gold += 100;
 
         collider.enabled = false;
+        vaccineCollider.enabled = false;
         rigid.useGravity = false;
         rigid.velocity = Vector3.zero;
         isDie = true;
         DieSprite();
-        dieEffect.Play();
+
+        foreach (ParticleSystem p in dieEffect)
+        {
+            p.Play();
+        }
+
         SoundManager.Instance.MonsterDieSound();
         Invoke("DieMonster", 1f);
     }
 
     public void DieMonster()
     {
+        PoolManager.Instance.Push(this);
+    }
+
+    public void DieMonsterByTower()
+    {
+        if (IsVaccine) return;
         PoolManager.Instance.Push(this);
     }
 
@@ -181,24 +191,10 @@ public class Monster : PoolableObject
         this.target = target;
     }
 
-    public void ExplosionDamage(Vector3 explosionPos, float force = 1f)
-    {
-        rigid.AddExplosionForce(force, explosionPos, force);
-    }
-
     public void ChangeToVaccine()
     {
         isVaccine = true;
         meshRenderer.material = materials[1];
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.transform.CompareTag("Monster"))
-        {
-            Debug.Log("sdf");
-            collision.transform.GetComponent<Monster>().ChangeToVaccine();
-        }
     }
 
     public override void Reset()
@@ -206,11 +202,15 @@ public class Monster : PoolableObject
         StopAllCoroutines();
         meshRenderer.material = materials[0];
 
+        rigid.useGravity = true;
+        collider.enabled = true;
+        vaccineCollider.enabled = true;
+
         rigid.velocity = Vector3.zero;
         transform.position = Vector3.zero;
         transform.rotation = Quaternion.Euler(Vector3.zero);
 
         GameManager.Instance.monsters.Remove(this);
-        //isVaccine = false;
+        isVaccine = false;
     }
 }
