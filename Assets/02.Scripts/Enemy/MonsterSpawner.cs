@@ -33,12 +33,55 @@ public class MonsterSpawner : MonoBehaviour
         while (true)
         {
             if (tower.Count == 0) yield break;
+            int randPa = Random.Range(0, 100);
             Monster obj = PoolManager.Instance.Pop(monsterPrefab[GetMonsterType()]) as Monster;
             GameManager.Instance.monsters.Add(obj);
             obj.transform.position = GetRandomCirclePoint();
             obj.spawner = this;
+           // SpawnVerArr(obj);
+            SpawnHorArr(obj);
             obj.SetTarget(tower[Random.Range(0, tower.Count)].transform);
             yield return new WaitForSeconds(spawnDelay);
+        }
+    }
+
+    void SpawnVerArr(Monster mon)
+    {
+       for(int i=1;i<2;i++)
+        {
+            Monster obj = PoolManager.Instance.Pop(monsterPrefab[GetMonsterType()]) as Monster;
+            GameManager.Instance.monsters.Add(obj);
+            obj.transform.position = mon.transform.position+new Vector3(0, 0, 2f*i);
+            obj.spawner = this;
+            obj.SetTarget(tower[0].transform);
+        }
+        for(int i=1;i<2;i++)
+        {
+            Monster obj = PoolManager.Instance.Pop(monsterPrefab[GetMonsterType()]) as Monster;
+            GameManager.Instance.monsters.Add(obj);
+            obj.transform.position = mon.transform.position+new Vector3(0, 0, -2f*i);
+            obj.spawner = this;
+            obj.SetTarget(tower[0].transform);
+        }
+        
+    }
+    void SpawnHorArr(Monster mon)
+    {
+        for (int i = 1; i < 2; i++)
+        {
+            Monster obj = PoolManager.Instance.Pop(monsterPrefab[GetMonsterType()]) as Monster;
+            GameManager.Instance.monsters.Add(obj);
+            obj.transform.position = mon.transform.position + new Vector3(2f * i, 0, 0);
+            obj.spawner = this;
+            //obj.SetTarget(tower[0].transform);
+        }
+        for (int i = 1; i < 2; i++)
+        {
+            Monster obj = PoolManager.Instance.Pop(monsterPrefab[GetMonsterType()]) as Monster;
+            GameManager.Instance.monsters.Add(obj);
+            obj.transform.position = mon.transform.position + new Vector3(-2f * i, 0, 0);
+            obj.spawner = this;
+            //obj.SetTarget(tower[0].transform);
         }
     }
 

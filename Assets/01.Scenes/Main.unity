@@ -727,7 +727,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coolImage: {fileID: 1094288431}
   upgradeEffect: {fileID: 1853867165}
-  curCoolTime: 5
+  curCoolTime: 8
   image: {fileID: 1595945632}
   upgradeButton: {fileID: 1983950720}
   sprites:
@@ -5801,7 +5801,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coolImage: {fileID: 970865005}
   upgradeEffect: {fileID: 1524909628}
-  curCoolTime: 5
+  curCoolTime: 20
   image: {fileID: 1854951351}
   upgradeButton: {fileID: 1849386744}
   sprites:
@@ -11569,7 +11569,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coolImage: {fileID: 831537467}
   upgradeEffect: {fileID: 123956270}
-  curCoolTime: 5
+  curCoolTime: 10
   image: {fileID: 638494541}
   upgradeButton: {fileID: 792556980}
   sprites:
@@ -12089,7 +12089,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coolImage: {fileID: 322703501}
   upgradeEffect: {fileID: 1931481154}
-  curCoolTime: 5
+  curCoolTime: 10
   image: {fileID: 903734758}
   upgradeButton: {fileID: 1708378809}
   sprites:
@@ -13394,7 +13394,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effectPrefab: {fileID: 3470310218930553508, guid: 9e716d8e57a0e6647a0044c3534407f1, type: 3}
-  attackDistance: 1
+  attackDistance: 0.7
   target: {fileID: 919332797}
 --- !u!114 &1956621238 stripped
 MonoBehaviour:
