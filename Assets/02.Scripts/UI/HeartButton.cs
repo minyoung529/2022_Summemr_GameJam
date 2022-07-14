@@ -102,7 +102,5 @@ public class HeartButton : MonoBehaviour, IPointerClickHandler
             initPos.x += 8.8f;
             yield return null;
         }
-
-
     }
 }

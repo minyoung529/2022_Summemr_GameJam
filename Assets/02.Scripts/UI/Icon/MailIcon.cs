@@ -13,7 +13,8 @@ public class MailIcon : ProgramIcon
     {
         if (windowImage.gameObject.activeSelf) return;
         SoundManager.Instance.ProgramOpen();
-        windowImage.gameObject.SetActive(true);
+
+        UIManager.Instance.ActiveWindow(windowImage.gameObject);
         windowImage.transform.localScale = Vector3.zero;
         windowImage.transform.DOScale(1.2f, 0.3f);
         OnCoolTime();

@@ -12,10 +12,6 @@ public class DrawLine : MonoBehaviour
     [SerializeField]
     GameObject[] msPaint;
 
-    [SerializeField]
-    GameObject gageCanvas;
-
-
     GameObject madeLine;
     public Material defaultMaterial;
     private LineRenderer curLine;
@@ -134,6 +130,8 @@ public class DrawLine : MonoBehaviour
         msPaint[0].SetActive(false);
         msPaint[1].SetActive(false);
 
+        UIManager.Instance.EnactiveWindow(msPaint[1].gameObject);
+
         SoundManager.Instance.SfxSoundOn(0);
 
         // 오브젝트 사이즈 줄어들고 왼쪽 아래로 이동
@@ -166,15 +164,5 @@ public class DrawLine : MonoBehaviour
         defaultMaterial.color += Color.white / 255f;
         Destroy(madeLine, 2f);
         isCreate = false;
-    }
-
-    private void OnEnable()
-    {
-        gageCanvas.SetActive(false);
-    }
-
-    private void OnDisable()
-    {
-        gageCanvas.SetActive(true);
     }
 }
