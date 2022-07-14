@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class StartManager : MonoBehaviour
 {
@@ -10,6 +11,10 @@ public class StartManager : MonoBehaviour
     GameObject VV;
     [SerializeField]
     GameObject canvas;
+
+    public Image image;
+    public Sprite[] helpSprites;
+    public Button[] helpButtons;
 
     private void Start()
     {
@@ -25,5 +30,19 @@ public class StartManager : MonoBehaviour
     void GoMain()
     {
         UIManager.Instance.SceneChange("Main");
+    }
+
+    public void NextButton()
+    {
+        helpButtons[0].gameObject.SetActive(true);
+        helpButtons[1].gameObject.SetActive(false);
+        image.sprite = helpSprites[1];
+    }
+
+    public void PreviousButton()
+    {
+        helpButtons[0].gameObject.SetActive(false);
+        helpButtons[1].gameObject.SetActive(true);
+        image.sprite = helpSprites[0];
     }
 }
