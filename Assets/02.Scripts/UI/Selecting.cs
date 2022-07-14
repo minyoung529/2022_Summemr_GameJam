@@ -4,13 +4,21 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class Selecting : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
+public class Selecting : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IDragHandler
 {
     private Image fileImage;
     public Color selectColor;
+    [SerializeField]
+    private Canvas canvas;
+    [SerializeField]
+    RectTransform coolRect;
+    RectTransform rectTransform;
+
+    Vector3 defaultPos;
 
     private void Start()
     {
+        rectTransform = GetComponent<RectTransform>();
         fileImage = GetComponent<Image>();
     }
 
@@ -31,5 +39,12 @@ public class Selecting : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     {
         fileImage.color = selectColor;
     }
+
+    public void OnDrag(PointerEventData eventData)
+    {
+        rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
+        coolRect.anchoredPosition = rectTransform.anchoredPosition;
+    }
+
     #endregion
 }
