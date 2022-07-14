@@ -33,6 +33,12 @@ public class ChromeIcon : ProgramIcon
     }
     protected override void ChildLevelUp()
     {
+        chrome[0].duration -= 0.35f;
+        chrome[1].duration -= 0.35f;
+        chrome[2].duration -= 0.35f;
+
+        Debug.Log(chrome[0].duration);
+
         chrome[level - 1].gameObject.SetActive(true);
         foreach(Image image in reds)
         {

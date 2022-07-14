@@ -5,7 +5,7 @@ using DG.Tweening;
 
 public class Chrome : MonoBehaviour
 {
-    [SerializeField] private float duration;
+   public float duration;
     [SerializeField] private TrailSpawner trailSpawner;
     [SerializeField] private ChromeCollisionImpact collisionImpact;
 
