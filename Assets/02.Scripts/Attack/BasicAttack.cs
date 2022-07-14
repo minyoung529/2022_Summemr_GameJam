@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class BasicAttack : MonoBehaviour
+public class 
+    BasicAttack : MonoBehaviour
 {
     [SerializeField] private GameObject effectPrefab;
     [SerializeField] private float attackDistance = 0.7f;
@@ -49,8 +50,6 @@ public class BasicAttack : MonoBehaviour
         Ray ray = mainCam.ScreenPointToRay(Input.mousePosition);
         RaycastHit hitInfo;
         GameObject effect = null;
-
-        Debug.DrawRay(ray.origin, ray.direction * 100f, Color.red, 1f);
 
         if (Physics.Raycast(ray, out hitInfo, 100f))
         {

@@ -193,6 +193,7 @@ public class Monster : PoolableObject
 
     public void ChangeToVaccine()
     {
+        if (isDie) return;
         isVaccine = true;
         meshRenderer.material = materials[1];
     }
