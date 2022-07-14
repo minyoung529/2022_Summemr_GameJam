@@ -70,8 +70,8 @@ public class MonsterSpawner : MonoBehaviour
             obj2.transform.position = centerMonster.transform.position+new Vector3(0, 0, (-dis)*i);
             obj.spawner = this;
             obj2.spawner = this;
-            obj.SetTargetRigid(centerMonster.rigid);
-            obj2.SetTargetRigid(centerMonster.rigid);
+            obj.SetTargetRigid(centerMonster);
+            obj2.SetTargetRigid(centerMonster);
         }
     }
     void SpawnHorArr(MonsterType type, int cnt, float dis)
@@ -93,8 +93,8 @@ public class MonsterSpawner : MonoBehaviour
             obj2.transform.position = centerMonster.transform.position + new Vector3((-dis) * i, 0, 0);
             obj.spawner = this;
             obj2.spawner = this;
-            obj.SetTargetRigid(centerMonster.rigid);
-            obj2.SetTargetRigid(centerMonster.rigid);
+            obj.SetTargetRigid(centerMonster);
+            obj2.SetTargetRigid(centerMonster);
         }
     }
 
