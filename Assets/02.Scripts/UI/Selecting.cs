@@ -9,8 +9,6 @@ public class Selecting : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     private Image fileImage;
     public Color selectColor;
     [SerializeField]
-    private Canvas canvas;
-    [SerializeField]
     RectTransform coolRect;
     RectTransform rectTransform;
 
