@@ -13,9 +13,8 @@ public class StartManager : MonoBehaviour
 
     public void StartGame()
     {
-        canvas.SetActive(true);
+        canvas.SetActive(false);
         VV.SetActive(true);
-        //startAudio.Play();
         Invoke("GoMain", 0.7f);
     }
 
