@@ -14,7 +14,6 @@ public class InstagramIcon : ProgramIcon
     {
         if (windowImage.gameObject.activeSelf) return;
         SoundManager.Instance.ProgramOpen();
-        OnCoolTime();
         UIManager.Instance.ActiveWindow(windowImage.gameObject);
         windowImage.gameObject.SetActive(true);
         windowImage.transform.localScale = Vector3.zero;

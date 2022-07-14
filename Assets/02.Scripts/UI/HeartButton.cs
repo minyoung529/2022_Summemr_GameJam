@@ -21,6 +21,8 @@ public class HeartButton : MonoBehaviour, IPointerClickHandler
     [SerializeField] private Sprite[] buttonSprites;
     [SerializeField] private Transform instagramWindow;
 
+    public InstagramIcon _iconI;
+
     private void Start()
     {
         mainCam = Camera.main;
@@ -44,6 +46,7 @@ public class HeartButton : MonoBehaviour, IPointerClickHandler
         if (heartCount > MAX_HEART_COUNT)
         {
             SoundManager.Instance.SfxSoundOn(7);
+            _iconI.OnCoolTime();
             StartCoroutine(ExplosionHearts());
         }
         else

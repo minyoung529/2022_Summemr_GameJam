@@ -22,6 +22,8 @@ public class DrawLine : MonoBehaviour
 
     public LayerMask _whatIsBoard;
 
+    public PaintIcon _iconP;
+
     bool isCreate = false;
     bool isCreateNow = false;
 
@@ -127,6 +129,8 @@ public class DrawLine : MonoBehaviour
     // 공격 준비
     void ActionReady()
     {
+        _iconP.OnCoolTime();
+
         madeLine.transform.SetParent(null);
         msPaint[0].SetActive(false);
         msPaint[1].SetActive(false);

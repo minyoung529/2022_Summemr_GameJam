@@ -29,6 +29,7 @@ public class Mail : MonoBehaviour
     private ParticleSystem[] particles = new ParticleSystem[MAX_ADDRESS_COUNT];
     public Color[] color;
 
+    public MailIcon _iconM;
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
@@ -57,6 +58,7 @@ public class Mail : MonoBehaviour
 
             if (Input.GetMouseButtonDown(0))
             {
+                _iconM.OnCoolTime();
                 ActVirus();
             }
         }
@@ -151,6 +153,7 @@ public class Mail : MonoBehaviour
             rectTransform.DOShakeAnchorPos(1f, 10)
                 .OnComplete(() => transform.DOScale(0f, 0.3f)
                 .OnComplete(() => gameObject.SetActive(false)));
+                _iconM.OnCoolTime();
         }
     }
 
