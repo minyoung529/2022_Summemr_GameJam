@@ -1,7 +1,7 @@
 # 저 컴퓨터가 이상해요 내공100 (내공냠냠 신고)
 2학년 1학기 여름방학 교내 게임잼 2등을 한 프로젝트입니다.
 
-[플레이 영상 링크](https://www.youtube.com/watch?v=GuZZQG7YHUE)
+[플레이 영상 링크](https://youtu.be/oZDbINUTwYo)
 
 ## 게임 소개
 
