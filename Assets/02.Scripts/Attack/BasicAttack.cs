@@ -23,6 +23,7 @@ public class
 
     void Update()
     {
+        //
         if (Input.GetMouseButtonDown(0) && !target.activeSelf)
         {
             if (EventSystem.current.IsPointerOverGameObject()) return;
